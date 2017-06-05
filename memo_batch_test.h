@@ -21,7 +21,7 @@ extern "C" {
     #include<stdint.h>
     #include<stdio.h>
     #include<string.h>
-    #include"../memoization/memo.h"
+    #include"../memoization/memo_long_int.h"
     int memo_batch_test(int argc, char** argv);
 
 #ifdef __cplusplus

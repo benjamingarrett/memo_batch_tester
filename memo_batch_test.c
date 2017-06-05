@@ -1,56 +1,60 @@
-#include"memo_batch_test.h"
+#include "memo_batch_test.h"
+
+//#define TEST_CALCULATE_TABLE_SIZE  
+//#define TEST_CONVERT_KEY  
 
 #define VIEW_PROGRESS  
+//#define SHOW_OPERATIONS
+#define LOG_EVENTS  
 #define READ 0
 #define WRITE 1
 #define DELETE 2
+#define EVICT 3
 #define FAILURE 0
 #define SUCCESS 1
 
-char * default_hashing_algorithm = "MurmurHash32";
-char * default_collision_resolution_type = "linear_probe";
-char * default_caching_strategy = "hashing";
-
-int64_t NON__VALUE = -1;
-int64_t NON__POSITION = -1;
-uint64_t KEY_LENGTH = 4;
-uint64_t VALUE_LENGTH = sizeof(int64_t);
+char * default_caching_strategy = "hashing_linear_probe";
 
 int memo_batch_test(int argc, char** argv){
     
-    uint64_t g, h, i, num_operations, num_anomalies, num_trials, queue_size, max_key, capacity, max_load, * key;
-    int type, * operation, * status, * result;
-    uint8_t cuckoo_k;
-    unsigned char * k;
-    unsigned char KEY[4];
-    void * non_value, * non_position;
+    int64_t g, h, i, num_operations, num_anomalies, num_trials, queue_size, max_key, capacity, max_load, * key;
+    int type, * operation, * status, * result, deletions_enabled;
+//    unsigned char * k;
+//    unsigned char KEY[4];
     size_t key_length, value_length;
-    uint64_t * vp, val;
+    int64_t * val;
     FILE * fp;
-    char fname[200], hashing_algorithm[200], collision_resolution_type[200], caching_strategy[200];
+    char fname[200], caching_strategy[200], token[200];
+    char line[200];
+    int len;
+    char read;
+
+    int64_t temp;
+    
+    #ifdef TEST_CONVERT_KEY
+    printf("test convert key\n");
+    g = 256;
+    k = (unsigned char *)&g;
+    for(h=0; h<4; h++){
+        KEY[h] = *(k+h);
+    }
+    printf("%x %x %x %x\n", KEY[3], KEY[2], KEY[1], KEY[0]);
+    g = g * 256;
+    k = (unsigned char *)&g;
+    for(h=0; h<4; h++){
+        KEY[h] = *(k+h);
+    }
+    printf("%x %x %x %x\n", KEY[3], KEY[2], KEY[1], KEY[0]);
+    return 0;
+    #endif
     
     /* default values */
-    strcpy(hashing_algorithm, default_hashing_algorithm);
-    non_value = &NON__VALUE;
-    non_position = &NON__POSITION;
-    key_length = KEY_LENGTH;
-    value_length = VALUE_LENGTH;
-    strcpy(collision_resolution_type, default_collision_resolution_type);
     strcpy(caching_strategy, default_caching_strategy);
     queue_size = 0;
-    cuckoo_k = 2;
     
     /* parse options */
     for(i=1; i<argc; i++){
-        if(strcmp(argv[i], "-h")==0){
-            if(i+1 < argc){
-                strcpy(hashing_algorithm, &argv[++i][0]);
-            }
-        } else if(strcmp(argv[i], "-c")==0){
-            if(i+1 < argc){
-                strcpy(collision_resolution_type, &argv[++i][0]);
-            }
-        } else if(strcmp(argv[i], "-s")==0){
+        if(strcmp(argv[i], "-s")==0){
             if(i+1 < argc){
                 strcpy(caching_strategy, &argv[++i][0]);
             }
@@ -62,23 +66,52 @@ int memo_batch_test(int argc, char** argv){
             if(i+1 < argc){
                 queue_size = (uint64_t)atoi(argv[++i]);
             }
+        } else if(strcmp(argv[i], "-t")==0){
+            if(i+1 < argc){
+                capacity = (uint64_t)atoi(argv[++i]);
+            }
         }
     }
+    
+    #ifdef TEST_CALCULATE_TABLE_SIZE
+        initialize_memoization(
+                hashing_algorithm, capacity, &NON__VALUE, &NON__POSITION,
+                key_length, value_length, collision_resolution_type,
+                caching_strategy, queue_size, cuckoo_k);
+        return 0;
+    #endif
+    
+    
     
     fp = fopen(fname, "r");
     if(fp == NULL){
         printf("Error opening file: %s\n",
                 fname);
         exit(EXIT_FAILURE);
+    } 
+    else {
+        printf("Opened input file: %s for reading\n", fname);
+    }
+    for(g=0; g<7; g++){
+        fgets(line, 200, fp);
     }
     fscanf(fp, "%d\n", &type);
+    #ifdef VIEW_PROGRESS
+    #endif
+    #ifdef VIEW_PROGRESS
     if(type == 0){
         printf("Artificial feedback detected\n");
     }
+    #endif
     fscanf(fp, "%ld\n", &num_operations);
     fscanf(fp, "%ld\n", &max_key);
     fscanf(fp, "%ld\n", &capacity);
     fscanf(fp, "%ld\n", &max_load);
+    fscanf(fp, "%d\n", &deletions_enabled);
+    #ifdef VIEW_PROGRESS
+        printf("num_operations=%ld  max_key=%ld  capacity=%ld  max_load=%ld  deletions_enabled=%d\n", 
+            num_operations, max_key, capacity, max_load, deletions_enabled);
+    #endif
     operation = calloc(num_operations, sizeof(int));
     key = calloc(num_operations, sizeof(uint64_t));
     status = calloc(num_operations, sizeof(int));
@@ -87,13 +120,16 @@ int memo_batch_test(int argc, char** argv){
         fscanf(fp, "%d %ld %d\n", &operation[g], &key[g], &status[g]);
     }
     fclose(fp);
+
+    #ifdef VIEW_PROGRESS
+        printf("Just read %ld lines of input.\n", g);
+        printf("Initializing cache with parameters:\n");
+        printf("capacity=%ld\n", capacity);
+        printf("caching_strategy=%s\n", caching_strategy);
+        printf("queue_size=%ld\n", queue_size);
+    #endif
     
-    initialize_memoization(
-            hashing_algorithm, capacity, non_value, non_position,
-            key_length, value_length, collision_resolution_type,
-            caching_strategy, queue_size, cuckoo_k);
-    
-    printf("memo_batch_test");
+    initialize_long_int_cache(capacity, queue_size, caching_strategy);
     
     #ifdef VIEW_PROGRESS
         printf("Starting trials\n");
@@ -101,59 +137,48 @@ int memo_batch_test(int argc, char** argv){
 
     /* perform operations, recording result */
     for(g=0; g<num_operations; g++){
-        k = (unsigned char *)&key[g];
-        for(h=0; h<4; h++){
-            KEY[h] = *(k+h);
-        }
-        
-/*
-        #ifdef VIEW_PROGRESS
-            printf("-------hashing test: g=%d  operation=%d  key=%d  status=%d-------\n", 
-                    g, operation[g], key[g], status[g]);
-
-            
-            view_hashtable();
-            
-
+        #ifdef SHOW_OPERATIONS
+        printf("operation %ld: %d %ld %d\n", g, operation[g], key[g], status[g]);
         #endif
-*/
-        
+        #ifdef VIEW_PROGRESS
+            printf("------------hashing test: g=%ld/%ld  operation=%d  key=%ld  status=%d------------\n", 
+                    g, num_operations, operation[g], key[g], status[g]);
+        #endif
         switch(operation[g]){
             case READ:
-                vp = (uint64_t *)cache_read(KEY);
-                val = *vp;
-                if(val == NON__VALUE){
+                val = cache_read_long_int(&key[g]);
+                if(val == NULL){
+                    result[g] = FAILURE;
+                } else {
+                    if(*val == key[g]){
+                        result[g] = SUCCESS;
+                    } else {
+                        result[g] = FAILURE;
+                        fprintf(stderr, "read a value, but it's not the right one! %ld is not %ld\n", *val, key[g]);
+                        #ifdef LOG_EVENTS
+                        fp = fopen("event_log","a");
+                        if(fp != NULL){
+                            fprintf(fp, "read a value, but it's not the right one! %ld is not %ld\n", *val, key[g]);
+                            fclose(fp);
+                        }
+                        #endif
+                    }
+                }
+                break;
+            case WRITE:
+                val = cache_write_long_int(&key[g], &key[g]);
+                if(val == NULL){
                     result[g] = FAILURE;
                 } else {
                     result[g] = SUCCESS;
                 }
                 break;
-            case WRITE:
-                vp = (uint64_t *)cache_read(KEY);
-                val = *vp;
-                if(val == NON__VALUE){
-                    vp = (uint64_t *)cache_write(KEY);
-                    if( *vp != NON__POSITION ){
-                        *vp = key[g];
-                        result[g] = SUCCESS;
-                    } else {
-                        result[g] = FAILURE;
-                    }
-                } else {
-                    result[g] = FAILURE;
-                }
-                break;
             case DELETE:
-                vp = (uint64_t *)cache_read(KEY);
-                val = *vp;
-                if(val == NON__VALUE){
+                val = cache_delete_long_int(&key[g]);
+                if(val == NULL){
                     result[g] = FAILURE;
                 } else {
-                    if( cache_delete(KEY) == 0 ){
-                        result[g] = SUCCESS;
-                    } else {
-                        result[g] = FAILURE;
-                    }
+                    result[g] = SUCCESS;
                 }
                 break;
             default:
@@ -164,8 +189,24 @@ int memo_batch_test(int argc, char** argv){
         
         #ifdef VIEW_PROGRESS
             if(status[g] != result[g]){
-                printf("Anomaly found after operation %ld\n", g);
+                printf("Anomaly found after operation %ld ", g);
+                switch(operation[g]){
+                    case READ:
+                        printf("READ ");
+                        break;
+                    case WRITE:
+                        printf("WRITE ");
+                        break;
+                    case DELETE:
+                        printf("DELETE ");
+                        break;
+                    default:
+                        printf("bad operation: %ld %d\n", g, operation[g]);
+                        exit(EXIT_FAILURE);
+                }
+                printf("status %d result %d\n", status[g], result[g]);
             }
+            view_raw_table();
         #endif
     }
     
@@ -179,5 +220,9 @@ int memo_batch_test(int argc, char** argv){
         }
         num_trials++;
     }
-    printf("trials: %ld  anomalies: %ld\n", num_trials, num_anomalies);
+    if(num_anomalies==0){
+        printf("trials: %ld  anomalies: %ld\n", num_trials, num_anomalies);
+    } else {
+        printf("trials: %ld  anomalies: %ld\t\tfor instance (%ld,%ld,%ld,%ld)\n", num_trials, num_anomalies, num_operations, max_key, capacity, max_load);
+    }
 }
