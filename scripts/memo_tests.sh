@@ -1,4 +1,4 @@
-../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100/operation_sequence_with_feedback-100-20-16-16
+../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/without_deletions/operation_sequence_with_feedback-10-20-30-5
 
 #../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-16-12
 

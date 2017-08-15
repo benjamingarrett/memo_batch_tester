@@ -3,7 +3,7 @@
 //#define TEST_CALCULATE_TABLE_SIZE  
 //#define TEST_CONVERT_KEY  
 
-#define VIEW_PROGRESS  
+//#define VIEW_PROGRESS  
 //#define SHOW_OPERATIONS
 #define LOG_EVENTS  
 #define READ 0
@@ -17,41 +17,17 @@ char * default_caching_strategy = "hashing_linear_probe";
 
 int memo_batch_test(int argc, char** argv){
     
-    int64_t g, h, i, num_operations, num_anomalies, num_trials, queue_size, max_key, capacity, max_load, * key;
-    int type, * operation, * status, * result, deletions_enabled;
-//    unsigned char * k;
-//    unsigned char KEY[4];
-    size_t key_length, value_length;
-    int64_t * val;
     FILE * fp;
-    char fname[200], caching_strategy[200], token[200];
-    char line[200];
-    int len;
-    char read;
-
-    int64_t temp;
-    
-    #ifdef TEST_CONVERT_KEY
-    printf("test convert key\n");
-    g = 256;
-    k = (unsigned char *)&g;
-    for(h=0; h<4; h++){
-        KEY[h] = *(k+h);
-    }
-    printf("%x %x %x %x\n", KEY[3], KEY[2], KEY[1], KEY[0]);
-    g = g * 256;
-    k = (unsigned char *)&g;
-    for(h=0; h<4; h++){
-        KEY[h] = *(k+h);
-    }
-    printf("%x %x %x %x\n", KEY[3], KEY[2], KEY[1], KEY[0]);
-    return 0;
-    #endif
+    char fname[200], caching_strategy[200];
+    int64_t g, i, num_anomalies, num_trials, queue_size;
+    int * actual_result;
+    operation_sequence * os;
+    int64_t * val;
+    double lf, elf;
     
     /* default values */
     strcpy(caching_strategy, default_caching_strategy);
     queue_size = 0;
-    
     /* parse options */
     for(i=1; i<argc; i++){
         if(strcmp(argv[i], "-s")==0){
@@ -66,99 +42,43 @@ int memo_batch_test(int argc, char** argv){
             if(i+1 < argc){
                 queue_size = (uint64_t)atoi(argv[++i]);
             }
-        } else if(strcmp(argv[i], "-t")==0){
-            if(i+1 < argc){
-                capacity = (uint64_t)atoi(argv[++i]);
-            }
         }
     }
-    
-    #ifdef TEST_CALCULATE_TABLE_SIZE
-        initialize_memoization(
-                hashing_algorithm, capacity, &NON__VALUE, &NON__POSITION,
-                key_length, value_length, collision_resolution_type,
-                caching_strategy, queue_size, cuckoo_k);
-        return 0;
-    #endif
-    
-    
-    
-    fp = fopen(fname, "r");
-    if(fp == NULL){
-        printf("Error opening file: %s\n",
-                fname);
-        exit(EXIT_FAILURE);
-    } 
-    else {
-        printf("Opened input file: %s for reading\n", fname);
-    }
-    for(g=0; g<7; g++){
-        fgets(line, 200, fp);
-    }
-    fscanf(fp, "%d\n", &type);
+    os = read_operation_sequence(fname);
+    actual_result = calloc(os->num_operations, sizeof(int));
     #ifdef VIEW_PROGRESS
-    #endif
-    #ifdef VIEW_PROGRESS
-    if(type == 0){
-        printf("Artificial feedback detected\n");
-    }
-    #endif
-    fscanf(fp, "%ld\n", &num_operations);
-    fscanf(fp, "%ld\n", &max_key);
-    fscanf(fp, "%ld\n", &capacity);
-    fscanf(fp, "%ld\n", &max_load);
-    fscanf(fp, "%d\n", &deletions_enabled);
-    #ifdef VIEW_PROGRESS
-        printf("num_operations=%ld  max_key=%ld  capacity=%ld  max_load=%ld  deletions_enabled=%d\n", 
-            num_operations, max_key, capacity, max_load, deletions_enabled);
-    #endif
-    operation = calloc(num_operations, sizeof(int));
-    key = calloc(num_operations, sizeof(uint64_t));
-    status = calloc(num_operations, sizeof(int));
-    result = calloc(num_operations, sizeof(int));
-    for(g=0; g<num_operations; g++){
-        fscanf(fp, "%d %ld %d\n", &operation[g], &key[g], &status[g]);
-    }
-    fclose(fp);
-
-    #ifdef VIEW_PROGRESS
-        printf("Just read %ld lines of input.\n", g);
+        printf("Just read operation sequence from file %s.\n", fname);
         printf("Initializing cache with parameters:\n");
-        printf("capacity=%ld\n", capacity);
+        printf("capacity=%ld\n", os->capacity);
         printf("caching_strategy=%s\n", caching_strategy);
         printf("queue_size=%ld\n", queue_size);
     #endif
-    
-    initialize_long_int_cache(capacity, queue_size, caching_strategy);
-    
+    initialize_long_int_cache(os->capacity, queue_size, caching_strategy);
     #ifdef VIEW_PROGRESS
         printf("Starting trials\n");
     #endif
 
     /* perform operations, recording result */
-    for(g=0; g<num_operations; g++){
-        #ifdef SHOW_OPERATIONS
-        printf("operation %ld: %d %ld %d\n", g, operation[g], key[g], status[g]);
-        #endif
+    for(g=0; g<os->num_operations; g++){
         #ifdef VIEW_PROGRESS
-            printf("------------hashing test: g=%ld/%ld  operation=%d  key=%ld  status=%d------------\n", 
-                    g, num_operations, operation[g], key[g], status[g]);
         #endif
-        switch(operation[g]){
+//        printf("------------hashing test: g=%ld/%ld  operation=%ld  key=%ld  expected_result=%d------------\n", 
+//                g, os->num_operations, os->operation[g], os->key[g], os->expected_result[g]);
+        switch(os->operation[g]){
             case READ:
-                val = cache_read_long_int(&key[g]);
+                val = cache_read_long_int(&os->key[g]);
                 if(val == NULL){
-                    result[g] = FAILURE;
+                    actual_result[g] = FAILURE;
                 } else {
-                    if(*val == key[g]){
-                        result[g] = SUCCESS;
+                    if(*val == os->key[g]){
+                        actual_result[g] = SUCCESS;
                     } else {
-                        result[g] = FAILURE;
-                        fprintf(stderr, "read a value, but it's not the right one! %ld is not %ld\n", *val, key[g]);
+                        actual_result[g] = FAILURE;
+                        fprintf(stderr, "read a value, but it's not the right one! %ld is not %ld\n", *val, os->key[g]);
                         #ifdef LOG_EVENTS
                         fp = fopen("event_log","a");
                         if(fp != NULL){
-                            fprintf(fp, "read a value, but it's not the right one! %ld is not %ld\n", *val, key[g]);
+                            fprintf(fp, "read a value, but it's not the right one! %ld is not %ld\n", *val, os->key[g]);
                             fclose(fp);
                         }
                         #endif
@@ -166,31 +86,31 @@ int memo_batch_test(int argc, char** argv){
                 }
                 break;
             case WRITE:
-                val = cache_write_long_int(&key[g], &key[g]);
+                val = cache_write_long_int(&os->key[g], &os->key[g]);
                 if(val == NULL){
-                    result[g] = FAILURE;
+                    actual_result[g] = FAILURE;
                 } else {
-                    result[g] = SUCCESS;
+                    actual_result[g] = SUCCESS;
                 }
                 break;
             case DELETE:
-                val = cache_delete_long_int(&key[g]);
+                val = cache_delete_long_int(&os->key[g]);
                 if(val == NULL){
-                    result[g] = FAILURE;
+                    actual_result[g] = FAILURE;
                 } else {
-                    result[g] = SUCCESS;
+                    actual_result[g] = SUCCESS;
                 }
                 break;
             default:
-                printf("bad operation: %ld %d\n", g, operation[g]);
+                printf("bad operation: %ld %ld\n", g, os->operation[g]);
                 exit(1);
                 break;
         }
         
         #ifdef VIEW_PROGRESS
-            if(status[g] != result[g]){
+            if(actual_result[g] != os->expected_result[g]){
                 printf("Anomaly found after operation %ld ", g);
-                switch(operation[g]){
+                switch(os->operation[g]){
                     case READ:
                         printf("READ ");
                         break;
@@ -201,21 +121,31 @@ int memo_batch_test(int argc, char** argv){
                         printf("DELETE ");
                         break;
                     default:
-                        printf("bad operation: %ld %d\n", g, operation[g]);
+                        printf("bad operation: %ld %ld\n", g, os->operation[g]);
                         exit(EXIT_FAILURE);
                 }
-                printf("status %d result %d\n", status[g], result[g]);
             }
-            view_raw_table();
+//        write_freshness_long_int();
         #endif
+//        printf("actual result %d expected result %d\n", actual_result[g], os->expected_result[g]);
+//        printf("operation finished and table is:\n");
+//        view_raw_table();
+//        write_manual_timestamp_counts_long_int();
+        lf = get_current_load_factor_long_int();
+        elf = get_expected_nru_load_factor_long_int();
+//        printf("load factor %f expected max load factor %f\n", lf, elf);
+        if( elf < lf ){
+            fprintf(stderr, "current load factor greater than expected load factor %f < %f\n", elf, lf);
+            exit(EXIT_FAILURE);
+        }
     }
     
     num_anomalies = num_trials = 0;
-    for(g=0; g<num_operations; g++){
+    for(g=0; g<os->num_operations; g++){
 /*
-        printf("%d %d %d\n", g, status[g], result[g]);
+        printf("%d %d %d\n", g, actual_result[g], os->expected_result[g]);
 */
-        if(status[g]!=result[g]){
+        if(actual_result[g]!=os->expected_result[g]){
             num_anomalies++;
         }
         num_trials++;
@@ -223,6 +153,7 @@ int memo_batch_test(int argc, char** argv){
     if(num_anomalies==0){
         printf("trials: %ld  anomalies: %ld\n", num_trials, num_anomalies);
     } else {
-        printf("trials: %ld  anomalies: %ld\t\tfor instance (%ld,%ld,%ld,%ld)\n", num_trials, num_anomalies, num_operations, max_key, capacity, max_load);
+        printf("trials: %ld  anomalies: %ld\t\tfor instance (%ld,%ld,%ld,%ld)\n", 
+                num_trials, num_anomalies, os->num_operations, os->max_key, os->capacity, os->max_load);
     }
 }

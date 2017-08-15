@@ -6,6 +6,8 @@
                    projectFiles="true">
       <itemPath>../memoization/memo.h</itemPath>
       <itemPath>memo_batch_test.h</itemPath>
+      <itemPath>../memoization/memo_long_int.h</itemPath>
+      <itemPath>../operation_sequence_reader/operation_sequence_reader.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,9 +16,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../hashing/MurmurHash32.c</itemPath>
+      <itemPath>../hashing/MurmurHash64A.c</itemPath>
       <itemPath>main.c</itemPath>
       <itemPath>../memoization/memo.c</itemPath>
       <itemPath>memo_batch_test.c</itemPath>
+      <itemPath>../memoization/memo_long_int.c</itemPath>
+      <itemPath>../operation_sequence_reader/operation_sequence_reader.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -41,11 +47,30 @@
       <compileType>
         <cTool>
           <standard>10</standard>
+          <commandLine>-g</commandLine>
         </cTool>
       </compileType>
+      <item path="../hashing/MurmurHash32.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hashing/MurmurHash64A.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="../memoization/memo.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../memoization/memo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../memoization/memo_long_int.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../memoization/memo_long_int.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../operation_sequence_reader/operation_sequence_reader.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../operation_sequence_reader/operation_sequence_reader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -75,9 +100,27 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="../hashing/MurmurHash32.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hashing/MurmurHash64A.c" ex="false" tool="0" flavor2="0">
+      </item>
       <item path="../memoization/memo.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../memoization/memo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../memoization/memo_long_int.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../memoization/memo_long_int.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../operation_sequence_reader/operation_sequence_reader.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../operation_sequence_reader/operation_sequence_reader.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
