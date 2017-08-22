@@ -30,19 +30,11 @@ int memo_batch_test(int argc, char** argv){
     queue_size = 0;
     /* parse options */
     for(i=1; i<argc; i++){
-        if(strcmp(argv[i], "-s")==0){
-            if(i+1 < argc){
-                strcpy(caching_strategy, &argv[++i][0]);
-            }
-        } else if(strcmp(argv[i], "-i")==0){
+        if(strcmp(argv[i], "-i")==0){
             if(i+1 < argc){
                 strcpy(fname, &argv[++i][0]);
             }
-        } else if(strcmp(argv[i], "-q")==0){
-            if(i+1 < argc){
-                queue_size = (uint64_t)atoi(argv[++i]);
-            }
-        }
+        } 
     }
     os = read_operation_sequence(fname);
     actual_result = calloc(os->num_operations, sizeof(int));
@@ -53,7 +45,8 @@ int memo_batch_test(int argc, char** argv){
         printf("caching_strategy=%s\n", caching_strategy);
         printf("queue_size=%ld\n", queue_size);
     #endif
-    initialize_long_int_cache(os->capacity, queue_size, caching_strategy);
+//    initialize_long_int_cache(os->capacity, queue_size, caching_strategy);
+    initialize_long_int_cache(argc, argv);
     #ifdef VIEW_PROGRESS
         printf("Starting trials\n");
     #endif
@@ -62,8 +55,10 @@ int memo_batch_test(int argc, char** argv){
     for(g=0; g<os->num_operations; g++){
         #ifdef VIEW_PROGRESS
         #endif
-//        printf("------------hashing test: g=%ld/%ld  operation=%ld  key=%ld  expected_result=%d------------\n", 
-//                g, os->num_operations, os->operation[g], os->key[g], os->expected_result[g]);
+//        if(g%100==0){
+            printf("------------hashing test: g=%ld/%ld  operation=%ld  key=%ld  expected_result=%d------------\n", 
+                    g, os->num_operations, os->operation[g], os->key[g], os->expected_result[g]);
+//        }
         switch(os->operation[g]){
             case READ:
                 val = cache_read_long_int(&os->key[g]);
