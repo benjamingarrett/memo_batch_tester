@@ -18,12 +18,12 @@
 extern "C" {
 #endif
 
-    #include<stdint.h>
-    #include<stdio.h>
-    #include<string.h>
-    #include"../memoization/memo_long_int.h"
-    #include"../operation_sequence_reader/operation_sequence_reader.h"
-    int memo_batch_test(int argc, char** argv);
+#include<stdint.h>
+#include<stdio.h>
+#include<string.h>
+#include"../memoization/memo_long_int.h"
+#include"../operation_sequence_reader/operation_sequence_reader.h"
+  int memo_batch_test(int argc, char** argv);
 
 #ifdef __cplusplus
 }

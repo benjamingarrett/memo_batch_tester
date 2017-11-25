@@ -1,0 +1,12 @@
+#./001_interleaved_tests.sh
+#./002_interleaved_tests.sh
+#./003_interleaved_tests.sh
+#./004_interleaved_tests.sh
+#./005_interleaved_tests.sh
+#./006_interleaved_tests.sh
+./007_interleaved_tests.sh
+./008_interleaved_tests.sh
+./009_interleaved_tests.sh
+./010_interleaved_tests.sh
+./011_interleaved_tests.sh
+./012_interleaved_tests.sh

@@ -17,6 +17,6 @@
 
 int main(int argc, char** argv) {
 
-    return memo_batch_test(argc, argv);
+  return memo_batch_test(argc, argv);
 }
 
