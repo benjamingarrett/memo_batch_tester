@@ -1,140 +1,104 @@
-../dist/Debug/GNU-Linux/memo_batch_tester --caching_strategy cuckoo_hashing --cuckoo_k 2 --cache_size 32 -i ../../misc_phd/input/operation_sequences/feedback/without_deletions/operation_sequence_with_feedback-50-64-32-20
+tester=../dist/Debug/GNU-Linux/memo_batch_tester
+
+input_directory=../../misc_phd/input/lcs_instances
+output_directory=../../misc_phd/output/results
+results_fname=$output_directory/olcs_lru_characteristic_cache_size.csv
+FALSE=0
+TRUE=1
+append_results=$FALSE
+
+types=(
+test-000-111
+test-012-210
+test-0101-1010
+test-111-111
+random-0-1
+random-0-9
+random-0-19
+test-000111-111000
+test-001122-221100
+test-001122-112200
+)
+sizes=(
+10
+20
+30
+40
+50
+60
+70
+80
+90
+100
+110
+120
+)
+
+k=0
+for (( i=0; i<${#sizes[@]}; i++ ));
+do
+  for (( j=0; j<${#types[@]}; j++ ));
+  do
+    instances[k]=${sizes[i]}-${types[j]}
+    instance_sizes[k]=${sizes[i]}
+    k=$(( $k + 1 ))
+  done
+done
+k=0
+for (( i=0; i<${#instances[@]}; i++ ));
+do
+  fnames[k]=$input_directory/${instances[i]}.lcs
+  #echo ${fnames[k]}
+  k=$(( $k + 1 ))
+done
+
+#table_size=4000000
+table_size=64
+
+strategies=(
+non_memo
+linear_probe_hashing
+cuckoo_hashing
+lru
+nri_clock
+nri_d_drunken
+nru_clock_absolute
+nru_d_drunken_absolute
+nru_clock_relative
+nrU_d_drunken_relative
+)
+strategy=${strategies[3]}
+
+a=--mbt_problem_type
+b=lcs
+c=--mbt_cache_size
+d=24
+e=--lcs_instance_fname
+f=$input_directory/lcs_instances/10-random-0-9.lcs
+g=--lcs_oblivious
+h=1
+i=--memo_cache_size
+j=300000
+k=--memo_caching_strategy
+l=$strategy
+m=--memo_lru_queue_size
+n=24
+p=--mbt_output_fname
+q=olcs_lru_characteristic_cache_size.csv
+r=--mbt_instance_fname
+s=10-random-0-9.lcs
+t=--mbt_append_results
+u=0
+
+for (( z=0; z<${#fnames[@]}; z++ ));
+do
+  # calculate initial guess
+  d=$(( ${instance_sizes[z]} + 6 ))
+  f=${fnames[z]}
+  n=$(( ${instance_sizes[z]} + 6 ))
+  s=${instance[z]}
+  #echo $d $n $f
+  $tester $a $b $c $d $e $f $g $h $i $j $k $l $m $n $p $q $r $s $t $u
+done
 
 
-
-# everything below uses the old command line interface
-
-#../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/without_deletions/operation_sequence_with_feedback-10-20-30-5
-
-#../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-16-12
-
-#../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-16-12
-
-#../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-16-12
-
-#../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-16-12
-
-#../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/1000/operation_sequence_with_feedback-1000-40-32-25
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 16 32
-#  do
-#    echo 100 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100/operation_sequence_with_feedback-100-20-$capacity*
-#    echo 100 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-$capacity*
-#    echo 100 operations cuckoo k=2 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-$capacity*
-#    echo 100 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-$capacity*
-#    echo 100 operations cuckoo k=4 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100/operation_sequence_with_feedback-100-20-$capacity*
-#  done
-#fi
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 32 64
-#  do
-#    echo 1000 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/1000/operation_sequence_with_feedback-1000-40-$capacity*
-#    echo 1000 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/1000/operation_sequence_with_feedback-1000-40-$capacity*
-#    echo 1000 operations cuckoo k=2 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/1000/operation_sequence_with_feedback-1000-40-$capacity*
-#    echo 1000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/1000/operation_sequence_with_feedback-1000-40-$capacity*
-#    echo 1000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/1000/operation_sequence_with_feedback-1000-40-$capacity*
-#  done
-#fi
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 256 512
-#  do
-#    echo 10000 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/10000/operation_sequence_with_feedback-10000-400-$capacity*
-#    echo 10000 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/10000/operation_sequence_with_feedback-10000-400-$capacity*
-    #problem
-    #echo 10000 operations cuckoo k=2 capacity=$capacity
-    #../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/10000/operation_sequence_with_feedback-10000-400-$capacity*
-#    echo 10000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/10000/operation_sequence_with_feedback-10000-400-$capacity*
-#    echo 10000 operations cuckoo k=4 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/10000/operation_sequence_with_feedback-10000-400-$capacity*
-#  done
-#fi
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 256 512
-#  do
-#    echo 100000 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100000/operation_sequence_with_feedback-100000-400-$capacity*
-#    echo 100000 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-400-$capacity*
-    #problem
-    #echo 100000 operations cuckoo k=2 capacity=$capacity
-    #../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-400-$capacity*
-#    echo 100000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-400-$capacity*
-#    echo 100000 operations cuckoo k=4 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-400-$capacity*
-#  done
-#fi
-
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 512 1024
-#  do
-#    echo 100000 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100000/operation_sequence_with_feedback-100000-800-$capacity*
-#    echo 100000 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-800-$capacity*
-    #problem
-    #echo 100000 operations cuckoo k=2 capacity=$capacity
-    #../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-800-$capacity*
-#    echo 100000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-800-$capacity*
-#    echo 100000 operations cuckoo k=4 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-800-$capacity*
-#  done
-#fi
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 32768 65536
-#  do
-#    echo 100000 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100000/operation_sequence_with_feedback-100000-40000-$capacity*
-#    echo 100000 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-40000-$capacity*
-#    echo 100000 operations cuckoo k=2 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-40000-$capacity*
-#    echo 100000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-40000-$capacity*
-#    echo 100000 operations cuckoo k=4 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-40000-$capacity*
-#  done
-#fi
-
-#if [ 1 -lt 1 ] ;
-#then
-#  for capacity in 65536 131072
-#  do
-#    echo 100000 operations linear probe capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100000/operation_sequence_with_feedback-100000-80000-$capacity*
-#    echo 100000 operations linear probe with deletions capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_linear_probe_with_deletions -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-80000-$capacity*
-#    echo 100000 operations cuckoo k=2 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_2 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-80000-$capacity*
-#    echo 100000 operations cuckoo k=3 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_3 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-80000-$capacity*
-#    echo 100000 operations cuckoo k=4 capacity=$capacity
-#    ../dist/Debug/GNU-Linux/memo_batch_tester -s hashing_cuckoo_4 -i ../../misc_phd/input/operation_sequences/feedback/deletions/100000/operation_sequence_with_feedback-100000-80000-$capacity*
-#  done
-#fi

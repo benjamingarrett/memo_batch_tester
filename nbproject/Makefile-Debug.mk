@@ -40,6 +40,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/554cfc1b/memo.o \
 	${OBJECTDIR}/_ext/554cfc1b/memo_long_int.o \
 	${OBJECTDIR}/_ext/f34e89a/operation_sequence_reader.o \
+  ${OBJECTDIR}/_ext/f34e89b/lcss.o \
+  ${OBJECTDIR}/_ext/f34e89c/edit_distance.o \
+  ${OBJECTDIR}/_ext/f34e89d/kmp.o \
+  ${OBJECTDIR}/_ext/f34e89e/fibonacci.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/memo_batch_test.o
 
@@ -92,6 +96,26 @@ ${OBJECTDIR}/_ext/f34e89a/operation_sequence_reader.o: ../operation_sequence_rea
 	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89a
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89a/operation_sequence_reader.o ../operation_sequence_reader/operation_sequence_reader.c
+
+${OBJECTDIR}/_ext/f34e89b/lcss.o: ../lcss100/lcss.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89b
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89b/lcss.o ../lcss100/lcss.c
+
+${OBJECTDIR}/_ext/f34e89c/edit_distance.o: ../edit_distance100/edit_distance.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89c
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89c/edit_distance.o ../edit_distance100/edit_distance.c
+
+${OBJECTDIR}/_ext/f34e89d/kmp.o: ../kmp100/kmp.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89d
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89d/kmp.o ../kmp100/kmp.c
+
+${OBJECTDIR}/_ext/f34e89e/fibonacci.o: ../fibonacci100/fibonacci.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89e
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89e/fibonacci.o ../fibonacci100/fibonacci.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

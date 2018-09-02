@@ -8,6 +8,10 @@
       <itemPath>memo_batch_test.h</itemPath>
       <itemPath>../memoization/memo_long_int.h</itemPath>
       <itemPath>../operation_sequence_reader/operation_sequence_reader.h</itemPath>
+      <itemPath>../lcss100/lcss.h</itemPath>
+      <itemPath>../edit_distance100/edit_distance.h</itemPath>
+      <itemPath>../kmp100/kmp.h</itemPath>
+      <itemPath>../fibonacci100/fibonacci.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -23,6 +27,10 @@
       <itemPath>memo_batch_test.c</itemPath>
       <itemPath>../memoization/memo_long_int.c</itemPath>
       <itemPath>../operation_sequence_reader/operation_sequence_reader.c</itemPath>
+      <itemPath>../lcss100/lcss.h</itemPath>
+      <itemPath>../edit_distance100/edit_distance.h</itemPath>
+      <itemPath>../kmp100/kmp.h</itemPath>
+      <itemPath>../fibonacci100/fibonacci.h</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -78,6 +86,52 @@
       </item>
       <item path="memo_batch_test.h" ex="false" tool="3" flavor2="0">
       </item>
+
+      <item path="../lcss100/lcss.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../lcss100/lcss.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+      <item path="../edit_distance100/edit_distance.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../edit_distance100/edit_distance.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+      <item path="../kmp100/kmp.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../kmp100/kmp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+      <item path="../fibonacci100/fibonacci.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../fibonacci100/fibonacci.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+
     </conf>
     <conf name="Release" type="1">
       <toolsSet>
@@ -122,6 +176,52 @@
             tool="3"
             flavor2="0">
       </item>
+
+      <item path="../lcss100/lcss.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../lcss100/lcss.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+      <item path="../edit_distance100/edit_distance.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../edit_distance100/edit_distance.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+      <item path="../kmp100/kmp.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../kmp100/kmp.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+      <item path="../fibonacci100/fibonacci.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../fibonacci100/fibonacci.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+
+
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="memo_batch_test.c" ex="false" tool="0" flavor2="0">

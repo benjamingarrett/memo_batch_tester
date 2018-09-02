@@ -20,10 +20,14 @@ extern "C" {
 
 #include<stdint.h>
 #include<stdio.h>
+#include<stdlib.h>
 #include<string.h>
-#include"../memoization/memo_long_int.h"
-#include"../operation_sequence_reader/operation_sequence_reader.h"
-  int memo_batch_test(int argc, char** argv);
+#include "../lcss100/lcss.h"
+#include "../kmp100/kmp.h"
+#include "../edit_distance100/edit_distance.h"
+#include "../fibonacci100/fibonacci.h"
+#include "../a100/solve_tsp.h"
+int memo_batch_test(int argc, char** argv);
 
 #ifdef __cplusplus
 }

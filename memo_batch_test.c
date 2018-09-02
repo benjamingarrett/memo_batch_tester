@@ -1,183 +1,158 @@
 #include "memo_batch_test.h"
 
-//#define TEST_CALCULATE_TABLE_SIZE  
-//#define TEST_CONVERT_KEY  
+char * problem_type_parameter = "--mbt_problem_type";
+char * cache_size_parameter = "--mbt_cache_size";
+char * output_fname_parameter = "--mbt_output_fname";
+char * instance_name_parameter = "--mbt_instance_fname";
+char * mbt_append_results_parameter = "--mbt_append_results";
+char * lcs_parameter = "lcs";
+char * arora_parameter = "arora";
+char * kmp_parameter = "kmp";
+char * edit_distance_parameter = "edit_distance";
+char * fibonacci_parameter = "fibonacci";
 
-//#define VIEW_PROGRESS  
-//#define SHOW_OPERATIONS
-#define LOG_EVENTS  
-#define READ 0
-#define WRITE 1
-#define DELETE 2
-#define EVICT 3
-#define FAILURE 0
-#define SUCCESS 1
-
-char * default_caching_strategy = "hashing_linear_probe";
+void (*initialize_problem)(int argc, char **argv);
+void (*reset_problem)();
+int32_t (*get_cache_misses_)();
+int32_t (*get_cache_hits_)();
+void (*solve_problem)();
 
 int memo_batch_test(int argc, char** argv){
-    
-    FILE * fp;
-    char fname[200], caching_strategy[200];
-    int64_t g, i, num_anomalies, num_trials, queue_size;
-    int64_t num_successful_reads, num_successful_writes, num_successful_deletes;
-    int64_t num_unsuccessful_reads, num_unsuccessful_writes, num_unsuccessful_deletes;
-    int * actual_result;
-    operation_sequence * os;
-    int64_t * val;
-    double lf, elf;
-    
-    /* default values */
-    strcpy(caching_strategy, default_caching_strategy);
-    queue_size = 0;
-    num_successful_reads = num_successful_writes = num_successful_deletes = 0;
-    num_unsuccessful_reads = num_unsuccessful_writes = num_unsuccessful_deletes = 0;
-    /* parse options */
-    for(i=1; i<argc; i++){
-        if(strcmp(argv[i], "-i")==0){
-            if(i+1 < argc){
-                strcpy(fname, &argv[++i][0]);
-//                printf("fname=%s\n", fname);
-            }
-        } 
+  char problem_type[200], output_fname[200], instance_fname[200];
+  char append_results = 0;
+  int cache_size = -1;
+  //for(int g=1; g<argc; g++){
+  //  printf("%s ", argv[g]);
+  //}
+  //printf("\n");
+  for(int g=1; g<argc; g++){
+    if(strcmp(argv[g], problem_type_parameter) == 0){
+      if(g+1 < argc){
+        strcpy(problem_type, &argv[++g][0]);
+        //printf("problem_type_parameter %s\n", problem_type);
+      }
     }
-    os = read_operation_sequence(fname);
-    if(os==NULL){
-        fprintf(stderr, "operation sequence failed to load\n"); exit(1);
+    if(strcmp(argv[g], cache_size_parameter) == 0){
+      if(g+1 < argc){
+        cache_size = (int) atoi(argv[++g]);
+      }
     }
-    actual_result = calloc(os->num_operations, sizeof(int));
-    #ifdef VIEW_PROGRESS
-        printf("Just read operation sequence from file %s.\n", fname);
-        printf("Initializing cache with parameters:\n");
-        printf("capacity=%ld\n", os->capacity);
-        printf("caching_strategy=%s\n", caching_strategy);
-        printf("queue_size=%ld\n", queue_size);
-    #endif
-//    initialize_long_int_cache(os->capacity, queue_size, caching_strategy);
-    initialize_long_int_cache(argc, argv);
-    #ifdef VIEW_PROGRESS
-        printf("Starting trials\n");
-    #endif
+    if(strcmp(argv[g], output_fname_parameter) == 0){
+      if(g+1 < argc){
+        strcpy(output_fname, &argv[++g][0]);
+      }
+    }
+    if(strcmp(argv[g], instance_name_parameter) == 0){
+      if(g+1 < argc){
+        strcpy(instance_fname, &argv[++g][0]);
+      }
+    }
+    if(strcmp(argv[g], mbt_append_results_parameter) == 0){
+      if(g+1 < argc){
+        append_results = (int) atoi(argv[++g]);
+      }
+    }
+  }
+  //printf("done parsing arguments\n");
+  if( strcmp(problem_type, lcs_parameter)==0 ){
+    printf("lcs %s %d\n", problem_type, cache_size);
+    initialize_problem = initialize_lcs;
+    reset_problem = reset_lcs;
+    get_cache_misses_ = get_cache_misses_lcs;
+    get_cache_hits_ = get_cache_hits_lcs;
+    solve_problem = solve_lcs;
+  }
+  if( strcmp(problem_type, edit_distance_parameter)==0 ){
+    printf("edit_distance %s %d\n", problem_type, cache_size);
+    initialize_problem = initialize_edit_distance;
+    reset_problem = reset_edit_distance;
+    get_cache_misses_ = get_cache_misses_edit_distance;
+    get_cache_hits_ = get_cache_hits_edit_distance;
+    solve_problem = solve_edit_distance;
+  }
+  if( strcmp(problem_type, kmp_parameter)==0 ){
+    printf("kmp %s %d\n", problem_type, cache_size);
+    initialize_problem = initialize_kmp;
+    reset_problem = reset_kmp;
+    get_cache_misses_ = get_cache_misses_kmp;
+    get_cache_hits_ = get_cache_hits_kmp;
+    solve_problem = solve_kmp;
+  }
+  if( strcmp(problem_type, fibonacci_parameter)==0 ){
+    printf("fibonacci %s %d\n", problem_type, cache_size);
+    initialize_problem = initialize_fibonacci;
+    reset_problem = reset_fibonacci;
+    get_cache_misses_ = get_cache_misses_fibonacci;
+    get_cache_hits_ = get_cache_hits_fibonacci;
+    solve_problem = solve_fibonacci;
+  }
+  if( strcmp(problem_type, arora_parameter)==0 ){
+    printf("arora %s %d\n", problem_type, cache_size);
+    fprintf(stderr, "arora not implemented.\n");
+    exit(1);
+  }
 
-    /* perform operations, recording result */
-    for(g=0; g<os->num_operations; g++){
-        #ifdef VIEW_PROGRESS
-        #endif
-//        if( 1<g ){
-//            lf = get_current_load_factor_long_int();
-//            printf("------------hashing test: g=%ld/%ld  operation=%ld  key=%ld  load factor %f  max_alpha %f------------\n", 
-//                    g, os->num_operations, os->operation[g], os->key[g], lf, get_max_alpha());
-//        }
-        switch(os->operation[g]){
-            case READ:
-                val = cache_read_long_int(&os->key[g]);
-                if(val == NULL){
-                    actual_result[g] = FAILURE;
-                    num_unsuccessful_reads++;
-                } else {
-                    if(*val == os->key[g]){
-                        actual_result[g] = SUCCESS;
-                        num_successful_reads++;
-                    } else {
-                        actual_result[g] = FAILURE;
-                        num_unsuccessful_reads++;
-                        fprintf(stderr, "read a value, but it's not the right one! %ld is not %ld\n", *val, os->key[g]);
-                        #ifdef LOG_EVENTS
-                        fp = fopen("event_log","a");
-                        if(fp != NULL){
-                            fprintf(fp, "read a value, but it's not the right one! %ld is not %ld\n", *val, os->key[g]);
-                            fclose(fp);
-                        }
-                        #endif
-                    }
-                }
-                break;
-            case WRITE:
-                val = cache_write_long_int(&os->key[g], &os->key[g]);
-                if(val == NULL){
-                    actual_result[g] = FAILURE;
-                    num_unsuccessful_writes++;
-                } else {
-                    actual_result[g] = SUCCESS;
-                    num_successful_writes++;
-                }
-                break;
-            case DELETE:
-                val = cache_delete_long_int(&os->key[g]);
-                if(val == NULL){
-                    actual_result[g] = FAILURE;
-                    num_unsuccessful_deletes++;
-                } else {
-                    actual_result[g] = SUCCESS;
-                    num_successful_deletes++;
-                }
-                break;
-            default:
-                printf("bad operation: %ld %ld\n", g, os->operation[g]);
-                exit(1);
-                break;
+  int cache_misses, prev_cache_misses;
+  char t[20];
+ 
+  //printf("starting sequence\n");
+  initialize_long_int_cache(argc, argv);
+  initialize_problem(argc, argv);
+  solve_problem();
+  prev_cache_misses = get_cache_misses_();
+  printf("prev_cache_misses=%d\n", prev_cache_misses);
+  destruct_memo();
+  cache_size--;
+  for(int g=1; g<argc; g++){
+    //printf("%d %s\n", g, argv[g]);
+    if(strcmp(argv[g], lru_queue_size_param) == 0){
+      //printf("found it!\n");
+      if(g+1 < argc){
+        printf("setting cache_size=%d\n", cache_size);
+        sprintf(t, "%d", cache_size);
+        strcpy(argv[++g], t);
+      }
+    }
+  }
+  reset_problem();
+  initialize_long_int_cache(argc, argv);
+  //view_hashtable_long_int();
+  solve_problem();
+  cache_misses = get_cache_misses_();
+  printf("cache misses = %d\n", cache_misses);
+  destruct_memo();
+
+  int num_iterations = 0;
+  while(cache_misses==prev_cache_misses && cache_size > 2){
+    if(num_iterations++ > 9) break;
+    cache_size--;
+    for(int g=1; g<argc; g++){
+      if(strcmp(argv[g], lru_queue_size_param) == 0){
+        if(g+1 < argc){
+          printf("setting cache_size=%d\n", cache_size);
+          sprintf(t, "%d", cache_size);
+          strcpy(argv[++g], t);
         }
-        
-        #ifdef VIEW_PROGRESS
-            if(actual_result[g] != os->expected_result[g]){
-                printf("Anomaly found after operation %ld ", g);
-                switch(os->operation[g]){
-                    case READ:
-                        printf("READ ");
-                        break;
-                    case WRITE:
-                        printf("WRITE ");
-                        break;
-                    case DELETE:
-                        printf("DELETE ");
-                        break;
-                    default:
-                        printf("bad operation: %ld %ld\n", g, os->operation[g]);
-                        exit(EXIT_FAILURE);
-                }
-            }
-//        write_freshness_long_int();
-        #endif
-
-        
-        update_max_alpha_long_int();
-//        if( 1<g ){
-//            printf("actual result %d\n", actual_result[g]);
-////            printf("operation finished and table is:\n");
-////            view_raw_table();
-//            write_manual_timestamp_counts_long_int();
-//        }
-//        lf = get_current_load_factor_long_int();
-//        elf = get_expected_nru_load_factor_long_int();
-//        printf("%ld load factor %f expected max load factor %f\n", g, lf, elf);
-//        getc(stdin);
-//        if( elf < lf ){
-//            fprintf(stderr, "current load factor greater than expected load factor %f < %f\n", elf, lf);
-//            exit(EXIT_FAILURE);
-//        }
+      }
     }
-    
-    num_anomalies = num_trials = 0;
-//    for(g=0; g<os->num_operations; g++){
-///*
-//        printf("%d %d %d\n", g, actual_result[g], os->expected_result[g]);
-//*/
-//        if(actual_result[g]!=os->expected_result[g]){
-//            num_anomalies++;
-//        }
-//        num_trials++;
-//    }
-//    printf("trials: %ld  anomalies: %ld\n", num_trials, num_anomalies);
-    
-//    printf("successful reads: %ld\n", num_successful_reads);
-//    printf("unsuccesful reads:  %ld\n", num_unsuccessful_reads);
-//    printf("successful writes: %ld\n", num_successful_writes);
-//    printf("unsuccesful writes:  %ld\n", num_unsuccessful_writes);
-//    printf("successful deletes: %ld\n", num_successful_deletes);
-//    printf("unsuccesful deletes:  %ld\n", num_unsuccessful_deletes);
-//    printf("total: %ld\n", num_successful_reads + num_successful_writes + num_successful_deletes +
-//               num_unsuccessful_reads + num_unsuccessful_writes + num_unsuccessful_deletes );
-//    printf("num_evictions: %ld\n", get_num_evictions());
-    printf("                         max_alpha=%f  ", get_max_alpha());
-    //printf("=========================================================================================================\n\n");
+    reset_problem();
+    initialize_long_int_cache(argc, argv);
+    solve_problem();
+    prev_cache_misses = cache_misses;
+    cache_misses = get_cache_misses_();
+    printf("cache misses = %d\n", cache_misses);
+    destruct_memo();
+  }
+  printf("characteristic cache size = %d\n\n", cache_size+1);
+  int metric = cache_size+1;
+  if(append_results){
+    printf("Appending results to %s\n", output_fname);
+    FILE * fp = fopen(output_fname, "a");
+    if(fp == NULL){
+      fprintf(stderr, "Failed to open %s\n", output_fname);
+      exit(1);
+    }
+    fprintf(fp, "%s,%d\n", instance_fname, metric);
+    fclose(fp);
+  }
 }
