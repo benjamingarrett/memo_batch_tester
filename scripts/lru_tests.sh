@@ -1,7 +1,7 @@
 
 
 echo 100 operations lru queue_size=16
-../dist/Debug/GNU-Linux/memo_batch_tester -s lru -q 8 -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100/operation_sequence_with_feedback-100-20-16-16
+../dist/Debug/GNU-Linux/memo_batch_tester -s lru -q 8 -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/100/operation_sequence_with_feedback-100-20-16-16 --memo_key_length 8 --memo_value_length 8
 
 #echo 1000 operations lru queue_size=16
 #../dist/Debug/GNU-Linux/memo_batch_tester -s lru -q 16 -i ../../misc_phd/input/operation_sequences/feedback/no_deletions/1000/operation_sequence_with_feedback-1000-40-32-32
