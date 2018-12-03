@@ -14,6 +14,8 @@ char * fibonacci_parameter = "fibonacci";
 char * test_parameter = "test";
 
 void (*initialize_problem)(int argc, char **argv);
+void (*set_cache_miss_threshold_)(int64_t t);
+void (*set_preemptive_halt_)(int64_t p);
 void (*reset_problem)();
 long int (*get_cache_misses_)();
 long int (*get_cache_hits_)();
@@ -21,16 +23,75 @@ void (*solve_problem)();
 
 void test_operation_sequence(char sequence_fname[200]);
 
+int64_t characteristic_cache_size_linear_search(int64_t max_cache_size){
+  solve_problem();
+  int64_t prev_cache_misses = get_cache_misses_();
+  set_cache_miss_threshold_(prev_cache_misses);
+  //printf("linear search, size %ld  misses %ld\n", max_cache_size, prev_cache_misses);
+  int64_t cache_size = max_cache_size - 1;
+  reset_problem();
+  set_preemptive_halt_(1);
+  reset_lru_queue(cache_size);
+  solve_problem();
+  int64_t cache_misses = get_cache_misses_();
+  //printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
+  while(cache_misses==prev_cache_misses && cache_size >= 2){
+    cache_size--;
+    reset_problem();
+    reset_lru_queue(cache_size);
+    solve_problem();
+    prev_cache_misses = cache_misses;
+    cache_misses = get_cache_misses_();
+    //printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
+  }
+  return cache_size + 1;
+}
+
+int64_t characteristic_cache_size_binary_search(int64_t max_cache_size){
+  reset_lru_queue(max_cache_size);
+  reset_problem();
+  set_preemptive_halt_(0);
+  solve_problem();
+  int64_t max_cache_misses = get_cache_misses_();
+  set_cache_miss_threshold_(max_cache_misses);
+  //printf("binary search, size %ld  misses %ld\n", max_cache_size, max_cache_misses);
+  int64_t min_cache_size = 0;
+  reset_problem();
+  set_preemptive_halt_(1);
+  int64_t cache_size = min_cache_size + (int64_t)((double)(max_cache_size-min_cache_size)/2.0);
+  int64_t cc = 0;
+  int64_t cache_misses = max_cache_misses;
+  while(min_cache_size < max_cache_size - 1){
+    reset_problem();
+    reset_lru_queue(cache_size);
+    solve_problem();
+    cache_misses = get_cache_misses_();
+    //printf("binary search, size %ld  misses %ld  min %ld  max %ld\n", 
+    //        cache_size, cache_misses, min_cache_size, max_cache_size);
+    if(cache_misses==max_cache_misses){
+      max_cache_size = cache_size;
+    } else {
+      min_cache_size = cache_size;
+    }
+    cache_size = min_cache_size + (int64_t)((double)(max_cache_size-min_cache_size)/2.0);
+    if(cc++ > 1000) return -1;
+    if(cache_size <= 2) return 2;
+  }
+  return max_cache_size;
+}
+
 int memo_batch_test(int argc, char** argv){
   char problem_type[200], output_fname[200], instance_fname[200];
   char sequence_fname[200];
   char append_results = 0;
   long int cache_size = -1;
+  /*
   printf("memo_batch_test\n");
   for(int g=1; g<argc; g++){
     printf("%s ", argv[g]);
   }
   printf("\n");
+  */
   for(int g=1; g<argc; g++){
     if(strcmp(argv[g], problem_type_parameter) == 0){
       if(g+1 < argc){
@@ -51,7 +112,7 @@ int memo_batch_test(int argc, char** argv){
     if(strcmp(argv[g], instance_name_parameter) == 0){
       if(g+1 < argc){
         strcpy(instance_fname, &argv[++g][0]);
-        printf("%s\n", instance_fname);
+        //printf("%s\n", instance_fname);
       }
     }
     if(strcmp(argv[g], mbt_append_results_parameter) == 0){
@@ -62,18 +123,20 @@ int memo_batch_test(int argc, char** argv){
     if(strcmp(argv[g], mbt_operation_sequence_parameter) == 0){
       if(g+1 < argc){
         strcpy(sequence_fname, &argv[++g][0]);
-        printf("%s\n", sequence_fname);
+        //printf("%s\n", sequence_fname);
       }
     }
   }
-  printf("done parsing arguments\n");
+  //printf("done parsing arguments\n");
   if( strcmp(problem_type, lcs_parameter)==0 ){
-    printf("lcs %s %d\n", problem_type, cache_size);
+    //printf("lcs %s %d\n", problem_type, cache_size);
     initialize_problem = initialize_lcs;
     reset_problem = reset_lcs;
     get_cache_misses_ = get_cache_misses_lcs;
     get_cache_hits_ = get_cache_hits_lcs;
     solve_problem = solve_lcs;
+    set_cache_miss_threshold_ = set_cache_miss_threshold_lcs;
+    set_preemptive_halt_ = set_preemptive_halt_lcs;
   }
   if( strcmp(problem_type, edit_distance_parameter)==0 ){
     printf("edit_distance %s %ld\n", problem_type, cache_size);
@@ -105,55 +168,29 @@ int memo_batch_test(int argc, char** argv){
     exit(1);
   }
   initialize_long_int_cache(argc, argv);
-  printf("done initializing the cache\n");
+  //printf("done initializing the cache\n");
   if( strcmp(problem_type, test_parameter)==0 ){
     printf("test\n");
     test_operation_sequence(sequence_fname);
     return 0;
   }
-
-  long int cache_misses, prev_cache_misses;
-  char t[20];
- 
-  printf("starting sequence\n");
+  //printf("starting sequence\n");
   initialize_problem(argc, argv);
-  solve_problem();
-  prev_cache_misses = get_cache_misses_();
-  printf("size %ld cache_misses = %ld\n", cache_size, prev_cache_misses);
-  cache_size--;
-  for(int g=1; g<argc; g++){
-    //printf("%d %s\n", g, argv[g]);
-    if(strcmp(argv[g], lru_queue_size_param) == 0){
-      //printf("found it!\n");
-      if(g+1 < argc){
-        //printf("setting cache_size = %d\n", cache_size);
-        sprintf(t, "%ld", cache_size);
-        strcpy(argv[++g], t);
-      }
-    }
+  /*
+  int64_t char_cache_size_linear = characteristic_cache_size_linear_search(cache_size);
+  printf("characteristic cache size (linear search) = %ld\n", char_cache_size_linear);
+  */
+  int64_t char_cache_size_binary = characteristic_cache_size_binary_search(cache_size);
+  printf("characteristic cache size (binary search) = %ld\n", char_cache_size_binary);
+  /*  
+  if(char_cache_size_linear != char_cache_size_binary){
+    fprintf(stderr, "linear search result different from binary search result\n");
+    exit(1);
   }
-  reset_problem(prev_cache_misses);
-  //initialize_long_int_cache(argc, argv);
-  reset_lru_queue(cache_size);
-  //view_hashtable_long_int();
-  solve_problem();
-  cache_misses = get_cache_misses_();
-  printf("size %ld cache misses = %ld\n", cache_size, cache_misses);
-  int num_iterations = 0;
-  while(cache_misses==prev_cache_misses && cache_size >= 2){
-    //if(num_iterations++ > 9) break;
-    cache_size -= 1;
-    reset_problem(cache_misses);
-    reset_lru_queue(cache_size);
-    solve_problem();
-    prev_cache_misses = cache_misses;
-    cache_misses = get_cache_misses_();
-    printf("size %ld cache misses = %ld\n", cache_size, cache_misses);
-  }
-  printf("characteristic cache size = %ld\n\n", cache_size+1);
-  int metric = cache_size+1;
+  */
+  int64_t metric = char_cache_size_binary;
   if(append_results==1){
-    printf("Appending results to %s\n", output_fname);
+    //printf("Appending results to %s\n", output_fname);
     FILE * fp = fopen(output_fname, "a");
     if(fp == NULL){
       fprintf(stderr, "Failed to open %s\n", output_fname);
