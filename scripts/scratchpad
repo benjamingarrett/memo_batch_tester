@@ -1,0 +1,11 @@
+lptp=--lcs_perform_traceback
+lpt=1
+
+which instances?
+random 1 3 7 15
+000-111
+012-210
+
+solve and traceback? when to reset cache misses? obviously right after solving
+this actually looks like it's already setup correct
+fix plotting conversion

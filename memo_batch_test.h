@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 /* 
  * File:   memo_batch_test.h
  * Author: benjamin
@@ -18,17 +12,7 @@
 extern "C" {
 #endif
 
-#include<stdint.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include "../lcss100/lcss.h"
-#include "../kmp100/kmp.h"
-#include "../edit_distance100/edit_distance.h"
-#include "../fibonacci100/fibonacci.h"
-#include "../a100/solve_tsp.h"
-#include "../operation_sequence_reader/operation_sequence_reader.h"
-int memo_batch_test(int argc, char** argv);
+  int memo_batch_test(int argc, char ** argv);
 
 #ifdef __cplusplus
 }

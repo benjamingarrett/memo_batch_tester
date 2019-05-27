@@ -32,6 +32,8 @@ include Makefile
 
 # Object Directory
 OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
+ARORADIR=../a100
+ARORAOBJDIR=${ARORADIR}/${OBJECTDIR}
 
 # Object Files
 OBJECTFILES= \
@@ -44,12 +46,34 @@ OBJECTFILES= \
   ${OBJECTDIR}/_ext/f34e89c/edit_distance.o \
   ${OBJECTDIR}/_ext/f34e89d/kmp.o \
   ${OBJECTDIR}/_ext/f34e89e/fibonacci.o \
+  ${OBJECTDIR}/_ext/f34e89f/lcs_instance_reader.o \
+	${OBJECTDIR}/_ext/f34e89g/permutations.o \
+  ${ARORAOBJDIR}/estimate.o \
+  ${ARORAOBJDIR}/initialize.o \
+  ${ARORAOBJDIR}/initialize_options.o \
+  ${ARORAOBJDIR}/initialize_schema_tables.o \
+  ${ARORAOBJDIR}/memo_tables.o \
+  ${ARORAOBJDIR}/partition.o \
+  ${ARORAOBJDIR}/perturb.o \
+  ${ARORAOBJDIR}/portalize.o \
+  ${ARORAOBJDIR}/report.o \
+  ${ARORAOBJDIR}/schema_table_landscape.o \
+  ${ARORAOBJDIR}/schema_table_landscape_MAX_FOUR_SEGMENTS.o \
+  ${ARORAOBJDIR}/schema_table_landscape_MAX_THREE_SEGMENTS.o \
+  ${ARORAOBJDIR}/schema_table_landscape_MAX_TWO_SEGMENTS.o \
+  ${ARORAOBJDIR}/schema_table_portrait.o \
+  ${ARORAOBJDIR}/schema_table_portrait_MAX_FOUR_SEGMENTS.o \
+  ${ARORAOBJDIR}/schema_table_portrait_MAX_THREE_SEGMENTS.o \
+  ${ARORAOBJDIR}/schema_table_portrait_MAX_TWO_SEGMENTS.o \
+  ${ARORAOBJDIR}/solve_arora.o \
+  ${ARORAOBJDIR}/solve_tsp.o \
+  ${ARORAOBJDIR}/utilities.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/memo_batch_test.o
 
 
 # C Compiler Flags
-CFLAGS=-g
+CFLAGS=-g 
 
 # CC Compiler Flags
 CCFLAGS=
@@ -62,11 +86,11 @@ FFLAGS=
 ASFLAGS=
 
 # Link Libraries and Options
-LDLIBSOPTIONS=
+LDLIBSOPTIONS=-lm
 
 # Build Targets
 .build-conf: ${BUILD_SUBPROJECTS}
-	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/memo_batch_tester
+	"${MAKE}"  -f nbproject/Makefile-${CND_CONF}.mk ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/memo_batch_tester 
 
 ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/memo_batch_tester: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
@@ -116,6 +140,16 @@ ${OBJECTDIR}/_ext/f34e89e/fibonacci.o: ../fibonacci100/fibonacci.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89e
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89e/fibonacci.o ../fibonacci100/fibonacci.c
+
+${OBJECTDIR}/_ext/f34e89f/lcs_instance_reader.o: ../lcs_instance_reader/lcs_instance_reader.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89f
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89f/lcs_instance_reader.o ../lcs_instance_reader/lcs_instance_reader.c
+
+${OBJECTDIR}/_ext/f34e89g/permutations.o: ../permutations100/permutations.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89g
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89g/permutations.o ../permutations100/permutations.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

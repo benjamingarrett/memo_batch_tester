@@ -25,60 +25,60 @@ ofn=lcs_lru_rand_0_1_results
 marp=--mbt_append_results
 mar=1
 
-csz=200
-lqs=100
-mcz=100
-for (( g=0; g<=99; g++ ))
-do
-  if=../../misc_phd/input/lcs_instances/10-random-0-1-${g}.lcs
-  mif=../../misc_phd/input/lcs_instances/10-random-0-1-${g}.lcs
-  $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
-done
-
 csz=300
 lqs=200
 mcz=200
-for (( g=0; g<=99; g++ ))
+for (( g=0; g<=9999; g++ ))
 do
-  if=../../misc_phd/input/lcs_instances/20-random-0-1-${g}.lcs
-  mif=../../misc_phd/input/lcs_instances/20-random-0-1-${g}.lcs
-  $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
+  if=../../misc_phd/input/lcs_instances/10-random-0-1-${g}.lcs
+  mif=../../misc_phd/input/lcs_instances/10-random-0-1-${g}.lcs
+  #$p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
 
 csz=400
 lqs=300
 mcz=300
-for (( g=0; g<=99; g++ ))
+for (( g=0; g<=9999; g++ ))
+do
+  if=../../misc_phd/input/lcs_instances/20-random-0-1-${g}.lcs
+  mif=../../misc_phd/input/lcs_instances/20-random-0-1-${g}.lcs
+  #$p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
+done
+
+csz=500
+lqs=400
+mcz=400
+for (( g=0; g<=9999; g++ ))
 do
   if=../../misc_phd/input/lcs_instances/40-random-0-1-${g}.lcs
   mif=../../misc_phd/input/lcs_instances/40-random-0-1-${g}.lcs
-  $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
+  #$p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
 
 csz=1000
-lqs=800
-mcz=800
-for (( g=0; g<=99; g++ ))
+lqs=900
+mcz=900
+for (( g=0; g<=9999; g++ ))
 do
   if=../../misc_phd/input/lcs_instances/80-random-0-1-${g}.lcs
   mif=../../misc_phd/input/lcs_instances/80-random-0-1-${g}.lcs
-  $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
+  #$p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
 
 csz=2000
-lqs=1700
-mcz=1700
-for (( g=0; g<=99; g++ ))
+lqs=1900
+mcz=1900
+for (( g=0; g<=9999; g++ ))
 do
   if=../../misc_phd/input/lcs_instances/160-random-0-1-${g}.lcs
   mif=../../misc_phd/input/lcs_instances/160-random-0-1-${g}.lcs
-  $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
+  #$p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
 
 csz=4000
-lqs=3800
-mcz=3800
-for (( g=0; g<=99; g++ ))
+lqs=3900
+mcz=3900
+for (( g=48; g<=9999; g++ ))
 do
   if=../../misc_phd/input/lcs_instances/320-random-0-1-${g}.lcs
   mif=../../misc_phd/input/lcs_instances/320-random-0-1-${g}.lcs
@@ -86,9 +86,9 @@ do
 done
 
 csz=15000
-lqs=14000
-mcz=14000
-for (( g=0; g<=99; g++ ))
+lqs=14900
+mcz=14900
+for (( g=0; g<=9999; g++ ))
 do
   if=../../misc_phd/input/lcs_instances/640-random-0-1-${g}.lcs
   mif=../../misc_phd/input/lcs_instances/640-random-0-1-${g}.lcs

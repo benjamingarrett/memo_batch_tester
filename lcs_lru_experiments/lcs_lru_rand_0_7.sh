@@ -22,7 +22,7 @@ rf=results
 arp=--lcs_append_results
 ar=0
 ofnp=--mbt_output_fname
-ofn=lcs_lru_rand_0_3_results
+ofn=lcs_lru_rand_0_7_results
 marp=--mbt_append_results
 mar=1
 
@@ -30,8 +30,8 @@ lqs=80
 mcz=80
 for (( g=0; g<=99; g++ ))
 do
-  if=../../misc_phd/input/lcs_instances/10-random-0-3-${g}.lcs
-  mif=../../misc_phd/input/lcs_instances/10-random-0-3-${g}.lcs
+  if=../../misc_phd/input/lcs_instances/10-random-0-7-${g}.lcs
+  mif=../../misc_phd/input/lcs_instances/10-random-0-7-${g}.lcs
   $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
 
@@ -39,8 +39,8 @@ lqs=100
 mcz=100
 for (( g=0; g<=99; g++ ))
 do
-  if=../../misc_phd/input/lcs_instances/20-random-0-3-${g}.lcs
-  mif=../../misc_phd/input/lcs_instances/20-random-0-3-${g}.lcs
+  if=../../misc_phd/input/lcs_instances/20-random-0-7-${g}.lcs
+  mif=../../misc_phd/input/lcs_instances/20-random-0-7-${g}.lcs
   $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
 
@@ -48,29 +48,8 @@ lqs=300
 mcz=300
 for (( g=0; g<=99; g++ ))
 do
-  if=../../misc_phd/input/lcs_instances/40-random-0-3-${g}.lcs
-  mif=../../misc_phd/input/lcs_instances/40-random-0-3-${g}.lcs
+  if=../../misc_phd/input/lcs_instances/40-random-0-7-${g}.lcs
+  mif=../../misc_phd/input/lcs_instances/40-random-0-7-${g}.lcs
   $p $csp $cs $cszp $csz $elfp $elf $lqsp $lqs $klp $kl $vlp $vl $ptp $pt $ifp $if $op $o $rfp $rf $arp $ar $mczp $mcz $ofnp $ofn $marp $mar $mifp $mif
 done
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
