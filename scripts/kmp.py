@@ -1,10 +1,12 @@
-import os,subprocess
+from datetime import datetime
+import os,subprocess,sys
 from scripts_common import *
 from memo_arguments import memo
 from mbt_arguments import mbt
 
 input_type = 'kmp_instances'
-output_path = './kmp_data'
+output_path = '/home/benjamin/beigel/arora_tsp_applications/memo_batch_tester/scripts/kmp_data'
+
 first_size = lambda x: 2*x
 max_cache_size = lambda x: 2*x
 
@@ -44,7 +46,10 @@ def do_ff_anb_trials(a):
   for n in sizes:
     mbt.set_instance_name(a,str(n)+'-anb-single.kmp')
     kmp.set_instance_path(a,input_dir+'/'+input_type+'/'+str(n)+'-anb-single.kmp')
+
+    #NO!
     mbt.set_cache_misses_fname(a,output_path+'/cache_misses_ff_anb_'+str(num_trials))
+
     print(a)
     subprocess.call(flatten(a))
     num_trials += 1
@@ -62,7 +67,10 @@ def do_ps_anb_trials(a):
     memo.set_lru_cache_size(a,first_size(n))
     mbt.set_instance_name(a,str(n)+'-anb-single.kmp')
     kmp.set_instance_path(a,input_dir+'/'+input_type+'/'+str(n)+'-anb-single.kmp')
+
+    #NO!
     mbt.set_cache_misses_fname(a,output_path+'/cache_misses_ps_anb_'+str(num_trials))
+
     print(a)
     subprocess.call(flatten(a))
     num_trials += 1
@@ -80,14 +88,31 @@ def do_ps_rand_trials(a):
         s = str(n)+'-random-0-'+str(k)+'-'+str(j)+'-single.kmp'
         mbt.set_instance_name(a,s)
         kmp.set_instance_path(a,input_dir+'/'+input_type+'/'+s)
+
+        #NO!
         mbt.set_cache_misses_fname(a,output_path+'/misses_for_size_'+s+'_'+str(num_trials))
+
         print(a)
         subprocess.call(flatten(a))
         num_trials += 1
 
-a = init_args()
+beginning=datetime.now()
+a=init_args()
+#a=init_debug_args()
+prefix='kmp_n_'+str(sys.argv[3])+'_min_'+str(sys.argv[1])+'_max_'+str(sys.argv[2])
+suffix=str(beginning.year)+'_'+str(beginning.month)+'_'+str(beginning.day)+'_'+str(beginning.hour)+'_'+str(beginning.minute)+'_'+str(beginning.second)+'_pid_'+str(os.getpid())
+execution_trace_name=prefix+'_execution_trace_'+suffix+'.log'
+experiment_name=prefix+'_misses_for_size_'+suffix+'.csv'
+execution_trace_fname=output_path+execution_trace_name
+fp=open(execution_trace_fname,'w')
+fp.write('Begin at: {}\n'.format(beginning))
+fp.close()
+cache_misses_fname=output_path+experiment_name
+mbt.set_cache_misses_fname(a,cache_misses_fname)
+mbt.set_cutoff_min_size(a,int(sys.argv[1]))
+mbt.set_cutoff_max_size(a,int(sys.argv[2]))
+memo.set_lru_cache_size(a,int(sys.argv[2]))
 memo.set_caching_strategy(a,'lru')
-memo.set_lru_cache_size(a,100)
 memo.set_key_length(a,8)
 memo.set_value_length(a,8)
 memo.set_event_log_fname(a,'event_log')
@@ -105,3 +130,7 @@ os.system("rm "+output_path+"/cache*")
 #do_ff_anb_trials(a)
 do_ps_anb_trials(a)
 #do_ps_rand_trials(a)
+fp=open(execution_trace_fname,'a')
+fp.write('End at: {}\n'.format(datetime.now()))
+fp.write('Time elapsed: {}\n'.format(datetime.now()-beginning))
+fp.close()

@@ -46,3 +46,7 @@ class mbt:
   @staticmethod
   def set_execution_trace_fname(d,v):
     d['--mbt_execution_trace_fname'] = str(v)
+
+  @staticmethod
+  def set_write_cache_misses_header(d,v):
+    d['--mbt_write_cache_misses_header'] = str(v)

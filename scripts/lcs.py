@@ -179,6 +179,7 @@ def do_unequal_length_trials(a):
 
 beginning=datetime.now()
 a = init_args()
+#a = init_debug_args()
 prefix='lcs_n_'+str(sys.argv[3])+'_min_'+str(sys.argv[1])+'_max_'+str(sys.argv[2])
 suffix=str(beginning.year)+'_'+str(beginning.month)+'_'+str(beginning.day)+'_'+str(beginning.hour)+'_'+str(beginning.minute)+'_'+str(beginning.second)+'_pid_'+str(os.getpid())
 execution_trace_name=prefix+'_execution_trace_'+suffix+'.log'
@@ -194,7 +195,6 @@ mbt.set_cache_misses_fname(a,cache_misses_fname)
 mbt.set_cutoff_min_size(a,int(sys.argv[1]))
 mbt.set_cutoff_max_size(a,int(sys.argv[2]))
 memo.set_lru_cache_size(a,int(sys.argv[2]))
-#a = init_debug_args()
 memo.set_caching_strategy(a,'lru')
 memo.set_key_length(a,8)
 memo.set_value_length(a,8)

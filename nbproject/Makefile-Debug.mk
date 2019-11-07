@@ -48,6 +48,7 @@ OBJECTFILES= \
   ${OBJECTDIR}/_ext/f34e89e/fibonacci.o \
   ${OBJECTDIR}/_ext/f34e89f/lcs_instance_reader.o \
 	${OBJECTDIR}/_ext/f34e89g/permutations.o \
+  ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o \
   ${ARORAOBJDIR}/estimate.o \
   ${ARORAOBJDIR}/initialize.o \
   ${ARORAOBJDIR}/initialize_options.o \
@@ -150,6 +151,11 @@ ${OBJECTDIR}/_ext/f34e89g/permutations.o: ../permutations100/permutations.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89g
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89g/permutations.o ../permutations100/permutations.c
+
+${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o: ../sequence_alignment100/sequence_alignment.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89h
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o ../sequence_alignment100/sequence_alignment.c
 
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}

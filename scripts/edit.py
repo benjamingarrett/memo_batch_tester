@@ -5,40 +5,31 @@ from scripts_common import *
 from memo_arguments import memo
 from mbt_arguments import mbt
 
-output_path = '/home/benjamin/beigel/arora_tsp_applications/memo_batch_tester/scripts/fib_data/'
+output_path = '/home/benjamin/beigel/arora_tsp_applications/memo_batch_tester/scripts/edit_data/'
 
-class fib:
-
-  @staticmethod
-  def set_instance_size(d,v):
-    d['--fibonacci_n'] = str(v)
+class edit:
 
   @staticmethod
-  def set_version(d,v):
-    d['--fibonacci_version'] = v
+  def set_instance_name(d,v):
+    d['--edit_dist_instance_fname'] = str(v)
 
-  @staticmethod
-  def set_execution_trace_fname(d,v):
-    d['--fibonacci_execution_trace_fname'] = v
-    
 def do_trials(a):
   args=flatten(a)
   fp=open(execution_trace_fname,'a')
   fp.write(str(args))
   fp.close()
   subprocess.call(args)
-  if False:
-    memo.set_caching_strategy(a,'non_memo')
-    mbt.set_metric_type(a,'solve_once')
-    mbt.set_cutoff_min_size(a,0)
-    mbt.set_cutoff_max_size(a,0)
-    mbt.set_write_cache_misses_header(a,0)
-    memo.set_lru_cache_size(a,0)
-    args=flatten(a)
-    fp=open(execution_trace_fname,'a')
-    fp.write(str(args))
-    fp.close()
-    subprocess.call(args)
+  memo.set_caching_strategy(a,'non_memo')
+  mbt.set_metric_type(a,'solve_once')
+  mbt.set_cutoff_min_size(a,0)
+  mbt.set_cutoff_max_size(a,0)
+  mbt.set_write_cache_misses_header(a,0)
+  memo.set_lru_cache_size(a,0)
+  args=flatten(a)
+  fp=open(execution_trace_fname,'a')
+  fp.write(str(args))
+  fp.close()
+  subprocess.call(args)
   os.system("rm -f event_log")
 
 beginning=datetime.now()
@@ -69,12 +60,8 @@ mbt.set_metric_type(a,'no_preemptive_halt')
 mbt.set_cutoff_ratio(a,2.2)
 mbt.set_instance_name(a,str(sys.argv[3]))
 fib.set_instance_size(a,int(sys.argv[3]))
-fib.set_version(a,str(sys.argv[4]))
+fib.set_version(a,sys.argv[4])
 fib.set_execution_trace_fname(a,execution_trace_fname)
-fp=open(cache_misses_fname,'w')
-fp.write('COMMENT,{}\n'.format(str('n_'+sys.argv[3]+'_v_'+sys.argv[4])))
-fp.write('SORT_BY,{}\n'.format(str(sys.argv[3])))
-fp.close()
 os.system("rm -f "+output_path+"/cache*")
 do_trials(a)
 fp=open(execution_trace_fname,'a')
