@@ -88,6 +88,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   fclose(fp);
   set_test_num_evictions(0);
   int64_t prev_cache_misses = get_cache_misses_();
+  /*
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
     fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
@@ -95,7 +96,8 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   }
   fprintf(fp, "%ld,%ld\n", max_cache_size, prev_cache_misses);
   fclose(fp);
-  set_cache_miss_threshold_(prev_cache_misses);
+  */
+  set_cache_miss_threshold_(prev_cache_misses);//where is this?
   //printf("linear search, size %ld  misses %ld\n", max_cache_size, prev_cache_misses);
   int64_t cache_size = max_cache_size - 1;
   reset_problem();
@@ -111,6 +113,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   //fclose(fp);
   set_test_num_evictions(0);
   int64_t cache_misses = get_cache_misses_();
+  /*
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
     fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
@@ -118,6 +121,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   }
   fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
   fclose(fp);
+  */
   //printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
   while(cache_misses==prev_cache_misses && cache_size >= 2){
     cache_size--;
@@ -134,6 +138,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
     set_test_num_evictions(0);
     prev_cache_misses = cache_misses;
     cache_misses = get_cache_misses_();
+    /*
     fp = fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
       fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
@@ -141,9 +146,19 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
     }
     fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
     fclose(fp);
+    */
     //printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
   }
   int64_t characteristic_cache_size = cache_size + 1;
+
+  fp = fopen(cache_misses_out_fname, "a");
+  if(fp == NULL){
+    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    exit(1);
+  }
+  fprintf(fp, "%ld,%ld\n", characteristic_cache_size, prev_cache_misses);
+  fclose(fp);
+
   if(characteristic_cache_size >= max_cache_size-2){
     fprintf(stderr, "characteristic_cache_size == max_cache_size\n");
     exit(1);
@@ -166,6 +181,7 @@ int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cac
   int64_t cache_size = min_cache_size + (int64_t)((double)(max_cache_size-min_cache_size)/2.0);
   int64_t cc = 0;
   int64_t cache_misses = max_cache_misses;
+  int64_t csize = -1;
   while(min_cache_size < max_cache_size - 1){
     reset_problem();
     reset_lru_queue(cache_size);
@@ -179,10 +195,18 @@ int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cac
       min_cache_size = cache_size;
     }
     cache_size = min_cache_size + (int64_t)((double)(max_cache_size-min_cache_size)/2.0);
-    if(cc++ > 1000) return -1;
-    if(cache_size <= 2) return 2;
+    if(cc++ > 1000){ csize = -1; break; }
+    if(cache_size <= 2){ csize = 2; break; }
   }
-  return max_cache_size;
+  csize = max_cache_size;
+  fp = fopen(cache_misses_out_fname, "a");
+  if(fp == NULL){
+    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    exit(1);
+  }
+  fprintf(fp, "%ld,%ld\n", csize, max_cache_misses);
+  fclose(fp);
+  return csize;
 }
 
 int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_out_fname[200]){

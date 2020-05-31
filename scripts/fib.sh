@@ -29,11 +29,13 @@
   #python fib.py 1 30 $n 1d &
 #done
 
-for n in 36858 36859 36860 36861 40954 40955 40956 40957; do
-  python fib.py 1 60 $n 1a &
-done
+#for n in 36858 36859 36860 36861 40954 40955 40956 40957; do
+#  python fib.py 1 60 $n 1a &
+#done
 
-
+#for n in {46001..48000} ; do
+#  python fib.py 1 60 $n 2a &
+#done
 
 
 #for n in {48001..50000} ; do
@@ -48,6 +50,10 @@ done
 #for n in {3001..4000} ; do
 #  python fib.py 4 4 $n 2a &
 #done
+
+for n in {68001..70000} ; do
+  python fib.py 4 4 $n 2b &
+done
 
 #for n in 100 200 400 800 1600 3200 6400 12800 25600 51200; do
 #  python fib.py 1 20 $n 2a &
@@ -92,8 +98,8 @@ done
 #  python fib.py 1 20 $n 1ar4calls &
 #done
 
-#for n in {1..10} ; do
-#  python fib.py 1 10 $n 2ar &
+#for n in {8001..10000} ; do
+#  python fib.py 1 30 $n 2ar &
 #done
 
 #for n in 100 200 400 800 1600 3200 6400 12800 25600 51200; do

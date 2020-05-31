@@ -7,20 +7,24 @@ from mbt_arguments import mbt
 
 output_path = '/home/benjamin/beigel/arora_tsp_applications/memo_batch_tester/scripts/fib_data/'
 
+
 class fib:
 
   @staticmethod
   def set_instance_size(d,v):
     d['--fibonacci_n'] = str(v)
 
+
   @staticmethod
   def set_version(d,v):
     d['--fibonacci_version'] = v
 
+
   @staticmethod
   def set_execution_trace_fname(d,v):
     d['--fibonacci_execution_trace_fname'] = v
-    
+
+
 def do_trials(a):
   args=flatten(a)
   fp=open(execution_trace_fname,'a')
@@ -40,6 +44,7 @@ def do_trials(a):
     fp.close()
     subprocess.call(args)
   os.system("rm -f event_log")
+
 
 beginning=datetime.now()
 a = init_args()

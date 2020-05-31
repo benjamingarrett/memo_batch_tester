@@ -49,6 +49,8 @@ OBJECTFILES= \
   ${OBJECTDIR}/_ext/f34e89f/lcs_instance_reader.o \
 	${OBJECTDIR}/_ext/f34e89g/permutations.o \
   ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o \
+  ${OBJECTDIR}/_ext/f34e89i/generate.o \
+  ${OBJECTDIR}/_ext/f34e89j/random.o \
   ${ARORAOBJDIR}/estimate.o \
   ${ARORAOBJDIR}/initialize.o \
   ${ARORAOBJDIR}/initialize_options.o \
@@ -157,6 +159,16 @@ ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o: ../sequence_alignment100/sequenc
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o ../sequence_alignment100/sequence_alignment.c
 
+${OBJECTDIR}/_ext/f34e89i/generate.o: ../lcss_instance_generator/generate.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89i
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89i/generate.o ../lcss_instance_generator/generate.c
+
+${OBJECTDIR}/_ext/f34e89j/random.o: ../random/random.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89j
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89j/random.o ../random/random.c
+
 ${OBJECTDIR}/main.o: main.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -165,7 +177,7 @@ ${OBJECTDIR}/main.o: main.c
 ${OBJECTDIR}/memo_batch_test.o: memo_batch_test.c 
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/memo_batch_test.o memo_batch_test.c
+	$(COMPILE.c) -g -std=c11 -fno-stack-protector -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/memo_batch_test.o memo_batch_test.c
 
 # Subprojects
 .build-subprojects:
