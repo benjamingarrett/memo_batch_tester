@@ -14,7 +14,7 @@ max_cache_size = lambda x: 2*x*sqrt(x)
 class lcs:
 
   @staticmethod
-  def set_instance_fname(d,s):
+  def set_instance_fname(d, s):
     """
     :param d: dictionary arguments to be set to memo_batch_tester
     :param s: string containing full absolute path and filename of instance
@@ -23,17 +23,17 @@ class lcs:
 
 
   @staticmethod
-  def set_original_version(d,v):
+  def set_original_version(d, v):
     d['--lcs_original'] = str(v)
 
 
   @staticmethod
-  def set_oblivious_version(d,v):
+  def set_oblivious_version(d, v):
     d['--lcs_oblivious'] = str(v)
 
 
   @staticmethod
-  def set_compute_length(d,v):
+  def set_compute_length(d, v):
     if v == True:
       d['--lcs_compute_length'] = '1'
     else:
@@ -41,7 +41,7 @@ class lcs:
 
 
   @staticmethod
-  def set_perform_traceback(d,v):
+  def set_perform_traceback(d, v):
     if v == True:
       d['--lcs_perform_traceback'] = '1'
     else:
@@ -49,61 +49,61 @@ class lcs:
 
 
   @staticmethod
-  def handle_version(d,v):
+  def handle_version(d, v):
     if v not in ['LCS1', 'LCS2', 'OLCS1', 'OLCS2', 'OLCS3', 'OLCS4', 'OLCS5', 'OLCS6']:
-      fp=open(execution_trace_fname,'w')
+      fp=open(execution_trace_fname, 'w')
       fp.write('Invalid version {}\n'.format(v))
       fp.close()
       exit()
     if str(v).casefold()=='LCS1'.casefold():
-      lcs.set_original_version(d,1)
+      lcs.set_original_version(d, 1)
       return
     if str(v).casefold()=='LCS2'.casefold():
-      lcs.set_original_version(d,2)
+      lcs.set_original_version(d, 2)
       return
     if str(v).casefold()=='OLCS1'.casefold():
-      lcs.set_oblivious_version(d,1)
+      lcs.set_oblivious_version(d, 1)
       return
     if str(v).casefold()=='OLCS2'.casefold():
-      lcs.set_oblivious_version(d,2)
+      lcs.set_oblivious_version(d, 2)
       return
     if str(v).casefold()=='OLCS3'.casefold():
-      lcs.set_oblivious_version(d,3)
+      lcs.set_oblivious_version(d, 3)
       return
     if str(v).casefold()=='OLCS4'.casefold():
-      lcs.set_oblivious_version(d,4)
+      lcs.set_oblivious_version(d, 4)
       return
     if str(v).casefold()=='OLCS5'.casefold():
-      lcs.set_oblivious_version(d,5)
+      lcs.set_oblivious_version(d, 5)
       return
     if str(v).casefold()=='OLCS6'.casefold():
-      lcs.set_oblivious_version(d,6)
+      lcs.set_oblivious_version(d, 6)
       return
 
 
   @staticmethod
-  def set_lcs_type(d,v):
+  def set_lcs_type(d, v):
     d['--lig_instance_type'] = str(v)
 
 
   @staticmethod
-  def set_lcs_size(d,v):
+  def set_lcs_size(d, v):
     d['--lig_n'] = str(v)
 
 
   @staticmethod
-  def set_lcs_c(d,v):
+  def set_lcs_c(d, v):
     d['--lig_c'] = str(v)
 
 
   @staticmethod
-  def set_lcs_b(d,v):
+  def set_lcs_b(d, v):
     d['--lig_b'] = str(v)
 
 
 def do_trials(a):
   args = flatten(a)
-  fp=open(execution_trace_fname,'a')
+  fp=open(execution_trace_fname, 'a')
   fp.write(str(args))
   fp.close()
   subprocess.call(args)
@@ -127,68 +127,65 @@ argv[12]: --lig_b
 """
 print('args {}'.format(sys.argv))
 
-beginning=datetime.now()
+beginning = datetime.now()
 a = init_args()
 #a = init_debug_args()
-get_cost=bool(str(sys.argv[4]).casefold()=='1'.casefold())
-do_traceback=bool(str(sys.argv[5]).casefold()=='1'.casefold())
-lcs.set_compute_length(a,get_cost)
-lcs.set_perform_traceback(a,do_traceback)
+get_cost = bool(str(sys.argv[4]).casefold()=='1'.casefold())
+do_traceback = bool(str(sys.argv[5]).casefold()=='1'.casefold())
+lcs.set_compute_length(a, get_cost)
+lcs.set_perform_traceback(a, do_traceback)
 if get_cost and do_traceback:
   print('Must choose either get_cost or do_traceback')
   exit()
 if get_cost:
-  solution_type='get_cost'
+  solution_type = 'get_cost'
 elif do_traceback:
-  solution_type='do_traceback'
+  solution_type = 'do_traceback'
 else:
   print('Must choose either get_cost or do_traceback')
   exit()
 
-prefix='lcs_n_'+str(sys.argv[3])+'_min_'+str(sys.argv[1])+'_max_'+str(sys.argv[2])+'_v_'+str(sys.argv[6])+'_'+str(sys.argv[3])+str(sys.argv[9])+'_c_'+str(sys.argv[11])+'_b_'+str(sys.argv[12])+'_method_'+str(sys.argv[7])+'_'+solution_type
+prefix = 'lcs_n_'+str(sys.argv[3])+'_min_'+str(sys.argv[1])+'_max_'+str(sys.argv[2])+'_v_'+str(sys.argv[6])+'_'+str(sys.argv[3])+str(sys.argv[9])+'_c_'+str(sys.argv[11])+'_b_'+str(sys.argv[12])+'_method_'+str(sys.argv[7])+'_'+solution_type
 
-suffix=str(beginning.year)+'_'+str(beginning.month)+'_'+str(beginning.day)+'_'+str(beginning.hour)+'_'+str(beginning.minute)+'_'+str(beginning.second)+'_pid_'+str(os.getpid())
-execution_trace_name=prefix+'_execution_trace_'+suffix+'.log'
-experiment_name=prefix+'_misses_for_size_'+suffix+'.csv'
+suffix = str(beginning.year)+'_'+str(beginning.month)+'_'+str(beginning.day)+'_'+str(beginning.hour)+'_'+str(beginning.minute)+'_'+str(beginning.second)+'_pid_'+str(os.getpid())
+execution_trace_name = prefix+'_execution_trace_'+suffix+'.log'
+experiment_name = prefix+'_misses_for_size_'+suffix+'.csv'
 output_path = str(sys.argv[8])
-execution_trace_fname=output_path+execution_trace_name
-cache_misses_fname=output_path+experiment_name
+execution_trace_fname = output_path+execution_trace_name
+cache_misses_fname = output_path+experiment_name
 
-lcs.set_lcs_type(a,sys.argv[9])
-lcs.set_lcs_size(a,sys.argv[10])
-lcs.set_lcs_c(a,sys.argv[11])
-lcs.set_lcs_b(a,sys.argv[12])
-
-
-
+lcs.set_lcs_type(a, sys.argv[9])
+lcs.set_lcs_size(a, sys.argv[10])
+lcs.set_lcs_c(a, sys.argv[11])
+lcs.set_lcs_b(a, sys.argv[12])
 
 #---lcs.set_instance_fname(a,input_path+sys.argv[3]+sys.argv[8]+'.lcs')
 #---mbt.set_instance_name(a,sys.argv[3]+sys.argv[8]+'.lcs')
 
-mbt.set_cache_misses_fname(a,cache_misses_fname)
-mbt.set_execution_trace_fname(a,execution_trace_fname)
-fp=open(execution_trace_fname,'w')
+mbt.set_cache_misses_fname(a, cache_misses_fname)
+mbt.set_execution_trace_fname(a, execution_trace_fname)
+fp=open(execution_trace_fname, 'w')
 fp.write('Begin at: {}\n'.format(beginning))
 fp.close()
-mbt.set_cutoff_min_size(a,int(sys.argv[1]))
-mbt.set_cutoff_max_size(a,int(sys.argv[2]))
-memo.set_lru_cache_size(a,int(sys.argv[2]))
-memo.set_caching_strategy(a,'lru')
-memo.set_key_length(a,8)
-memo.set_value_length(a,8)
-memo.set_event_log_fname(a,'event_log')
-mbt.set_problem_type(a,'lcs')
-mbt.set_output_fname(a,'output_csize')  # why do we need this??
-mbt.set_append_results(a,True)
-mbt.set_metric_type(a,str(sys.argv[7]))   # 'solve_once', 'explore_sweet_spots', etc.
-mbt.set_cutoff_ratio(a,2.2)
-lcs.handle_version(a,str(sys.argv[6]))
-fp=open(cache_misses_fname,'w')
+mbt.set_cutoff_min_size(a, int(sys.argv[1]))
+mbt.set_cutoff_max_size(a, int(sys.argv[2]))
+memo.set_lru_cache_size(a, int(sys.argv[2]))
+memo.set_caching_strategy(a, 'lru')
+memo.set_key_length(a, 8)
+memo.set_value_length(a, 8)
+memo.set_event_log_fname(a, 'event_log')
+mbt.set_problem_type(a, 'lcs')
+mbt.set_output_fname(a, 'output_csize')  # why do we need this??
+mbt.set_append_results(a, True)
+mbt.set_metric_type(a, str(sys.argv[7]))   # 'solve_once', 'explore_sweet_spots', etc.
+mbt.set_cutoff_ratio(a, 2.2)
+lcs.handle_version(a, str(sys.argv[6]))
+fp=open(cache_misses_fname, 'w')
 fp.write('COMMENT,{}\n'.format(str(prefix)))
 fp.write('SORT_BY,{}\n'.format(str(sys.argv[3])))
 fp.close()
 do_trials(a)
-fp=open(execution_trace_fname,'a')
+fp=open(execution_trace_fname, 'a')
 fp.write('End at: {}\n'.format(datetime.now()))
 fp.write('Time elapsed: {}\n'.format(datetime.now()-beginning))
 fp.close()

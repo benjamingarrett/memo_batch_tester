@@ -1,20 +1,24 @@
 from datetime import datetime
+from datetime import datetime
 import os,subprocess,sys
-from scripts_common import *
+from scripts_common import flatten, init_args, init_debug_args
 from memo_arguments import memo
 from mbt_arguments import mbt
 
-input_type = 'kmp_instances'
-output_path = '/home/benjamin/beigel/arora_tsp_applications/memo_batch_tester/scripts/kmp_data'
+
+#input_type = 'kmp_instances'
+#output_path = '/home/benjamin/beigel/arora_tsp_applications/memo_batch_tester/scripts/kmp_data'
 
 first_size = lambda x: 2*x
 max_cache_size = lambda x: 2*x
 
+
 class kmp:
 
   @staticmethod
-  def set_algorithm_version(d,v):
+  def set_algorithm_version(d,v):  # what does this mean?
     d['--kmp_algorithm_version'] = v
+
 
   @staticmethod
   def set_use_pseudocache(d,v):
@@ -23,6 +27,7 @@ class kmp:
     else:
       d['--kmp_use_pseudocache'] = '0'
 
+
   @staticmethod
   def set_log_function_calls(d,v):
     if v == True:
@@ -30,13 +35,16 @@ class kmp:
     else:
       d['--kmp_log_function_calls'] = '0'
 
+
   @staticmethod
   def set_instance_path(d,v):
     d['--kmp_instance_fname'] = v
 
+
   @staticmethod
   def set_permutation_number(d,v):
     d['--kmp_permutation_number'] = str(v)
+
 
 def do_ff_anb_trials(a):
   print('do_ff_anb_trials')
@@ -53,6 +61,7 @@ def do_ff_anb_trials(a):
     print(a)
     subprocess.call(flatten(a))
     num_trials += 1
+
 
 def do_ps_anb_trials(a):
   print('do_ps_anb_trials')
@@ -75,6 +84,7 @@ def do_ps_anb_trials(a):
     subprocess.call(flatten(a))
     num_trials += 1
 
+
 def do_ps_rand_trials(a):
   print('do_ps_rand_trials')
   num_trials = 1
@@ -95,6 +105,7 @@ def do_ps_rand_trials(a):
         print(a)
         subprocess.call(flatten(a))
         num_trials += 1
+
 
 beginning=datetime.now()
 a=init_args()

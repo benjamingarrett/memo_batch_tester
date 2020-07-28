@@ -1,17 +1,17 @@
-#include<float.h>
-#include<limits.h>
-#include<stdint.h>
-#include<stdio.h>
-#include<stdlib.h>
-#include<string.h>
-#include"../a100/solve_tsp.h"
-#include"../edit_distance100/edit_distance.h"
-#include"../fibonacci100/fibonacci.h"
-#include"../kmp100/kmp.h"
-#include"../lcss100/lcss.h"
-#include"../operation_sequence_reader/operation_sequence_reader.h"
-#include"../sequence_alignment100/sequence_alignment.h"
-#include"memo_batch_test.h"
+#include <float.h>
+#include <limits.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "../a100/solve_tsp.h"
+#include "../edit_distance100/edit_distance.h"
+#include "../fibonacci100/fibonacci.h"
+#include "../kmp100/kmp.h"
+#include "../lcss100/lcss.h"
+#include "../operation_sequence_reader/operation_sequence_reader.h"
+#include "../sequence_alignment100/sequence_alignment.h"
+#include "memo_batch_test.h"
 
 #define LINEAR_SEARCH 0
 #define BINARY_SEARCH 1
@@ -23,13 +23,13 @@
 #define EXPLORE_FIXED_STARTPOINTS 7
 #define NO_CHOICE 8
 
-const char * mbt_problem_type_parameter="--mbt_problem_type";
-const char * arora_parameter="arora";
-const char * edit_distance_parameter="edit_distance";
-const char * fibonacci_parameter="fibonacci";
-const char * kmp_parameter="kmp";
-const char * lcs_parameter="lcs";
-const char * seq_parameter="seq";
+const char * mbt_problem_type_parameter = "--mbt_problem_type";
+const char * arora_parameter = "arora";
+const char * edit_distance_parameter = "edit_distance";
+const char * fibonacci_parameter = "fibonacci";
+const char * kmp_parameter = "kmp";
+const char * lcs_parameter = "lcs";
+const char * seq_parameter = "seq";
 
 const char * mbt_cache_size_parameter = "--mbt_cache_size";
 const char * mbt_output_fname_parameter = "--mbt_output_fname";
