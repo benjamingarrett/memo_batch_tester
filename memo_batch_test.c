@@ -253,7 +253,7 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
   }
   fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
   fclose(fp);
-  //printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
+  printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
   while(cache_size >= 2){
     cache_size--;
     reset_problem();
@@ -276,7 +276,7 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
     }
     fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
     fclose(fp);
-    //printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
+    printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
   }
   return -1;
 }
@@ -618,6 +618,22 @@ int memo_batch_test(int argc, char ** argv){
   char cache_misses_out_fname[200];
   strcpy(cache_misses_out_fname, "cache_misses_");
   int64_t g;
+  // get log file first
+  int found_log_file = 0;
+  for(g=1; g<argc; g++){
+    if(strcmp(argv[g], execution_trace_fname_parameter) == 0){
+      if(g+1 < argc){
+        strcpy(mbt_execution_trace_fname, &argv[++g][0]);
+        printf("mbt_execution_trace_fname: %s\n", mbt_execution_trace_fname);
+        found_log_file = 1;
+      }
+    }
+  }
+  if(! found_log_file){
+    fprintf(stderr, "Please set the log file name in memo_batch_tester using parameter %s. Aborting.\n",
+      execution_trace_fname_parameter);
+    exit(EXIT_FAILURE);
+  }
   for(g=1; g<argc; g++){
     if(strcmp(argv[g], mbt_problem_type_parameter) == 0){
       if(g+1 < argc){
@@ -718,11 +734,6 @@ int memo_batch_test(int argc, char ** argv){
         exact_cutoff_max_cache_misses = (int64_t) atoi(argv[++g]);
       }
     }
-    if(strcmp(argv[g], execution_trace_fname_parameter) == 0){
-      if(g+1 < argc){
-        strcpy(mbt_execution_trace_fname,&argv[++g][0]);
-      }
-    }
     /*
     if(strcmp(argv[g], mbt_write_cache_misses_header_parameter) == 0){
       if(g+1 < argc){
@@ -795,12 +806,12 @@ int memo_batch_test(int argc, char ** argv){
     test_operation_sequence(sequence_fname);
     return 0;
   }
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"initializing problem\n");fclose(fp);
+  fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "initializing problem\n"); fclose(fp);
   initialize_problem(argc, argv);
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"done initializing problem\n");fclose(fp);
-  fp=fopen(num_evictions_fname, "a");
+  fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "done initializing problem\n"); fclose(fp);
+  fp = fopen(num_evictions_fname, "a");
   if(fp == NULL){
-    fprintf(stderr,"Could not open file knuth_num_evictions\n");
+    fprintf(stderr, "Could not open file knuth_num_evictions\n");
     exit(1);
   }
   fprintf(fp, "%s,\n", instance_fname);
@@ -816,7 +827,7 @@ int memo_batch_test(int argc, char ** argv){
     fclose(fp);
   }
   */
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"commence trials\n");fclose(fp);
+  fp=fopen(mbt_execution_trace_fname,"a"); fprintf(fp,"commence trials\n"); fclose(fp);
   int64_t metric = -1;
   switch(metric_type){
     case LINEAR_SEARCH:
