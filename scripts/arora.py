@@ -88,6 +88,7 @@ def do_trials(a):
   fp = open(execution_trace_fname, 'a')
   fp.write(str(args))
   fp.close()
+  print('do_trials using args: {}'.format(args))
   subprocess.call(args)
   os.system("rm -f event_log")
 
@@ -103,6 +104,8 @@ argv[6]: metric_type: 'solve_once', 'no_preemptive_halt', 'explore_sweet_spots'
 argv[7]: output_path
 argv[8]: instance_path
 argv[9]: instance_name
+argv[10]: time_cutoff_coefficient and/or cache_miss_cutoff_coefficient
+argv[11]: seconds_per_miss
 """
 print('args {}'.format(sys.argv))
 
@@ -165,7 +168,11 @@ mbt.set_output_fname(a, 'output_csize')
 mbt.set_append_results(a, True)
 mbt.set_metric_type(a, str(sys.argv[6]))
 mbt.set_cutoff_ratio(a, 2.2)
-
+if(len(sys.argv) >= 11):
+  mbt.set_time_cutoff_coefficient(a, sys.argv[10])
+  mbt.set_cache_miss_cutoff_coefficient(a, sys.argv[10])
+if(len(sys.argv) >= 12):
+  mbt.set_seconds_per_miss(a, sys.argv[11])
 fp = open(cache_misses_fname, 'w')
 fp.write('COMMENT,{}\n'.format(str(prefix)))
 fp.write('SORT_BY,{}\n'.format(str(sys.argv[3])))

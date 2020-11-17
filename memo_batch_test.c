@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include "../a100/solve_tsp.h"
 #include "../edit_distance100/edit_distance.h"
 #include "../fibonacci100/fibonacci.h"
@@ -21,7 +22,9 @@
 #define EXACT_CUTOFF 5
 #define EXPLORE_SWEET_SPOTS 6
 #define EXPLORE_FIXED_STARTPOINTS 7
-#define NO_CHOICE 8
+#define TIME_BASED_CUTOFF 8
+#define CACHE_MISS_CUTOFF 9
+#define NO_CHOICE 10
 
 const char * mbt_problem_type_parameter = "--mbt_problem_type";
 const char * arora_parameter = "arora";
@@ -46,12 +49,17 @@ const char * ratio_based_cutoff_parameter = "ratio_based_cutoff";
 const char * exact_cutoff_parameter = "exact_cutoff";
 const char * explore_sweet_spots_parameter = "explore_sweet_spots";
 const char * explore_fixed_startpoints_parameter = "explore_fixed_startpoints";
+const char * time_based_cutoff_parameter = "time_based_cutoff";
+const char * cache_miss_cutoff_parameter = "cache_miss_cutoff";
 
 const char * cutoff_ratio_parameter = "--mbt_cutoff_ratio";
 const char * exact_cutoff_min_cache_size_parameter = "--mbt_exact_cutoff_min_cache_size";
 const char * exact_cutoff_max_cache_size_parameter = "--mbt_exact_cutoff_max_cache_size";
 const char * exact_cutoff_max_cache_misses_parameter = "--mbt_exact_cutoff_max_cache_misses";
 const char * cache_misses_fname_parameter = "--mbt_cache_misses_fname";
+const char * time_based_cutoff_scaling_coefficient_parameter = "--mbt_time_cutoff_coefficient";
+const char * cache_miss_cutoff_coefficient_parameter = "--mbt_cache_miss_cutoff_coefficient";
+const char * seconds_per_miss_parameter = "--mbt_seconds_per_miss";
 
 const char * execution_trace_fname_parameter = "--mbt_execution_trace_fname";
 
@@ -75,7 +83,7 @@ FILE * fp;
 
 int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting linear search with cache size %ld\n", max_cache_size);fclose(fp);
-  reset_lru_queue(max_cache_size);
+  reset_cache(max_cache_size);
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
@@ -102,7 +110,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   int64_t cache_size = max_cache_size - 1;
   reset_problem();
   set_preemptive_halt_(1);
-  reset_lru_queue(cache_size);
+  reset_cache(cache_size);
   solve_problem();
   //fp = fopen("knuth_num_evictions", "a");
   //if(fp == NULL){
@@ -126,7 +134,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   while(cache_misses==prev_cache_misses && cache_size >= 2){
     cache_size--;
     reset_problem();
-    reset_lru_queue(cache_size);
+    reset_cache(cache_size);
     solve_problem();
     //fp = fopen("knuth_num_evictions", "a");
     //if(fp == NULL){
@@ -168,7 +176,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
 
 int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"Starting characteristic_cache_size_binary_search\n");fclose(fp);
-  reset_lru_queue(max_cache_size);
+  reset_cache(max_cache_size);
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
@@ -184,7 +192,7 @@ int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cac
   int64_t csize = -1;
   while(min_cache_size < max_cache_size - 1){
     reset_problem();
-    reset_lru_queue(cache_size);
+    reset_cache(cache_size);
     solve_problem();
     cache_misses = get_cache_misses_();
     fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"binary search, size %ld  misses %ld  min %ld  max %ld\n", 
@@ -211,7 +219,7 @@ int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cac
 
 int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting non-preemptive linear search with cache size %ld\n", max_cache_size);fclose(fp);
-  reset_lru_queue(max_cache_size);
+  reset_cache(max_cache_size);
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
@@ -235,7 +243,7 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
   //printf("linear search, size %ld  misses %ld\n", max_cache_size, prev_cache_misses);
   int64_t cache_size = max_cache_size - 1;
   reset_problem();
-  reset_lru_queue(cache_size);
+  reset_cache(cache_size);
   solve_problem();
   //fp = fopen("knuth_num_evictions", "a");
   //if(fp == NULL){
@@ -254,10 +262,10 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
   fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
   fclose(fp);
   printf("linear search, size %ld  misses %ld\n", cache_size, cache_misses);
-  while(cache_size >= 2){
+  while(cache_size >= 1){
     cache_size--;
     reset_problem();
-    reset_lru_queue(cache_size);
+    reset_cache(cache_size);
     solve_problem();
     //fp = fopen("knuth_num_evictions", "a");
     //if(fp == NULL){
@@ -282,32 +290,36 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
 }
 
 int64_t solve_once(int64_t cache_size, char cache_misses_out_fname[200]){
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting solve_once with cache size %ld\n", cache_size);fclose(fp);
-  reset_lru_queue(cache_size);
+  fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "starting solve_once with cache size %ld\n", cache_size); fclose(fp);
+  //reset_cache(cache_size);
   reset_problem();
   set_preemptive_halt_(0);
+  clock_t start = clock();
   solve_problem();
-  fp=fopen(num_evictions_fname,"a");
+  clock_t end = clock();
+  double duration = (double)(end - start) / CLOCKS_PER_SEC;
+  fp = fopen(num_evictions_fname, "a");
   if(fp == NULL){
     fprintf(fp, "Could not open file num_evictions file\n");
     exit(1);
   }
-  fprintf(fp,"%ld,%ld\n",cache_size,get_test_num_evictions_long_int());
+  fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
   fclose(fp);
-  int64_t prev_cache_misses = get_cache_misses_();
-  fp=fopen(cache_misses_out_fname,"a");
+  int64_t misses = get_cache_misses_();
+  fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
     fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
-  fprintf(fp, "%ld,%ld\n", cache_size, prev_cache_misses);
+  fprintf(fp, "%ld,%ld\n", cache_size, misses);
   fclose(fp);
+  fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "solve_once with cache_size %ld misses %ld duration %f\n", cache_size, misses, duration); fclose(fp);
   return -1;
 }
 
 int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting ratio based cutoff\n");fclose(fp);
-  reset_lru_queue(max_cache_size);
+  reset_cache(max_cache_size);
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
@@ -331,7 +343,7 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"linear search, size %ld  misses %ld\n", max_cache_size, prev_cache_misses);fclose(fp);
   int64_t cache_size = max_cache_size - 1;
   reset_problem();
-  reset_lru_queue(cache_size);
+  reset_cache(cache_size);
   solve_problem();
   //fp = fopen("knuth_num_evictions", "a");
   //if(fp == NULL){
@@ -353,7 +365,7 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
   while(cache_size >= 2){
     cache_size--;
     reset_problem();
-    reset_lru_queue(cache_size);
+    reset_cache(cache_size);
     solve_problem();
     //fp = fopen("knuth_num_evictions", "a");
     //if(fp == NULL){
@@ -384,7 +396,7 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
 
 int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max_cache_misses, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting exact cutoff\n");fclose(fp);
-  reset_lru_queue(max_cache_size);
+  reset_cache(max_cache_size);
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
@@ -408,7 +420,7 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"exact_cutoff, min size %ld size %ld misses %ld\n", min_cache_size, max_cache_size, prev_cache_misses);fclose(fp);
   int64_t cache_size = max_cache_size - 1;
   reset_problem();
-  reset_lru_queue(cache_size);
+  reset_cache(cache_size);
   solve_problem();
   //fp = fopen("knuth_num_evictions", "a");
   //if(fp == NULL){
@@ -434,7 +446,7 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
       break;
     }
     reset_problem();
-    reset_lru_queue(cache_size);
+    reset_cache(cache_size);
     solve_problem();
     //fp=fopen("knuth_num_evictions", "a");
     //if(fp == NULL){
@@ -470,7 +482,7 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
 
 int64_t exact_cutoff_PROBLEM(int64_t max_cache_size, int64_t min_cache_size, int64_t max_cache_misses, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting exact cutoff\n");fclose(fp);
-  reset_lru_queue(max_cache_size);
+  reset_cache(max_cache_size);
   reset_problem();
   set_preemptive_halt_(1);
   set_cache_miss_threshold_(max_cache_misses);
@@ -494,7 +506,7 @@ int64_t exact_cutoff_PROBLEM(int64_t max_cache_size, int64_t min_cache_size, int
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"linear search, size %ld  misses %ld\n", max_cache_size, prev_cache_misses);fclose(fp);
   int64_t cache_size = max_cache_size - 1;
   reset_problem();
-  reset_lru_queue(cache_size);
+  reset_cache(cache_size);
   solve_problem();
   set_test_num_evictions(0);
   int64_t cache_misses = get_cache_misses_();
@@ -509,7 +521,7 @@ int64_t exact_cutoff_PROBLEM(int64_t max_cache_size, int64_t min_cache_size, int
   while(cache_size >= min_cache_size){
     cache_size--;
     reset_problem();
-    reset_lru_queue(cache_size);
+    reset_cache(cache_size);
     solve_problem();
     set_test_num_evictions(0);
     prev_cache_misses = cache_misses;
@@ -540,13 +552,13 @@ void explore(int64_t lo_cache_size, int64_t hi_cache_size, char cache_misses_out
   int64_t hi = hi_cache_size;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"\t\t\texplore sizes %d %ld %ld\n", cnt,lo,hi);fclose(fp);
   reset_problem();
-  reset_lru_queue(lo);
+  reset_cache(lo);
   set_test_num_evictions(0);
   solve_problem();
   int64_t m_lo = get_cache_misses_();
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"lo: size %ld misses %ld\n", lo, m_lo);fclose(fp);
   reset_problem();
-  reset_lru_queue(hi);
+  reset_cache(hi);
   set_test_num_evictions(0);
   solve_problem();
   int64_t m_hi = get_cache_misses_();
@@ -589,7 +601,7 @@ void explore_fixed_startpoints(int64_t lo_cache_size, int64_t hi_cache_size, cha
 
 void explore_fixed_spot(int64_t cache_size, char cache_misses_out_fname[200]){
   reset_problem();
-  reset_lru_queue(cache_size);
+  reset_cache(cache_size);
   set_test_num_evictions(0);
   solve_problem();
   int64_t misses = get_cache_misses_();
@@ -603,6 +615,132 @@ void explore_fixed_spot(int64_t cache_size, char cache_misses_out_fname[200]){
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"explore fixed spot wrote (%ld,%ld)\n",cache_size,misses);fclose(fp);
 }
 
+void time_based_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double time_cutoff_coefficient, char cache_misses_out_fname[200]){
+  int64_t cache_size = hi_cache_size;
+  reset_problem();
+  reset_cache(cache_size);
+  set_test_num_evictions(0);
+  clock_t start = clock();
+  solve_problem();
+  clock_t end = clock();
+  double duration = (double)(end - start) / CLOCKS_PER_SEC;
+  double scaled_duration = duration / time_cutoff_coefficient;
+  int64_t delta = (int64_t)scaled_duration;
+  int64_t misses = get_cache_misses_();
+  fp = fopen(cache_misses_out_fname, "a");
+  if(fp == NULL){
+    fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+    exit(1);
+  }
+  fprintf(fp, "%ld,%ld\n", cache_size, misses);
+  fclose(fp);
+  cache_size = cache_size - delta;
+  fp = fopen(mbt_execution_trace_fname, "a");
+  fprintf(fp, "time_based_cutoff setting cache_size to %ld (duration = %f, scaled = %f, delta = %ld)\n", cache_size, duration, scaled_duration, delta);
+  fclose(fp);
+  if(cache_size <= lo_cache_size){
+    fp = fopen(mbt_execution_trace_fname, "a");
+    fprintf(fp, "warning: time_based_cutoff is stopping after one solution\n");
+    fclose(fp);
+  } else {
+    fp = fopen(mbt_execution_trace_fname, "a");
+    fprintf(fp, "time_based_cutoff setting cache_size to %ld\n", cache_size);
+    fclose(fp);
+  }
+  while(cache_size >= lo_cache_size){
+    reset_problem();
+    reset_cache(cache_size);
+    set_test_num_evictions(0);
+    start = clock();
+    solve_problem();
+    end = clock();
+    duration = (double)(end - start) / CLOCKS_PER_SEC;
+    scaled_duration = duration / time_cutoff_coefficient;
+    delta = (int64_t)scaled_duration;
+    misses = get_cache_misses_();
+    fp = fopen(cache_misses_out_fname, "a");
+    if(fp == NULL){
+      fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+      exit(1);
+    }
+    fprintf(fp, "%ld,%ld\n", cache_size, misses);
+    fclose(fp);
+    cache_size = cache_size - delta;
+    fp = fopen(mbt_execution_trace_fname, "a");
+    fprintf(fp, "time_based_cutoff setting cache_size to %ld (duration = %f, scaled = %f, delta = %ld)\n", cache_size, duration, scaled_duration, delta);
+    fclose(fp);
+  }
+}
+
+void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cache_miss_cutoff_coefficient, double seconds_per_miss, char cache_misses_out_fname[200]){
+  int64_t cache_size = hi_cache_size;
+  reset_problem();
+  reset_cache(cache_size);
+  fp = fopen(mbt_execution_trace_fname, "a");
+  if(fp == NULL){
+    fprintf(stderr, "Could not open file %s\n", mbt_execution_trace_fname);
+    exit(1);
+  }
+  fprintf(fp, "cache_miss_cutoff, min size = %ld, max_size = %ld\n", lo_cache_size, hi_cache_size);
+  fprintf(fp, "Initially setting cache_size to %ld\n", cache_size);
+  fclose(fp);
+  set_test_num_evictions(0);
+  clock_t start = clock();
+  solve_problem();
+  clock_t end = clock();
+  double duration = (double)(end - start) / CLOCKS_PER_SEC;
+  int64_t misses = get_cache_misses_();
+  double misses_based_time = misses * seconds_per_miss;
+  double scaled_misses = misses_based_time / cache_miss_cutoff_coefficient;
+  int64_t delta = (int64_t)scaled_misses;
+  fp = fopen(cache_misses_out_fname, "a");
+  if(fp == NULL){
+    fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+    exit(1);
+  }
+  fprintf(fp, "%ld,%ld\n", cache_size, misses);
+  fclose(fp);
+  cache_size = cache_size - delta;
+  fp = fopen(mbt_execution_trace_fname, "a");
+  fprintf(fp, "cache_miss_cutoff setting cache_size to %ld (duration = %f, misses_based_time = %f, misses = %ld, scaled = %f, delta = %ld)\n", 
+                                                       cache_size,     duration,         misses_based_time, misses,    scaled_misses, delta);
+  fclose(fp);
+  if(cache_size <= lo_cache_size){
+    fp = fopen(mbt_execution_trace_fname, "a");
+    fprintf(fp, "warning: cache_miss_cutoff is stopping after one solution\n");
+    fclose(fp);
+  } else {
+    fp = fopen(mbt_execution_trace_fname, "a");
+    fprintf(fp, "cache_miss_cutoff setting cache_size to %ld\n", cache_size);
+    fclose(fp);
+  }
+  while(cache_size >= lo_cache_size){
+    reset_problem();
+    reset_cache(cache_size);
+    set_test_num_evictions(0);
+    start = clock();
+    solve_problem();
+    end = clock();
+    duration = (double)(end - start) / CLOCKS_PER_SEC;
+    misses = get_cache_misses_();
+    misses_based_time = misses * seconds_per_miss;
+    scaled_misses = misses_based_time / cache_miss_cutoff_coefficient;
+    delta = (int64_t)scaled_misses;
+    fp = fopen(cache_misses_out_fname, "a");
+    if(fp == NULL){
+      fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+      exit(1);
+    }
+    fprintf(fp, "%ld,%ld\n", cache_size, misses);
+    fclose(fp);
+    cache_size = cache_size - delta;
+    fp = fopen(mbt_execution_trace_fname, "a");
+    fprintf(fp, "cache_miss_cutoff setting cache_size to %ld (duration = %f, misses_based_time = %f, misses = %ld, scaled = %f, delta = %ld)\n", 
+                                                       cache_size, duration, misses_based_time, misses, scaled_misses, delta);
+    fclose(fp);
+  }
+}
+
 int memo_batch_test(int argc, char ** argv){
   char problem_type[200], instance_fname[200];
   char sequence_fname[200];
@@ -611,9 +749,12 @@ int memo_batch_test(int argc, char ** argv){
   //char write_cache_misses_header = 1;
   long int cache_size = -1;
   double cutoff_ratio = DBL_MAX;
-  int64_t exact_cutoff_min_cache_size = 2;
+  int64_t exact_cutoff_min_cache_size = -1;
   int64_t exact_cutoff_max_cache_size = LONG_MAX;
   int64_t exact_cutoff_max_cache_misses = LONG_MAX;
+  double time_cutoff_coefficient = 1.0;
+  double cache_miss_cutoff_coefficient = 1.0;
+  double seconds_per_miss = 0.001041091;
   int metric_type = NO_CHOICE;
   char cache_misses_out_fname[200];
   strcpy(cache_misses_out_fname, "cache_misses_");
@@ -676,36 +817,44 @@ int memo_batch_test(int argc, char ** argv){
       if(g+1 < argc){
         g++;
         if(strcmp(argv[g], csize_linear_search_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"csize_linear_search chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\ncsize_linear_search chosen\n"); fclose(fp);
           metric_type = LINEAR_SEARCH;
         }
         if(strcmp(argv[g], csize_binary_search_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"csize_binary_search chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\ncsize_binary_search chosen\n"); fclose(fp);
           metric_type = BINARY_SEARCH;
         }
         if(strcmp(argv[g], no_preemptive_halt_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"no_preemptive_halt chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\nno_preemptive_halt chosen\n"); fclose(fp);
           metric_type = NO_HALT;
         }
         if(strcmp(argv[g], solve_once_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"solve_once chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\nsolve_once chosen\n"); fclose(fp);
           metric_type = SOLVE_ONCE;
         }
         if(strcmp(argv[g], ratio_based_cutoff_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"ratio based cutoff parameter chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\nratio based cutoff parameter chosen\n"); fclose(fp);
           metric_type = RATIO_BASED;
         }
         if(strcmp(argv[g], exact_cutoff_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"exact cutoff parameter chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\nexact cutoff parameter chosen\n"); fclose(fp);
           metric_type = EXACT_CUTOFF;
         }
         if(strcmp(argv[g], explore_sweet_spots_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"explore sweet spots parameter chosen\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\nexplore sweet spots parameter chosen\n"); fclose(fp);
           metric_type = EXPLORE_SWEET_SPOTS;
         }
         if(strcmp(argv[g], explore_fixed_startpoints_parameter) == 0){
-          fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"explore fixed startpoints\n");fclose(fp);
+          fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "\nexplore fixed startpoints\n"); fclose(fp);
           metric_type = EXPLORE_FIXED_STARTPOINTS;
+        }
+        if(strcmp(argv[g], time_based_cutoff_parameter) == 0){
+          fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "\ntime based cutoff\n"); fclose(fp);
+          metric_type = TIME_BASED_CUTOFF;
+        }
+        if(strcmp(argv[g], cache_miss_cutoff_parameter) == 0){
+          fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "\ncache miss cutoff\n"); fclose(fp);
+          metric_type = CACHE_MISS_CUTOFF;
         }
       }
     }
@@ -732,6 +881,21 @@ int memo_batch_test(int argc, char ** argv){
     if(strcmp(argv[g], exact_cutoff_max_cache_misses_parameter) == 0){
       if(g+1 < argc){
         exact_cutoff_max_cache_misses = (int64_t) atoi(argv[++g]);
+      }
+    }
+    if(strcmp(argv[g], time_based_cutoff_scaling_coefficient_parameter) == 0){
+      if(g+1 < argc){
+        time_cutoff_coefficient = (double) atof(argv[++g]);
+      }
+    }
+    if(strcmp(argv[g], cache_miss_cutoff_coefficient_parameter) == 0){
+      if(g+1 < argc){
+        cache_miss_cutoff_coefficient = (double) atof(argv[++g]);
+      }
+    }
+    if(strcmp(argv[g], seconds_per_miss_parameter) == 0){
+      if(g+1 < argc){
+        seconds_per_miss = (double) atof(argv[++g]);
       }
     }
     /*
@@ -800,15 +964,16 @@ int memo_batch_test(int argc, char ** argv){
     set_preemptive_halt_ = set_preemptive_halt_seq;
   }
   initialize_long_int_cache(argc, argv);
+  fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "done initializing cache\n"); fclose(fp);
   //printf("done initializing the cache\n");
   if( strcmp(problem_type, test_parameter)==0 ){
-    fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"test\n");fclose(fp);
+    fp=fopen(mbt_execution_trace_fname, "a"); fprintf(fp,"test\n"); fclose(fp);
     test_operation_sequence(sequence_fname);
     return 0;
   }
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "initializing problem\n"); fclose(fp);
   initialize_problem(argc, argv);
-  fp = fopen(mbt_execution_trace_fname,"a"); fprintf(fp, "done initializing problem\n"); fclose(fp);
+  fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "done initializing problem\n"); fclose(fp);
   fp = fopen(num_evictions_fname, "a");
   if(fp == NULL){
     fprintf(stderr, "Could not open file knuth_num_evictions\n");
@@ -827,7 +992,7 @@ int memo_batch_test(int argc, char ** argv){
     fclose(fp);
   }
   */
-  fp=fopen(mbt_execution_trace_fname,"a"); fprintf(fp,"commence trials\n"); fclose(fp);
+  fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp,"commence trials\n"); fclose(fp);
   int64_t metric = -1;
   switch(metric_type){
     case LINEAR_SEARCH:
@@ -856,7 +1021,7 @@ int memo_batch_test(int argc, char ** argv){
       fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"ratio based for %s = %ld\n", instance_fname, metric);fclose(fp);
       break;
     case EXACT_CUTOFF:
-      if(exact_cutoff_min_cache_size == 2 && exact_cutoff_max_cache_misses == LONG_MAX ){
+      if(exact_cutoff_min_cache_size == -1 && exact_cutoff_max_cache_misses == LONG_MAX ){
         fprintf(stderr, "No value chosen for neither exact_cutoff_min_cache_size nor exact_cutoff_max_cache_misses. Please set at least one of %s or %s\n", 
              exact_cutoff_min_cache_size_parameter,exact_cutoff_max_cache_misses_parameter);
         exit(1);
@@ -865,7 +1030,7 @@ int memo_batch_test(int argc, char ** argv){
       fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"exact cutoff for %s = %ld\n",instance_fname, metric);fclose(fp);
       break;
     case EXPLORE_SWEET_SPOTS:
-      if(exact_cutoff_min_cache_size == 2){
+      if(exact_cutoff_min_cache_size == -1){
         fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
         exit(1);
       }
@@ -876,7 +1041,7 @@ int memo_batch_test(int argc, char ** argv){
       explore_sweet_spots(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, cache_misses_out_fname);
       break;
     case EXPLORE_FIXED_STARTPOINTS:
-      if(exact_cutoff_min_cache_size == 2){
+      if(exact_cutoff_min_cache_size == -1){
         fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
         exit(1);
       }
@@ -885,8 +1050,31 @@ int memo_batch_test(int argc, char ** argv){
         exit(1);
       }
       explore_fixed_startpoints(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, cache_misses_out_fname);
-      break;    
+      break;
+    case TIME_BASED_CUTOFF:
+      if(exact_cutoff_min_cache_size == -1){
+        fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
+        exit(1);
+      }
+      if(exact_cutoff_max_cache_size == LONG_MAX){
+        fprintf(stderr, "No value chosen for exact_cutoff_max_cache_size\n");
+        exit(1);
+      }     
+      time_based_cutoff(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, time_cutoff_coefficient, cache_misses_out_fname);
+      break;
+    case CACHE_MISS_CUTOFF:
+      if(exact_cutoff_min_cache_size == -1){
+        fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
+        exit(1);
+      }
+      if(exact_cutoff_max_cache_size == LONG_MAX){
+        fprintf(stderr, "No value chosen for exact_cutoff_max_cache_size\n");
+        exit(1);
+      }     
+      cache_miss_cutoff(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, cache_miss_cutoff_coefficient, seconds_per_miss, cache_misses_out_fname);
+      break;     
     default:
+      fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "No choice made for parameter %s\n", mbt_metric_type_parameter); fclose(fp);
       fprintf(stderr, "No choice made for parameter %s\n", mbt_metric_type_parameter);
       exit(1);
   }
