@@ -24,14 +24,6 @@ class mbt:
 
 
   @staticmethod
-  def set_append_results(d, v):
-    if v == True:
-      d['--mbt_append_results'] = '1'
-    else:
-      d['--mbt_append_results'] = '0'
-
-
-  @staticmethod
   def set_output_fname(d, v):
     d['--mbt_output_fname'] = v
 
@@ -84,3 +76,13 @@ class mbt:
   @staticmethod
   def set_seconds_per_miss(d, v):
     d['--mbt_seconds_per_miss'] = str(v)
+
+
+  @staticmethod
+  def set_test_operation_sequence_fname(d, v):
+    d['--mbt_operation_sequence_fname'] = str(v)
+
+
+  @staticmethod
+  def set_misses_for_problem_size_fname(d, v):
+    d['--mbt_misses_for_problem_size_fname'] = str(v)

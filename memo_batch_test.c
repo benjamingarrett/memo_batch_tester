@@ -33,12 +33,11 @@ const char * fibonacci_parameter = "fibonacci";
 const char * kmp_parameter = "kmp";
 const char * lcs_parameter = "lcs";
 const char * seq_parameter = "seq";
+const char * test_parameter = "test";
 
 const char * mbt_cache_size_parameter = "--mbt_cache_size";
-const char * mbt_output_fname_parameter = "--mbt_output_fname";
 const char * mbt_instance_name_parameter = "--mbt_instance_fname";
-const char * mbt_append_results_parameter = "--mbt_append_results";
-const char * mbt_operation_sequence_parameter = "--mbt_operation_sequence";
+const char * mbt_operation_sequence_parameter = "--mbt_operation_sequence_fname";
 
 const char * mbt_metric_type_parameter = "--mbt_metric_type";
 const char * csize_linear_search_parameter = "csize_linear_search";
@@ -62,11 +61,10 @@ const char * cache_miss_cutoff_coefficient_parameter = "--mbt_cache_miss_cutoff_
 const char * seconds_per_miss_parameter = "--mbt_seconds_per_miss";
 
 const char * execution_trace_fname_parameter = "--mbt_execution_trace_fname";
+const char * misses_for_problem_size_fname_parameter = "--mbt_misses_for_problem_size_fname";
 
 //const char * mbt_write_cache_misses_header_parameter = "--mbt_write_cache_misses_header";
 
-const char * test_parameter = "test";
-const char * num_cache_misses_fname_base = "num_cache_misses_for_cache_size";
 
 void (*initialize_problem)(int argc, char **argv);
 void (*set_cache_miss_threshold_)(int64_t t);
@@ -74,10 +72,12 @@ void (*set_preemptive_halt_)(int p);
 void (*reset_problem)();
 long int (*get_cache_misses_)();
 void (*solve_problem)();
+int64_t (*get_problem_size_)();
 
 void test_operation_sequence(char sequence_fname[200]);
-char output_fname[200], num_evictions_fname[200];
 char mbt_execution_trace_fname[400];
+char misses_for_problem_size_fname[400];
+
 
 FILE * fp;
 
@@ -87,14 +87,6 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
-  fp = fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file knuth_num_evictions\n");
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", max_cache_size, get_test_num_evictions_long_int());
-  fclose(fp);
-  set_test_num_evictions(0);
   int64_t prev_cache_misses = get_cache_misses_();
   /*
   fp = fopen(cache_misses_out_fname, "a");
@@ -112,13 +104,6 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
   set_preemptive_halt_(1);
   reset_cache(cache_size);
   solve_problem();
-  //fp = fopen("knuth_num_evictions", "a");
-  //if(fp == NULL){
-  //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-  //  exit(1);
-  //}
-  //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-  //fclose(fp);
   set_test_num_evictions(0);
   int64_t cache_misses = get_cache_misses_();
   /*
@@ -136,13 +121,6 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
     reset_problem();
     reset_cache(cache_size);
     solve_problem();
-    //fp = fopen("knuth_num_evictions", "a");
-    //if(fp == NULL){
-    //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-    //  exit(1);
-    //}
-    //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-    //fclose(fp);
     set_test_num_evictions(0);
     prev_cache_misses = cache_misses;
     cache_misses = get_cache_misses_();
@@ -161,14 +139,14 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
 
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", characteristic_cache_size, prev_cache_misses);
   fclose(fp);
 
   if(characteristic_cache_size >= max_cache_size-2){
-    fprintf(stderr, "characteristic_cache_size == max_cache_size\n");
+    fprintf(stderr, "memo_batch_test: characteristic_cache_size == max_cache_size\n");
     exit(1);
   }
   return characteristic_cache_size;
@@ -209,7 +187,7 @@ int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cac
   csize = max_cache_size;
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", csize, max_cache_misses);
@@ -223,18 +201,10 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
-  fp = fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file num_evictions file\n");
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", max_cache_size, get_test_num_evictions_long_int());
-  fclose(fp);
-  set_test_num_evictions(0);
   int64_t prev_cache_misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", max_cache_size, prev_cache_misses);
@@ -245,18 +215,11 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
   reset_problem();
   reset_cache(cache_size);
   solve_problem();
-  //fp = fopen("knuth_num_evictions", "a");
-  //if(fp == NULL){
-  //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-  //  exit(1);
-  //}
-  //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-  //fclose(fp);
   set_test_num_evictions(0);
   int64_t cache_misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
@@ -267,19 +230,12 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
     reset_problem();
     reset_cache(cache_size);
     solve_problem();
-    //fp = fopen("knuth_num_evictions", "a");
-    //if(fp == NULL){
-    //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-    //  exit(1);
-    //}
-    //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-    //fclose(fp);
     set_test_num_evictions(0);
     prev_cache_misses = cache_misses;
     cache_misses = get_cache_misses_();
     fp = fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
-      fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+      fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
       exit(1);
     }
     fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
@@ -298,22 +254,18 @@ int64_t solve_once(int64_t cache_size, char cache_misses_out_fname[200]){
   solve_problem();
   clock_t end = clock();
   double duration = (double)(end - start) / CLOCKS_PER_SEC;
-  fp = fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file num_evictions file\n");
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-  fclose(fp);
   int64_t misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", cache_size, misses);
   fclose(fp);
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "solve_once with cache_size %ld misses %ld duration %f\n", cache_size, misses, duration); fclose(fp);
+  fp = fopen(misses_for_problem_size_fname, "a");
+  fprintf(fp, "%ld,%ld\n", get_problem_size_(), misses);
+  fclose(fp);
   return -1;
 }
 
@@ -323,18 +275,10 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
-  fp=fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file num_evictions file\n");
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", max_cache_size, get_test_num_evictions_long_int());
-  fclose(fp);
-  set_test_num_evictions(0);
   int64_t prev_cache_misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", max_cache_size, prev_cache_misses);
@@ -345,18 +289,10 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
   reset_problem();
   reset_cache(cache_size);
   solve_problem();
-  //fp = fopen("knuth_num_evictions", "a");
-  //if(fp == NULL){
-  //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-  //  exit(1);
-  //}
-  //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-  //fclose(fp);
-  set_test_num_evictions(0);
   int64_t cache_misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
@@ -367,19 +303,11 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
     reset_problem();
     reset_cache(cache_size);
     solve_problem();
-    //fp = fopen("knuth_num_evictions", "a");
-    //if(fp == NULL){
-    //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-    //  exit(1);
-    //}
-    //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-    //fclose(fp);
-    set_test_num_evictions(0);
     prev_cache_misses = cache_misses;
     cache_misses = get_cache_misses_();
     fp = fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
-      fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+      fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
       exit(1);
     }
     fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
@@ -400,18 +328,10 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
   reset_problem();
   set_preemptive_halt_(0);
   solve_problem();
-  fp=fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file num_evictions file\n");
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", max_cache_size, get_test_num_evictions_long_int());
-  fclose(fp);
-  set_test_num_evictions(0);
   int64_t prev_cache_misses = get_cache_misses_();
   fp=fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", max_cache_size, prev_cache_misses);
@@ -422,18 +342,10 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
   reset_problem();
   reset_cache(cache_size);
   solve_problem();
-  //fp = fopen("knuth_num_evictions", "a");
-  //if(fp == NULL){
-  //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-  //  exit(1);
-  //}
-  //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-  //fclose(fp);
-  set_test_num_evictions(0);
   int64_t cache_misses = get_cache_misses_();
   fp=fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
@@ -448,19 +360,11 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
     reset_problem();
     reset_cache(cache_size);
     solve_problem();
-    //fp=fopen("knuth_num_evictions", "a");
-    //if(fp == NULL){
-    //  fprintf(fp, "Could not open file knuth_num_evictions\n");
-    //  exit(1);
-    //}
-    //fprintf(fp, "%ld,%ld\n", cache_size, get_test_num_evictions_long_int());
-    //fclose(fp);
-    set_test_num_evictions(0);
     prev_cache_misses = cache_misses;
     cache_misses = get_cache_misses_();
     fp=fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
-      fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
+      fprintf(fp, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
       exit(1);
     }
     fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
@@ -477,68 +381,6 @@ int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max
     //}
   }
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"last cache size %ld\n", cache_size);fclose(fp);
-  return -1;
-}
-
-int64_t exact_cutoff_PROBLEM(int64_t max_cache_size, int64_t min_cache_size, int64_t max_cache_misses, char cache_misses_out_fname[200]){
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting exact cutoff\n");fclose(fp);
-  reset_cache(max_cache_size);
-  reset_problem();
-  set_preemptive_halt_(1);
-  set_cache_miss_threshold_(max_cache_misses);
-  solve_problem();
-  fp=fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file num_evictions file\n");
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", max_cache_size, get_test_num_evictions_long_int());
-  fclose(fp);
-  set_test_num_evictions(0);
-  int64_t prev_cache_misses = get_cache_misses_();
-  fp=fopen(cache_misses_out_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", max_cache_size, prev_cache_misses);
-  fclose(fp);
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"linear search, size %ld  misses %ld\n", max_cache_size, prev_cache_misses);fclose(fp);
-  int64_t cache_size = max_cache_size - 1;
-  reset_problem();
-  reset_cache(cache_size);
-  solve_problem();
-  set_test_num_evictions(0);
-  int64_t cache_misses = get_cache_misses_();
-  fp=fopen(cache_misses_out_fname, "a");
-  if(fp == NULL){
-    fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
-    exit(1);
-  }
-  fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
-  fclose(fp);
-  fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"linear search, size %ld  misses %ld\n", cache_size, cache_misses);fclose(fp);
-  while(cache_size >= min_cache_size){
-    cache_size--;
-    reset_problem();
-    reset_cache(cache_size);
-    solve_problem();
-    set_test_num_evictions(0);
-    prev_cache_misses = cache_misses;
-    cache_misses = get_cache_misses_();
-    if(cache_misses > max_cache_misses){
-      fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"cache misses > max_cache_misses\n");fclose(fp);
-      break;
-    }
-    fp=fopen(cache_misses_out_fname,"a");
-    if(fp == NULL){
-      fprintf(fp, "Could not open file %s\n", cache_misses_out_fname);
-      exit(1);
-    }
-    fprintf(fp, "%ld,%ld\n", cache_size, cache_misses);
-    fclose(fp);
-    fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"linear search, size %ld  misses %ld\n", cache_size, cache_misses);fclose(fp);
-  }
   return -1;
 }
 
@@ -575,7 +417,7 @@ void explore(int64_t lo_cache_size, int64_t hi_cache_size, char cache_misses_out
   if(lo == hi-1){
     fp = fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
-      fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+      fprintf(stderr, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
       exit(1);
     }
     fprintf(fp, "%ld,%ld\n", hi, m_hi);
@@ -607,7 +449,7 @@ void explore_fixed_spot(int64_t cache_size, char cache_misses_out_fname[200]){
   int64_t misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname,"a");
   if(fp == NULL){
-    fprintf(stderr,"Could not open file %s\n", cache_misses_out_fname);
+    fprintf(stderr,"memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp,"%ld,%ld\n",cache_size,misses);
@@ -629,7 +471,7 @@ void time_based_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double time
   int64_t misses = get_cache_misses_();
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(stderr, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", cache_size, misses);
@@ -660,7 +502,7 @@ void time_based_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double time
     misses = get_cache_misses_();
     fp = fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
-      fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+      fprintf(stderr, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
       exit(1);
     }
     fprintf(fp, "%ld,%ld\n", cache_size, misses);
@@ -678,7 +520,7 @@ void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cach
   reset_cache(cache_size);
   fp = fopen(mbt_execution_trace_fname, "a");
   if(fp == NULL){
-    fprintf(stderr, "Could not open file %s\n", mbt_execution_trace_fname);
+    fprintf(stderr, "memo_batch_test: Could not open file %s\n", mbt_execution_trace_fname);
     exit(1);
   }
   fprintf(fp, "cache_miss_cutoff, min size = %ld, max_size = %ld\n", lo_cache_size, hi_cache_size);
@@ -695,7 +537,7 @@ void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cach
   int64_t delta = (int64_t)scaled_misses;
   fp = fopen(cache_misses_out_fname, "a");
   if(fp == NULL){
-    fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+    fprintf(stderr, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
     exit(1);
   }
   fprintf(fp, "%ld,%ld\n", cache_size, misses);
@@ -728,7 +570,7 @@ void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cach
     delta = (int64_t)scaled_misses;
     fp = fopen(cache_misses_out_fname, "a");
     if(fp == NULL){
-      fprintf(stderr, "Could not open file %s\n", cache_misses_out_fname);
+      fprintf(stderr, "memo_batch_test: Could not open file %s\n", cache_misses_out_fname);
       exit(1);
     }
     fprintf(fp, "%ld,%ld\n", cache_size, misses);
@@ -744,7 +586,6 @@ void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cach
 int memo_batch_test(int argc, char ** argv){
   char problem_type[200], instance_fname[200];
   char sequence_fname[200];
-  char append_results = 0;
   char no_preemptive_halt = 0;
   //char write_cache_misses_header = 1;
   long int cache_size = -1;
@@ -771,7 +612,7 @@ int memo_batch_test(int argc, char ** argv){
     }
   }
   if(! found_log_file){
-    fprintf(stderr, "Please set the log file name in memo_batch_tester using parameter %s. Aborting.\n",
+    fprintf(stderr, "memo_batch_test: Please set the log file name in memo_batch_tester using parameter %s. Aborting.\n",
       execution_trace_fname_parameter);
     exit(EXIT_FAILURE);
   }
@@ -783,7 +624,7 @@ int memo_batch_test(int argc, char ** argv){
       }
     }
     if(strcmp(argv[g], mbt_cache_size_parameter) == 0){
-      fprintf(stderr, "The parameter %s has been decommissioned.\n", mbt_cache_size_parameter);
+      fprintf(stderr, "memo_batch_test: The parameter %s has been decommissioned.\n", mbt_cache_size_parameter);
       exit(1);
     }
     if(strcmp(argv[g], "--memo_lru_queue_size") == 0){
@@ -791,20 +632,10 @@ int memo_batch_test(int argc, char ** argv){
         cache_size = (int)atoi(argv[++g]);
       }
     }
-    if(strcmp(argv[g], mbt_output_fname_parameter) == 0){
-      if(g+1 < argc){
-        strcpy(output_fname, &argv[++g][0]);
-      }
-    }
     if(strcmp(argv[g], mbt_instance_name_parameter) == 0){
       if(g+1 < argc){
         strcpy(instance_fname, &argv[++g][0]);
         //printf("%s\n", instance_fname);
-      }
-    }
-    if(strcmp(argv[g], mbt_append_results_parameter) == 0){
-      if(g+1 < argc){
-        append_results = (int) atoi(argv[++g]);
       }
     }
     if(strcmp(argv[g], mbt_operation_sequence_parameter) == 0){
@@ -898,6 +729,11 @@ int memo_batch_test(int argc, char ** argv){
         seconds_per_miss = (double) atof(argv[++g]);
       }
     }
+    if(strcmp(argv[g], misses_for_problem_size_fname_parameter) == 0){
+      if(g+1 < argc){
+        strcpy(misses_for_problem_size_fname, &argv[++g][0]);
+      }
+    }
     /*
     if(strcmp(argv[g], mbt_write_cache_misses_header_parameter) == 0){
       if(g+1 < argc){
@@ -906,8 +742,6 @@ int memo_batch_test(int argc, char ** argv){
     }
     */
   }
-  strcpy(num_evictions_fname, output_fname);
-  strcat(num_evictions_fname, "_num_evictions");
   //printf("done parsing arguments\n");
   if( strcmp(problem_type, arora_parameter)==0 ){
     fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"arora %s %ld\n", problem_type, cache_size);fclose(fp);
@@ -917,6 +751,7 @@ int memo_batch_test(int argc, char ** argv){
     solve_problem = solve_arora;
     set_cache_miss_threshold_ = set_cache_miss_threshold_arora;
     set_preemptive_halt_ = set_preemptive_halt_arora;
+    printf("ERROR: get_problem_size_ is not set\n");exit(1);
   }
   if( strcmp(problem_type, edit_distance_parameter)==0 ){
     fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"edit_distance %s %ld\n", problem_type, cache_size);fclose(fp);
@@ -926,6 +761,7 @@ int memo_batch_test(int argc, char ** argv){
     solve_problem = solve_edit_distance;
     set_cache_miss_threshold_ = set_cache_miss_threshold_edit_distance;
     set_preemptive_halt_ = set_preemptive_halt_edit_distance;
+    printf("ERROR: get_problem_size_ is not set\n");exit(1);
   }
   if( strcmp(problem_type, fibonacci_parameter)==0 ){
     fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"fibonacci %s %ld\n", problem_type, cache_size);fclose(fp);
@@ -935,6 +771,7 @@ int memo_batch_test(int argc, char ** argv){
     solve_problem = solve_fibonacci;
     set_cache_miss_threshold_ = set_cache_miss_threshold_fibonacci;
     set_preemptive_halt_ = set_preemptive_halt_fibonacci;
+    get_problem_size_ = get_problem_size_fibonacci;
   }
   if( strcmp(problem_type, kmp_parameter)==0 ){
     fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"kmp %s %ld\n", problem_type, cache_size);fclose(fp);
@@ -944,6 +781,7 @@ int memo_batch_test(int argc, char ** argv){
     solve_problem = solve_kmp;
     set_cache_miss_threshold_ = set_cache_miss_threshold_kmp;
     set_preemptive_halt_ = set_preemptive_halt_kmp;
+    printf("ERROR: get_problem_size_ is not set\n");exit(1);
   }
   if( strcmp(problem_type, lcs_parameter)==0 ){
     //printf("lcs %s %d\n", problem_type, cache_size);
@@ -953,6 +791,7 @@ int memo_batch_test(int argc, char ** argv){
     solve_problem = solve_lcs;
     set_cache_miss_threshold_ = set_cache_miss_threshold_lcs;
     set_preemptive_halt_ = set_preemptive_halt_lcs;
+    printf("ERROR: get_problem_size_ is not set\n");exit(1);
   }
   if( strcmp(problem_type, seq_parameter)==0 ){
     //printf("seq %s %d\n", problem_type, cache_size);
@@ -962,25 +801,19 @@ int memo_batch_test(int argc, char ** argv){
     solve_problem = solve_seq;
     set_cache_miss_threshold_ = set_cache_miss_threshold_seq;
     set_preemptive_halt_ = set_preemptive_halt_seq;
+    printf("ERROR: get_problem_size_ is not set\n");exit(1);
   }
   initialize_long_int_cache(argc, argv);
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "done initializing cache\n"); fclose(fp);
   //printf("done initializing the cache\n");
   if( strcmp(problem_type, test_parameter)==0 ){
-    fp=fopen(mbt_execution_trace_fname, "a"); fprintf(fp,"test\n"); fclose(fp);
+    fp=fopen(mbt_execution_trace_fname, "a"); fprintf(fp,"test for the cache_eviction_analyzer\n"); fclose(fp);
     test_operation_sequence(sequence_fname);
     return 0;
   }
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "initializing problem\n"); fclose(fp);
   initialize_problem(argc, argv);
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "done initializing problem\n"); fclose(fp);
-  fp = fopen(num_evictions_fname, "a");
-  if(fp == NULL){
-    fprintf(stderr, "Could not open file knuth_num_evictions\n");
-    exit(1);
-  }
-  fprintf(fp, "%s,\n", instance_fname);
-  fclose(fp);
   /*
   if(write_cache_misses_header){
     fp=fopen(cache_misses_out_fname, "a");
@@ -1014,7 +847,7 @@ int memo_batch_test(int argc, char ** argv){
     case RATIO_BASED:
       fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"case RATIO_BASED\n");fclose(fp);
       if(cutoff_ratio == DBL_MAX){
-        fprintf(stderr, "No value chosen for parameter cutoff_ratio. Please set parameter %s\n", cutoff_ratio_parameter);
+        fprintf(stderr, "memo_batch_test: No value chosen for parameter cutoff_ratio. Please set parameter %s\n", cutoff_ratio_parameter);
         exit(1);
       }
       metric = ratio_based_cutoff(cache_size, cutoff_ratio, cache_misses_out_fname);
@@ -1022,7 +855,7 @@ int memo_batch_test(int argc, char ** argv){
       break;
     case EXACT_CUTOFF:
       if(exact_cutoff_min_cache_size == -1 && exact_cutoff_max_cache_misses == LONG_MAX ){
-        fprintf(stderr, "No value chosen for neither exact_cutoff_min_cache_size nor exact_cutoff_max_cache_misses. Please set at least one of %s or %s\n", 
+        fprintf(stderr, "memo_batch_test: No value chosen for neither exact_cutoff_min_cache_size nor exact_cutoff_max_cache_misses. Please set at least one of %s or %s\n", 
              exact_cutoff_min_cache_size_parameter,exact_cutoff_max_cache_misses_parameter);
         exit(1);
       }
@@ -1031,62 +864,52 @@ int memo_batch_test(int argc, char ** argv){
       break;
     case EXPLORE_SWEET_SPOTS:
       if(exact_cutoff_min_cache_size == -1){
-        fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_min_cache_size\n");
         exit(1);
       }
       if(exact_cutoff_max_cache_size == LONG_MAX){
-        fprintf(stderr, "No value chosen for exact_cutoff_max_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_max_cache_size\n");
         exit(1);
       }
       explore_sweet_spots(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, cache_misses_out_fname);
       break;
     case EXPLORE_FIXED_STARTPOINTS:
       if(exact_cutoff_min_cache_size == -1){
-        fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_min_cache_size\n");
         exit(1);
       }
       if(exact_cutoff_max_cache_size == LONG_MAX){
-        fprintf(stderr, "No value chosen for exact_cutoff_max_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_max_cache_size\n");
         exit(1);
       }
       explore_fixed_startpoints(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, cache_misses_out_fname);
       break;
     case TIME_BASED_CUTOFF:
       if(exact_cutoff_min_cache_size == -1){
-        fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_min_cache_size\n");
         exit(1);
       }
       if(exact_cutoff_max_cache_size == LONG_MAX){
-        fprintf(stderr, "No value chosen for exact_cutoff_max_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_max_cache_size\n");
         exit(1);
       }     
       time_based_cutoff(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, time_cutoff_coefficient, cache_misses_out_fname);
       break;
     case CACHE_MISS_CUTOFF:
       if(exact_cutoff_min_cache_size == -1){
-        fprintf(stderr, "No value chosen for exact_cutoff_min_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_min_cache_size\n");
         exit(1);
       }
       if(exact_cutoff_max_cache_size == LONG_MAX){
-        fprintf(stderr, "No value chosen for exact_cutoff_max_cache_size\n");
+        fprintf(stderr, "memo_batch_test: No value chosen for exact_cutoff_max_cache_size\n");
         exit(1);
       }     
       cache_miss_cutoff(exact_cutoff_min_cache_size, exact_cutoff_max_cache_size, cache_miss_cutoff_coefficient, seconds_per_miss, cache_misses_out_fname);
       break;     
     default:
       fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "No choice made for parameter %s\n", mbt_metric_type_parameter); fclose(fp);
-      fprintf(stderr, "No choice made for parameter %s\n", mbt_metric_type_parameter);
+      fprintf(stderr, "memo_batch_test: No choice made for parameter %s\n", mbt_metric_type_parameter);
       exit(1);
-  }
-  if(append_results==1){
-    //printf("Appending results to %s\n", output_fname);
-    fp = fopen(output_fname, "a");
-    if(fp == NULL){
-      fprintf(stderr, "Failed to open %s\n", output_fname);
-      exit(1);
-    }
-    fprintf(fp, "%s,%ld\n", instance_fname, metric);
-    fclose(fp);
   }
 }
 
@@ -1102,7 +925,7 @@ void test_operation_sequence_with_feedback(operation_sequence * os){
         x = cache_read_long_int(&os->key[g]);
         if(x == NULL){ 
           if(os->expected_result[g]==1){
-            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"error, read didn't find but should have\n");fclose(fp);
+            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"memo_batch_test: error, read didn't find but should have\n");fclose(fp);
             view_hashtable_long_int();
             exit(1);
             num_errors++;
@@ -1110,7 +933,7 @@ void test_operation_sequence_with_feedback(operation_sequence * os){
         } else {
           //printf("read %ld\n", *x);
           if(os->expected_result[g]==0){
-            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"error, read found but should not have\n");fclose(fp);
+            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"memo_batch_test: error, read found but should not have\n");fclose(fp);
             view_hashtable_long_int();
             exit(1);
             num_errors++;
@@ -1122,7 +945,7 @@ void test_operation_sequence_with_feedback(operation_sequence * os){
         x = cache_write_long_int(&os->key[g], &os->key[g]);
         if(x == NULL){
           if(os->expected_result[g]==1){
-            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"error\n");fclose(fp);
+            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"memo_batch_test: error\n");fclose(fp);
             view_hashtable_long_int();
             exit(1);
             num_errors++;
@@ -1130,7 +953,7 @@ void test_operation_sequence_with_feedback(operation_sequence * os){
         } else {
           //printf("wrote %ld\n", *x);
           if(os->expected_result[g]==0){
-            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"error\n");fclose(fp);
+            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"memo_batch_test: error\n");fclose(fp);
             view_hashtable_long_int();
             exit(1);
             num_errors++;
@@ -1142,14 +965,14 @@ void test_operation_sequence_with_feedback(operation_sequence * os){
         x = cache_delete_long_int(&os->key[g]);
         if(x == NULL){
           if(os->expected_result[g]==1){
-            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"error\n");fclose(fp);
+            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"memo_batch_test: error\n");fclose(fp);
             view_hashtable_long_int();
             exit(1);
             num_errors++;
           }
         } else {
           if(os->expected_result[g]==0){
-            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"error\n");fclose(fp);
+            fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"memo_batch_test: error\n");fclose(fp);
             view_hashtable_long_int();
             exit(1);
             num_errors++;
@@ -1157,7 +980,7 @@ void test_operation_sequence_with_feedback(operation_sequence * os){
         }
         break;
       default:
-        fprintf(stderr, "unknown operation %ld\n", os->operation[g]);
+        fprintf(stderr, "memo_batch_test: unknown operation %ld\n", os->operation[g]);
         exit(1);
     }
   }
@@ -1183,7 +1006,7 @@ void test_operation_sequence_without_feedback(operation_sequence * os){
         x = cache_delete_long_int(&os->key[g]);
         break;
       default:
-        fprintf(stderr, "unknown operation %ld\n", os->operation[g]);
+        fprintf(stderr, "memo_batch_test: unknown operation %ld\n", os->operation[g]);
         exit(1);
     }
   } 
