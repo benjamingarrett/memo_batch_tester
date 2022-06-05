@@ -43,12 +43,10 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/554cfc1b/memo_long_int.o \
 	${OBJECTDIR}/_ext/f34e89a/operation_sequence_reader.o \
   ${OBJECTDIR}/_ext/f34e89b/lcss.o \
-  ${OBJECTDIR}/_ext/f34e89c/edit_distance.o \
   ${OBJECTDIR}/_ext/f34e89d/kmp.o \
   ${OBJECTDIR}/_ext/f34e89e/fibonacci.o \
   ${OBJECTDIR}/_ext/f34e89f/lcs_instance_reader.o \
 	${OBJECTDIR}/_ext/f34e89g/permutations.o \
-  ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o \
   ${OBJECTDIR}/_ext/f34e89i/generate.o \
   ${OBJECTDIR}/_ext/f34e89j/random.o \
   ${ARORAOBJDIR}/initialize.o \
@@ -128,11 +126,6 @@ ${OBJECTDIR}/_ext/f34e89b/lcss.o: ../lcss100/lcss.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89b/lcss.o ../lcss100/lcss.c
 
-${OBJECTDIR}/_ext/f34e89c/edit_distance.o: ../edit_distance100/edit_distance.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89c
-	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89c/edit_distance.o ../edit_distance100/edit_distance.c
-
 ${OBJECTDIR}/_ext/f34e89d/kmp.o: ../kmp100/kmp.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89d
 	${RM} "$@.d"
@@ -152,11 +145,6 @@ ${OBJECTDIR}/_ext/f34e89g/permutations.o: ../permutations100/permutations.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89g
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89g/permutations.o ../permutations100/permutations.c
-
-${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o: ../sequence_alignment100/sequence_alignment.c 
-	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89h
-	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o ../sequence_alignment100/sequence_alignment.c
 
 ${OBJECTDIR}/_ext/f34e89i/generate.o: ../lcss_instance_generator/generate.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/f34e89i

@@ -6,12 +6,10 @@
 #include <string.h>
 #include <time.h>
 #include "../a100/solve_tsp.h"
-#include "../edit_distance100/edit_distance.h"
 #include "../fibonacci100/fibonacci.h"
 #include "../kmp100/kmp.h"
 #include "../lcss100/lcss.h"
 #include "../operation_sequence_reader/operation_sequence_reader.h"
-#include "../sequence_alignment100/sequence_alignment.h"
 #include "../random/random.h"
 #include "memo_batch_test.h"
 
@@ -31,7 +29,6 @@
 
 const char * mbt_problem_type_parameter = "--mbt_problem_type";
 const char * arora_parameter = "arora";
-const char * edit_distance_parameter = "edit_distance";
 const char * fibonacci_parameter = "fibonacci";
 const char * kmp_parameter = "kmp";
 const char * lcs_parameter = "lcs";
@@ -100,9 +97,10 @@ char misses_for_problem_size_fname[LINE_BUF_LEN];
 char insertion_test_outfname[LINE_BUF_LEN];
 
 
-FILE * fp;
+
 
 int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting linear search with cache size %ld\n", max_cache_size);fclose(fp);
   reset_cache(max_cache_size);
   reset_problem();
@@ -174,6 +172,7 @@ int64_t characteristic_cache_size_linear_search(int64_t max_cache_size, char cac
 }
 
 int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cache_misses_out_fname[LINE_BUF_LEN], char detailed_cache_misses_out_fname[LINE_BUF_LEN], int64_t problem_size){
+  FILE * fp;
   printf("characteristic_cache_size_binary_search, max_cache_size %ld\n", max_cache_size);
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"Starting characteristic_cache_size_binary_search with max cache size %ld\n", max_cache_size);fclose(fp);
   //reset_cache(max_cache_size);
@@ -224,6 +223,7 @@ int64_t characteristic_cache_size_binary_search(int64_t max_cache_size, char cac
 }
 
 int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting non-preemptive linear search with cache size %ld\n", max_cache_size);fclose(fp);
   reset_cache(max_cache_size);
   reset_problem();
@@ -274,6 +274,7 @@ int64_t non_preemptive_linear_search(int64_t max_cache_size, char cache_misses_o
 }
 
 int64_t solve_once(int64_t cache_size, char cache_misses_out_fname[LINE_BUF_LEN], char detailed_cache_misses_out_fname[LINE_BUF_LEN], int64_t k, int64_t d, double a, double phi_N){
+  FILE * fp;
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "starting solve_once with cache size %ld\n", cache_size); fclose(fp);
   //reset_cache(cache_size);
   reset_problem();
@@ -303,6 +304,7 @@ int64_t solve_once(int64_t cache_size, char cache_misses_out_fname[LINE_BUF_LEN]
 }
 
 int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting ratio based cutoff\n");fclose(fp);
   reset_cache(max_cache_size);
   reset_problem();
@@ -356,6 +358,7 @@ int64_t ratio_based_cutoff(int64_t max_cache_size, double cutoff_ratio, char cac
 }
 
 int64_t exact_cutoff(int64_t max_cache_size, int64_t min_cache_size, int64_t max_cache_misses, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"starting exact cutoff\n");fclose(fp);
   reset_cache(max_cache_size);
   reset_problem();
@@ -423,6 +426,7 @@ void explore_sweet_spots(int64_t lo_cache_size, int64_t hi_cache_size, char cach
 }
 
 void explore(int64_t lo_cache_size, int64_t hi_cache_size, char cache_misses_out_fname[LINE_BUF_LEN], int cnt){
+  FILE * fp;
   int64_t lo = lo_cache_size;
   int64_t hi = hi_cache_size;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"\t\t\texplore sizes %d %ld %ld\n", cnt,lo,hi);fclose(fp);
@@ -475,6 +479,7 @@ void explore_fixed_startpoints(int64_t lo_cache_size, int64_t hi_cache_size, cha
 }
 
 void explore_fixed_spot(int64_t cache_size, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   reset_problem();
   reset_cache(cache_size);
   set_test_num_evictions(0);
@@ -491,6 +496,7 @@ void explore_fixed_spot(int64_t cache_size, char cache_misses_out_fname[LINE_BUF
 }
 
 void time_based_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double time_cutoff_coefficient, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   int64_t cache_size = hi_cache_size;
   reset_problem();
   reset_cache(cache_size);
@@ -548,6 +554,7 @@ void time_based_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double time
 }
 
 void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cache_miss_cutoff_coefficient, double seconds_per_miss, char cache_misses_out_fname[LINE_BUF_LEN]){
+  FILE * fp;
   int64_t cache_size = hi_cache_size;
   reset_problem();
   reset_cache(cache_size);
@@ -617,6 +624,7 @@ void cache_miss_cutoff(int64_t lo_cache_size, int64_t hi_cache_size, double cach
 }
 
 int memo_batch_test(int argc, char ** argv){
+  FILE * fp;
   char problem_type[LINE_BUF_LEN], instance_fname[LINE_BUF_LEN];
   char sequence_fname[LINE_BUF_LEN];
   char no_preemptive_halt = 0;
@@ -873,28 +881,6 @@ int memo_batch_test(int argc, char ** argv){
   }
 
 
-
-  if( strcmp(problem_type, edit_distance_parameter)==0 ){
-    fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"edit_distance %s %ld\n", problem_type, cache_size);fclose(fp);
-    initialize_problem = initialize_edit_distance;
-    reset_problem = reset_edit_distance;
-    get_cache_misses_ = get_cache_misses_edit_distance;
-    solve_problem = solve_edit_distance;
-    set_cache_miss_threshold_ = set_cache_miss_threshold_edit_distance;
-    set_preemptive_halt_ = set_preemptive_halt_edit_distance;
-    printf("ERROR: get_problem_size_ is not set\n");exit(1);
-  }
-  if( strcmp(problem_type, seq_parameter)==0 ){
-    //printf("seq %s %d\n", problem_type, cache_size);
-    initialize_problem = initialize_seq;
-    reset_problem = reset_seq;
-    get_cache_misses_ = get_cache_misses_seq;
-    solve_problem = solve_seq;
-    set_cache_miss_threshold_ = set_cache_miss_threshold_seq;
-    set_preemptive_halt_ = set_preemptive_halt_seq;
-    printf("ERROR: get_problem_size_ is not set\n");exit(1);
-  }
-
   initialize_long_int_cache(argc, argv);
   fp = fopen(mbt_execution_trace_fname, "a"); fprintf(fp, "done initializing cache\n"); fclose(fp);
   //printf("done initializing the cache\n");
@@ -1011,6 +997,7 @@ int memo_batch_test(int argc, char ** argv){
 }
 
 void test_operation_sequence_with_feedback(operation_sequence * os){
+  FILE * fp;
   int64_t num_errors = 0;
   int64_t * x;
   int64_t g;
@@ -1110,6 +1097,7 @@ void test_operation_sequence_without_feedback(operation_sequence * os){
 }
 
 void test_operation_sequence(char sequence_fname[LINE_BUF_LEN]){
+  FILE * fp;
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"test_operation_sequence\n");fclose(fp);
   operation_sequence * os = read_operation_sequence(sequence_fname);
   fp=fopen(mbt_execution_trace_fname,"a");fprintf(fp,"got operation sequence\n");fclose(fp);
@@ -1121,6 +1109,7 @@ void test_operation_sequence(char sequence_fname[LINE_BUF_LEN]){
 }
 
 void test_probes_per_insertion_no_leadup(){
+  FILE * fp;
   int64_t n, key, probes, cnt, cnt2;
   double * total_probes = calloc(get_hashtable_capacity(), sizeof (double));
   double * total_insertions = calloc(get_hashtable_capacity(), sizeof (double));
@@ -1223,6 +1212,7 @@ void test_probes_per_insertion_no_leadup(){
 
 
 void test_probes_per_insertion_simple(){
+  FILE * fp;
   int64_t n, key, probes, num_trials, MAX_TRIALS, num_insertions, capacity;
   int64_t * x, pass, max_insertions;
   double * total_probes = calloc(get_hashtable_capacity(), sizeof (double));
@@ -1283,6 +1273,7 @@ void test_probes_per_insertion_simple(){
 }
 
 void test_probes_per_insertion_original(){
+  FILE * fp;
   double total_insertions, total_probes, alpha;
   int64_t n, min_key, max_key, probes, cnt, cnt2, pass;
   int64_t * x;
