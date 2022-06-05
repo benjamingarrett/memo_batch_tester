@@ -1,0 +1,139 @@
+Begin at: 2021-04-03 00:13:47.987827
+Automatically generated: n 4096  k 9  d 7  a 0.1285714285714286  phi 1930.97142857143  alpha 0.9000000000000001['../dist/Release/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', 'arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_n_14_cache_size_4096_get_tour_nri_d_drunken_k_9_d_7_execution_trace_2021_4_3_0_13_47_pid_1048.log', '--mbt_cache_misses_fname', 'arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/kmp__misses_for_cache_size.csv', '--mbt_misses_for_problem_size_fname', 'arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/kmp__misses_for_problem_size.csv', '--mbt_exact_cutoff_min_cache_size', '4096', '--mbt_exact_cutoff_max_cache_size', '4096', '--mbt_problem_type', 'arora', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '14', '--mbt_time_cutoff_coefficient', '1.0', '--mbt_cache_miss_cutoff_coefficient', '1.0', '--mbt_seconds_per_miss', '1', '--mbt_detailed_cache_misses_out_fname', 'burma14_nri_autogen.csv', '--mbt_phi_N', '1930.97142857143', '--arora_instance_fname', '/home/benjamin/beigel/arora_tsp_applications/misc_phd/input/tsp_instances/tsplib/burma14.tsp', '--arora_results_directory', 'arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287', '--arora_logs_fname', 'arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_n_14_cache_size_4096_get_tour_nri_d_drunken_k_9_d_7_execution_trace_2021_4_3_0_13_47_pid_1048.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_portalize', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '27', '--arora_do_report_results', '1', '--arora_do_cache_distances', '0', '--arora_use_new_schema_tables', '0', '--arora_num_segments', '2', '--memo_caching_strategy', 'nri_d_drunken', '--memo_cache_size', '4096', '--memo_lru_queue_size', '4096', '--memo_cuckoo_k', '4', '--memo_key_length', '27', '--memo_value_length', '8', '--memo_k_timestamps', '9', '--memo_d_recent_timestamps', '7', '--memo_a_items_per_timestamp_factor', '0.1285714285714286']
+
+solve_once chosen
+arora arora 4096
+initialize_long_int_cache begin
+init_memo
+arguments to memo:
+ --mbt_execution_trace_fname arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_n_14_cache_size_4096_get_tour_nri_d_drunken_k_9_d_7_execution_trace_2021_4_3_0_13_47_pid_1048.log --mbt_cache_misses_fname arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/kmp__misses_for_cache_size.csv --mbt_misses_for_problem_size_fname arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/kmp__misses_for_problem_size.csv --mbt_exact_cutoff_min_cache_size 4096 --mbt_exact_cutoff_max_cache_size 4096 --mbt_problem_type arora --mbt_metric_type solve_once --mbt_cutoff_ratio 2.2 --mbt_instance_fname 14 --mbt_time_cutoff_coefficient 1.0 --mbt_cache_miss_cutoff_coefficient 1.0 --mbt_seconds_per_miss 1 --mbt_detailed_cache_misses_out_fname burma14_nri_autogen.csv --mbt_phi_N 1930.97142857143 --arora_instance_fname /home/benjamin/beigel/arora_tsp_applications/misc_phd/input/tsp_instances/tsplib/burma14.tsp --arora_results_directory arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287 --arora_logs_fname arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_n_14_cache_size_4096_get_tour_nri_d_drunken_k_9_d_7_execution_trace_2021_4_3_0_13_47_pid_1048.log --arora_points_per_border 2 --arora_write_graphing_data 1 --arora_write_tspr 1 --arora_do_portalize 1 --arora_do_solve 1 --arora_do_find_tour 1 --arora_key_length 27 --arora_do_report_results 1 --arora_do_cache_distances 0 --arora_use_new_schema_tables 0 --arora_num_segments 2 --memo_caching_strategy nri_d_drunken --memo_cache_size 4096 --memo_lru_queue_size 4096 --memo_cuckoo_k 4 --memo_key_length 27 --memo_value_length 8 --memo_k_timestamps 9 --memo_d_recent_timestamps 7 --memo_a_items_per_timestamp_factor 0.1285714285714286 
+initialize_nru begin
+calculate_nrh_table_size: table_size is 4096, original is 4096
+calculate_table_size: table_size is 4096, original is 4096
+initialize_cuckoo done
+initialize_nru_parameters done N=4096 K=9 D=7 A=0.128571 AN=526 ALPHA=0.900000 PHI=0.471429 AGE=1930
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+processing argument 1: 
+processing argument 2: --mbt_execution_trace_fname
+processing argument 3: arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_n_14_cache_size_4096_get_tour_nri_d_drunken_k_9_d_7_execution_trace_2021_4_3_0_13_47_pid_1048.log
+processing argument 4: --mbt_cache_misses_fname
+processing argument 5: arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/kmp__misses_for_cache_size.csv
+processing argument 6: --mbt_misses_for_problem_size_fname
+processing argument 7: arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/kmp__misses_for_problem_size.csv
+processing argument 8: --mbt_exact_cutoff_min_cache_size
+processing argument 9: 4096
+processing argument 10: --mbt_exact_cutoff_max_cache_size
+processing argument 11: 4096
+processing argument 12: --mbt_problem_type
+processing argument 13: arora
+processing argument 14: --mbt_metric_type
+processing argument 15: solve_once
+processing argument 16: --mbt_cutoff_ratio
+processing argument 17: 2.2
+processing argument 18: --mbt_instance_fname
+processing argument 19: 14
+processing argument 20: --mbt_time_cutoff_coefficient
+processing argument 21: 1.0
+processing argument 22: --mbt_cache_miss_cutoff_coefficient
+processing argument 23: 1.0
+processing argument 24: --mbt_seconds_per_miss
+processing argument 25: 1
+processing argument 26: --mbt_detailed_cache_misses_out_fname
+processing argument 27: burma14_nri_autogen.csv
+processing argument 28: --mbt_phi_N
+processing argument 29: 1930.97142857143
+processing argument 30: --arora_instance_fname
+processing argument 32: --arora_results_directory
+setting options.results_directory to arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287
+processing argument 34: --arora_logs_fname
+processing argument 35: arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/arora_n_14_cache_size_4096_get_tour_nri_d_drunken_k_9_d_7_execution_trace_2021_4_3_0_13_47_pid_1048.log
+processing argument 36: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 38: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 40: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 42: --arora_do_portalize
+do_portalize = 1
+setting options.DO_PORTALIZE = TRUE
+processing argument 44: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 46: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 48: --arora_key_length
+processing argument 50: --arora_do_report_results
+setting options.DO_REPORT = TRUE
+processing argument 52: --arora_do_cache_distances
+setting options.CACHE_DISTANCES to FALSE
+processing argument 54: --arora_use_new_schema_tables
+setting options.USE_NEW_SCHEMA_TABLES = FALSE
+processing argument 56: --arora_num_segments
+processing argument 58: --memo_caching_strategy
+processing argument 59: nri_d_drunken
+processing argument 60: --memo_cache_size
+processing argument 61: 4096
+processing argument 62: --memo_lru_queue_size
+processing argument 63: 4096
+processing argument 64: --memo_cuckoo_k
+processing argument 65: 4
+processing argument 66: --memo_key_length
+processing argument 67: 27
+processing argument 68: --memo_value_length
+processing argument 69: 8
+processing argument 70: --memo_k_timestamps
+processing argument 71: 9
+processing argument 72: --memo_d_recent_timestamps
+processing argument 73: 7
+processing argument 74: --memo_a_items_per_timestamp_factor
+processing argument 75: 0.1285714285714286
+validate_options
+load_instance
+27 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+starting solve_once with cache size 4096
+solve_arora
+got_best_distance, elapsed time: 5457.000000   0.005457 (sec)
+got_best_tour
+compute path length
+compute path length
+compute floating point tour length
+floating point tour length=30.878504
+compute floating point tour length
+floating point tour length=31.226915
+Writing results...
+resolved_results_fname: arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/burma14---04-3-2021-00-13-48.tspr
+Writing results to file: arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287/burma14---04-3-2021-00-13-48.tspr
+Writing graphing data.
+Done writing all results to file.
+arora_burma14_nru_autogen/arora_burma14_problem_size_14_nri_d_drunken_2021_04_03__00_10_57_k_3__d_2_cache_sizes_3_to_4287burma14---4-3-2021---0:13:48.tspr
+N = 14
+Elapsed time: 0.005457 (sec)
+Best path length from get best distance: 26626
+Arora Path Length: 26626
+Arora Tour Length: 25775
+a100 tour length: 30.878504
+Concorde tour length: -1.000000
+Optimal tour length: 31.226915
+Total subproblems: 0
+Estimated subproblems: 0
+Probes per subproblem: -nan
+cache_misses = 4583
+cache_reads = 25748
+cache_reread_misses = 0
+cache_rereads = 0
+path_anomalies = 0
+schema counts: 20 0 6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+solve_once with cache_size 4096 misses 4583 duration 0.005717
+solve once for 14 = -1
+End at: 2021-04-03 00:13:48.027964Time elapsed: 0:00:00.040155

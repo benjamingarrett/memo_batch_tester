@@ -1,0 +1,151 @@
+Begin at: 2021-04-02 01:32:19.318775
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', 'olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4__do_traceback_prob_size_233_cache_size_160000_lru_k_3_d_2_execution_trace_2021_4_2_1_32_19_pid_6503.log', '--mbt_cache_misses_fname', 'olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/lcs_cost_OLCS4_lru_misses_for_cache_size.csv', '--mbt_misses_for_problem_size_fname', 'olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/lcs_cost_OLCS4_lru_misses_for_problem_size.csv', '--mbt_exact_cutoff_min_cache_size', '160000', '--mbt_exact_cutoff_max_cache_size', '160000', '--mbt_problem_type', 'lcs', '--mbt_metric_type', 'csize_binary_search', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '233', '--mbt_detailed_cache_misses_out_fname', 'csize_olcs4_traceback_0011nc_nc1100_0_2.csv', '--mbt_phi_N', '5.0', '--mbt_problem_size', '233', '--lcs_compute_length', '0', '--lcs_perform_traceback', '1', '--lig_instance_type', '0011nc_nc1100', '--lig_n', '233', '--lig_c', '0.2', '--lig_b', '3.0', '--lcs_oblivious', '4', '--lcs_execution_trace_fname', 'olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4__do_traceback_prob_size_233_cache_size_160000_lru_k_3_d_2_execution_trace_2021_4_2_1_32_19_pid_6503.log', '--memo_caching_strategy', 'lru', '--memo_cache_size', '160001', '--memo_lru_queue_size', '160000', '--memo_cuckoo_k', '4', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_k_timestamps', '3', '--memo_d_recent_timestamps', '2', '--memo_a_items_per_timestamp_factor', '0.4375']
+
+csize_binary_search chosen
+lcs problem_type lcs cache_size 160001
+initialize_long_int_cache begin
+init_memo
+arguments to memo:
+ --mbt_execution_trace_fname olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4__do_traceback_prob_size_233_cache_size_160000_lru_k_3_d_2_execution_trace_2021_4_2_1_32_19_pid_6503.log --mbt_cache_misses_fname olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/lcs_cost_OLCS4_lru_misses_for_cache_size.csv --mbt_misses_for_problem_size_fname olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/lcs_cost_OLCS4_lru_misses_for_problem_size.csv --mbt_exact_cutoff_min_cache_size 160000 --mbt_exact_cutoff_max_cache_size 160000 --mbt_problem_type lcs --mbt_metric_type csize_binary_search --mbt_cutoff_ratio 2.2 --mbt_instance_fname 233 --mbt_detailed_cache_misses_out_fname csize_olcs4_traceback_0011nc_nc1100_0_2.csv --mbt_phi_N 5.0 --mbt_problem_size 233 --lcs_compute_length 0 --lcs_perform_traceback 1 --lig_instance_type 0011nc_nc1100 --lig_n 233 --lig_c 0.2 --lig_b 3.0 --lcs_oblivious 4 --lcs_execution_trace_fname olcs4_traceback_csize_input_types/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4_lru_2021_04_02__01_30_39_k_3__d_2_cache_size_160000_problems_10_to_400/OLCS4__do_traceback_prob_size_233_cache_size_160000_lru_k_3_d_2_execution_trace_2021_4_2_1_32_19_pid_6503.log --memo_caching_strategy lru --memo_cache_size 160001 --memo_lru_queue_size 160000 --memo_cuckoo_k 4 --memo_key_length 8 --memo_value_length 8 --memo_k_timestamps 3 --memo_d_recent_timestamps 2 --memo_a_items_per_timestamp_factor 0.4375 
+calculate_table_size: table_size is 262144, original is 160001
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+done initializing problem
+commence trials
+Starting characteristic_cache_size_binary_search with max cache size 160001
+binary search, size 160001  misses 54755
+binary search, size 80000  misses 54755  min 0  max 160001
+binary search, size 40000  misses 54755  min 0  max 80000
+binary search, size 20000  misses 54755  min 0  max 40000
+binary search, size 10000  misses 54755  min 0  max 20000
+binary search, size 5000  misses 54755  min 0  max 10000
+binary search, size 2500  misses 54755  min 0  max 5000
+binary search, size 1250  misses 54755  min 0  max 2500
+preemptive halt, cache_misses = 54756
+preemptive halt, cache_misses = 54756
+preemptive halt, cache_misses = 54756
+preemptive halt, cache_misses = 54756
+binary search, size 625  misses 54756  min 0  max 1250
+binary search, size 937  misses 54755  min 625  max 1250
+preemptive halt, cache_misses = 54756
+preemptive halt, cache_misses = 54756
+preemptive halt, cache_misses = 54756
+preemptive halt, cache_misses = 54756
+binary search, size 781  misses 54756  min 625  max 937
+preemptive halt, cache_misses = 54757
+preemptive halt, cache_misses = 54757
+preemptive halt, cache_misses = 54757
+preemptive halt, cache_misses = 54757
+preemptive halt, cache_misses = 54757
+preemptive halt, cache_misses = 54757
+binary search, size 859  misses 54757  min 781  max 937
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+preemptive halt, cache_misses = 54758
+binary search, size 898  misses 54758  min 859  max 937
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+preemptive halt, cache_misses = 54759
+binary search, size 917  misses 54759  min 898  max 937
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+preemptive halt, cache_misses = 54760
+binary search, size 927  misses 54760  min 917  max 937
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+preemptive halt, cache_misses = 54761
+binary search, size 932  misses 54761  min 927  max 937
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+preemptive halt, cache_misses = 54762
+binary search, size 934  misses 54762  min 932  max 937
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+preemptive halt, cache_misses = 54763
+binary search, size 935  misses 54763  min 934  max 937
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+preemptive halt, cache_misses = 54764
+binary search, size 936  misses 54764  min 935  max 937
+characteristic cache size (binary search) for 233 = 937
+End at: 2021-04-02 01:32:20.493976
+Time elapsed: 0:00:01.175226

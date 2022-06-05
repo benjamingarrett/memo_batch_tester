@@ -24,11 +24,6 @@ class mbt:
 
 
   @staticmethod
-  def set_output_fname(d, v):
-    d['--mbt_output_fname'] = v
-
-
-  @staticmethod
   def set_metric_type(d, v):
     d['--mbt_metric_type'] = v
 
@@ -86,3 +81,30 @@ class mbt:
   @staticmethod
   def set_misses_for_problem_size_fname(d, v):
     d['--mbt_misses_for_problem_size_fname'] = str(v)
+
+
+  @staticmethod
+  def set_detailed_cache_misses_out_fname(d, v):
+    d['--mbt_detailed_cache_misses_out_fname'] = str(v)
+
+
+  @staticmethod
+  def set_phi_N(d, v):
+    d['--mbt_phi_N'] = str(v)
+
+
+  @staticmethod
+  def set_problem_size(d, v):
+    d['--mbt_problem_size'] = str(v)
+
+
+  @staticmethod
+  def set_insertion_test_out_fname(d, v):
+    d['--mbt_insertion_test_outfname'] = str(v)
+
+
+  @staticmethod
+  def set_insertion_test_type(d, v):
+    d['--mbt_insertion_test_type'] = str(v)
+
+

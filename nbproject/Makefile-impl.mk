@@ -28,6 +28,8 @@ PROJECTNAME=memo_batch_tester
 
 # Active Configuration
 DEFAULTCONF=Debug
+#DEFAULTCONF=Release
+
 CONF=${DEFAULTCONF}
 
 # All Configurations

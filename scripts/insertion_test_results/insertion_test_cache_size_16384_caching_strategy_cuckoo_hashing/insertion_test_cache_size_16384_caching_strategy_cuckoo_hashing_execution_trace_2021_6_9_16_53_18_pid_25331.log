@@ -1,0 +1,13 @@
+Begin at: 2021-06-09 16:53:18.573135
+['../dist/Release/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', 'insertion_test_results/insertion_test_cache_size_16384_caching_strategy_cuckoo_hashing/insertion_test_cache_size_16384_caching_strategy_cuckoo_hashing_execution_trace_2021_6_9_16_53_18_pid_25331.log', '--mbt_problem_type', 'insertion_test', '--mbt_operation_sequence_fname', '/home/benjamin/beigel/arora_tsp_applications/misc_phd/input/operation_sequences/without_feedback/without_deletions/operation_sequence_without_feedback-200-50', '--mbt_insertion_test_outfname', 'insertion_test_results/insertion_test_cache_size_16384_caching_strategy_cuckoo_hashing/probes_per_insertion16384.csv', '--memo_caching_strategy', 'cuckoo_hashing', '--memo_cache_size', '16384', '--memo_cuckoo_k', '4', '--memo_key_length', '8', '--memo_value_length', '8']
+initialize_long_int_cache begin
+init_memo
+arguments to memo:
+ --mbt_execution_trace_fname insertion_test_results/insertion_test_cache_size_16384_caching_strategy_cuckoo_hashing/insertion_test_cache_size_16384_caching_strategy_cuckoo_hashing_execution_trace_2021_6_9_16_53_18_pid_25331.log --mbt_problem_type insertion_test --mbt_operation_sequence_fname /home/benjamin/beigel/arora_tsp_applications/misc_phd/input/operation_sequences/without_feedback/without_deletions/operation_sequence_without_feedback-200-50 --mbt_insertion_test_outfname insertion_test_results/insertion_test_cache_size_16384_caching_strategy_cuckoo_hashing/probes_per_insertion16384.csv --memo_caching_strategy cuckoo_hashing --memo_cache_size 16384 --memo_cuckoo_k 4 --memo_key_length 8 --memo_value_length 8 
+calculate_table_size: table_size is 16384, original is 16384
+initialize_cuckoo done
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+insertion test
+End at: 2021-06-09 16:53:21.149530Time elapsed: 0:00:02.576413

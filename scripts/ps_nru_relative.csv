@@ -1,0 +1,15 @@
+cache_size 64 k 4 d 3 a 0.300000 phi_N 25.600000 misses 314978
+cache_size 256 k 4 d 3 a 0.300000 phi_N 102.400000 misses 64582
+cache_size 256 k 5 d 4 a 0.225000 phi_N 96.000000 misses 77344
+cache_size 128 k 4 d 3 a 0.300000 phi_N 51.200000 misses 137826
+cache_size 256 k 6 d 5 a 0.180000 phi_N 81.920000 misses 71253
+cache_size 128 k 3 d 2 a 0.450000 phi_N 44.800000 misses 146816
+cache_size 256 k 3 d 2 a 0.450000 phi_N 89.600000 misses 80941
+cache_size 64 k 8 d 5 a 0.180000 phi_N 37.546667 misses 365818
+cache_size 64 k 9 d 7 a 0.128571 phi_N 30.171429 misses 303754
+cache_size 256 k 7 d 6 a 0.150000 phi_N 64.000000 misses 64688
+cache_size 512 k 8 d 7 a 0.128571 phi_N 87.771429 misses 39442
+cache_size 128 k 5 d 4 a 0.225000 phi_N 48.000000 misses 132443
+cache_size 64 k 10 d 7 a 0.128571 phi_N 36.571429 misses 380668
+cache_size 64 k 10 d 6 a 0.150000 phi_N 40.000000 misses 366931
+cache_size 64 k 3 d 2 a 0.450000 phi_N 22.400000 misses 296771

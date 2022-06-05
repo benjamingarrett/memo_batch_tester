@@ -1,0 +1,894 @@
+Begin at: 2020-10-03 22:21:04.874080
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/st70.tsp', '--arora_results_directory', './a100_st70_2020_10_03__22_21_04/', '--arora_logs_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31170.log', '--mbt_execution_trace_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31170.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31170.csv', '--mbt_exact_cutoff_min_cache_size', '111428', '--mbt_exact_cutoff_max_cache_size', '139284', '--memo_cache_size', '139285', '--memo_lru_queue_size', '139284', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31170.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'cache_miss_cutoff', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '3.101665709', '--mbt_cache_miss_cutoff_coefficient', '3.101665709', '--mbt_seconds_per_miss', '0.0000432539549']
+cache miss cutoff
+arora arora 139284
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_st70_2020_10_03__22_21_04/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31170.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31170.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31170.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 111428
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 139284
+processing argument 30: --memo_cache_size
+processing argument 31: 139285
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 139284
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_111428_max_139284_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31170.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: cache_miss_cutoff
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 3.101665709
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 3.101665709
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000432539549
+validate_options
+load_instance
+load_instance
+Instance name: st70
+Dimension: 70
+Data points:
+0 64.000000 96.000000
+1 80.000000 39.000000
+2 69.000000 23.000000
+3 72.000000 42.000000
+4 48.000000 67.000000
+5 58.000000 43.000000
+6 81.000000 34.000000
+7 79.000000 17.000000
+8 30.000000 23.000000
+9 42.000000 67.000000
+10 7.000000 76.000000
+11 29.000000 51.000000
+12 78.000000 92.000000
+13 64.000000 8.000000
+14 95.000000 57.000000
+15 57.000000 91.000000
+16 40.000000 35.000000
+17 68.000000 40.000000
+18 92.000000 34.000000
+19 62.000000 1.000000
+20 28.000000 43.000000
+21 76.000000 73.000000
+22 67.000000 88.000000
+23 93.000000 54.000000
+24 6.000000 8.000000
+25 87.000000 18.000000
+26 30.000000 9.000000
+27 77.000000 13.000000
+28 78.000000 94.000000
+29 55.000000 3.000000
+30 82.000000 88.000000
+31 73.000000 28.000000
+32 20.000000 55.000000
+33 27.000000 43.000000
+34 95.000000 86.000000
+35 67.000000 99.000000
+36 48.000000 83.000000
+37 75.000000 81.000000
+38 8.000000 19.000000
+39 20.000000 18.000000
+40 54.000000 38.000000
+41 63.000000 36.000000
+42 44.000000 33.000000
+43 52.000000 18.000000
+44 12.000000 13.000000
+45 25.000000 5.000000
+46 58.000000 85.000000
+47 5.000000 67.000000
+48 90.000000 9.000000
+49 41.000000 76.000000
+50 25.000000 76.000000
+51 37.000000 64.000000
+52 56.000000 63.000000
+53 10.000000 55.000000
+54 98.000000 7.000000
+55 16.000000 74.000000
+56 89.000000 60.000000
+57 48.000000 82.000000
+58 81.000000 76.000000
+59 29.000000 60.000000
+60 17.000000 22.000000
+61 5.000000 45.000000
+62 79.000000 70.000000
+63 9.000000 100.000000
+64 17.000000 82.000000
+65 74.000000 67.000000
+66 10.000000 68.000000
+67 48.000000 19.000000
+68 83.000000 86.000000
+69 84.000000 94.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+cache_miss_cutoff, min size = 111428, max_size = 139284
+Initially setting cache_size to 139284
+solve_arora
+Begin at: 2020-10-03 22:21:04.871957
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/st70.tsp', '--arora_results_directory', './a100_st70_2020_10_03__22_21_04/', '--arora_logs_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31172.log', '--mbt_execution_trace_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31172.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31172.csv', '--mbt_exact_cutoff_min_cache_size', '139285', '--mbt_exact_cutoff_max_cache_size', '167141', '--memo_cache_size', '167142', '--memo_lru_queue_size', '167141', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31172.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'cache_miss_cutoff', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '3.101665709', '--mbt_cache_miss_cutoff_coefficient', '3.101665709', '--mbt_seconds_per_miss', '0.0000432539549']
+cache miss cutoff
+arora arora 167141
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_st70_2020_10_03__22_21_04/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31172.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31172.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31172.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 139285
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 167141
+processing argument 30: --memo_cache_size
+processing argument 31: 167142
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 167141
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_139285_max_167141_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31172.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: cache_miss_cutoff
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 3.101665709
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 3.101665709
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000432539549
+validate_options
+load_instance
+load_instance
+Instance name: st70
+Dimension: 70
+Data points:
+0 64.000000 96.000000
+1 80.000000 39.000000
+2 69.000000 23.000000
+3 72.000000 42.000000
+4 48.000000 67.000000
+5 58.000000 43.000000
+6 81.000000 34.000000
+7 79.000000 17.000000
+8 30.000000 23.000000
+9 42.000000 67.000000
+10 7.000000 76.000000
+11 29.000000 51.000000
+12 78.000000 92.000000
+13 64.000000 8.000000
+14 95.000000 57.000000
+15 57.000000 91.000000
+16 40.000000 35.000000
+17 68.000000 40.000000
+18 92.000000 34.000000
+19 62.000000 1.000000
+20 28.000000 43.000000
+21 76.000000 73.000000
+22 67.000000 88.000000
+23 93.000000 54.000000
+24 6.000000 8.000000
+25 87.000000 18.000000
+26 30.000000 9.000000
+27 77.000000 13.000000
+28 78.000000 94.000000
+29 55.000000 3.000000
+30 82.000000 88.000000
+31 73.000000 28.000000
+32 20.000000 55.000000
+33 27.000000 43.000000
+34 95.000000 86.000000
+35 67.000000 99.000000
+36 48.000000 83.000000
+37 75.000000 81.000000
+38 8.000000 19.000000
+39 20.000000 18.000000
+40 54.000000 38.000000
+41 63.000000 36.000000
+42 44.000000 33.000000
+43 52.000000 18.000000
+44 12.000000 13.000000
+45 25.000000 5.000000
+46 58.000000 85.000000
+47 5.000000 67.000000
+48 90.000000 9.000000
+49 41.000000 76.000000
+50 25.000000 76.000000
+51 37.000000 64.000000
+52 56.000000 63.000000
+53 10.000000 55.000000
+54 98.000000 7.000000
+55 16.000000 74.000000
+56 89.000000 60.000000
+57 48.000000 82.000000
+58 81.000000 76.000000
+59 29.000000 60.000000
+60 17.000000 22.000000
+61 5.000000 45.000000
+62 79.000000 70.000000
+63 9.000000 100.000000
+64 17.000000 82.000000
+65 74.000000 67.000000
+66 10.000000 68.000000
+67 48.000000 19.000000
+68 83.000000 86.000000
+69 84.000000 94.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+cache_miss_cutoff, min size = 139285, max_size = 167141
+Initially setting cache_size to 167141
+solve_arora
+Begin at: 2020-10-03 22:21:04.887693
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/st70.tsp', '--arora_results_directory', './a100_st70_2020_10_03__22_21_04/', '--arora_logs_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31167.log', '--mbt_execution_trace_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31167.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31167.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '27856', '--memo_cache_size', '27857', '--memo_lru_queue_size', '27856', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31167.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'cache_miss_cutoff', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '3.101665709', '--mbt_cache_miss_cutoff_coefficient', '3.101665709', '--mbt_seconds_per_miss', '0.0000432539549']
+cache miss cutoff
+arora arora 27856
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_st70_2020_10_03__22_21_04/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31167.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31167.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31167.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 1
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 27856
+processing argument 30: --memo_cache_size
+processing argument 31: 27857
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 27856
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_1_max_27856_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31167.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: cache_miss_cutoff
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 3.101665709
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 3.101665709
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000432539549
+validate_options
+load_instance
+load_instance
+Instance name: st70
+Dimension: 70
+Data points:
+0 64.000000 96.000000
+1 80.000000 39.000000
+2 69.000000 23.000000
+3 72.000000 42.000000
+4 48.000000 67.000000
+5 58.000000 43.000000
+6 81.000000 34.000000
+7 79.000000 17.000000
+8 30.000000 23.000000
+9 42.000000 67.000000
+10 7.000000 76.000000
+11 29.000000 51.000000
+12 78.000000 92.000000
+13 64.000000 8.000000
+14 95.000000 57.000000
+15 57.000000 91.000000
+16 40.000000 35.000000
+17 68.000000 40.000000
+18 92.000000 34.000000
+19 62.000000 1.000000
+20 28.000000 43.000000
+21 76.000000 73.000000
+22 67.000000 88.000000
+23 93.000000 54.000000
+24 6.000000 8.000000
+25 87.000000 18.000000
+26 30.000000 9.000000
+27 77.000000 13.000000
+28 78.000000 94.000000
+29 55.000000 3.000000
+30 82.000000 88.000000
+31 73.000000 28.000000
+32 20.000000 55.000000
+33 27.000000 43.000000
+34 95.000000 86.000000
+35 67.000000 99.000000
+36 48.000000 83.000000
+37 75.000000 81.000000
+38 8.000000 19.000000
+39 20.000000 18.000000
+40 54.000000 38.000000
+41 63.000000 36.000000
+42 44.000000 33.000000
+43 52.000000 18.000000
+44 12.000000 13.000000
+45 25.000000 5.000000
+46 58.000000 85.000000
+47 5.000000 67.000000
+48 90.000000 9.000000
+49 41.000000 76.000000
+50 25.000000 76.000000
+51 37.000000 64.000000
+52 56.000000 63.000000
+53 10.000000 55.000000
+54 98.000000 7.000000
+55 16.000000 74.000000
+56 89.000000 60.000000
+57 48.000000 82.000000
+58 81.000000 76.000000
+59 29.000000 60.000000
+60 17.000000 22.000000
+61 5.000000 45.000000
+62 79.000000 70.000000
+63 9.000000 100.000000
+64 17.000000 82.000000
+65 74.000000 67.000000
+66 10.000000 68.000000
+67 48.000000 19.000000
+68 83.000000 86.000000
+69 84.000000 94.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+cache_miss_cutoff, min size = 1, max_size = 27856
+Initially setting cache_size to 27856
+solve_arora
+Begin at: 2020-10-03 22:21:04.887693
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/st70.tsp', '--arora_results_directory', './a100_st70_2020_10_03__22_21_04/', '--arora_logs_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31168.log', '--mbt_execution_trace_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31168.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31168.csv', '--mbt_exact_cutoff_min_cache_size', '27857', '--mbt_exact_cutoff_max_cache_size', '55713', '--memo_cache_size', '55714', '--memo_lru_queue_size', '55713', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31168.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'cache_miss_cutoff', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '3.101665709', '--mbt_cache_miss_cutoff_coefficient', '3.101665709', '--mbt_seconds_per_miss', '0.0000432539549']
+cache miss cutoff
+arora arora 55713
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_st70_2020_10_03__22_21_04/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31168.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31168.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31168.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 27857
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 55713
+processing argument 30: --memo_cache_size
+processing argument 31: 55714
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 55713
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_27857_max_55713_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31168.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: cache_miss_cutoff
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 3.101665709
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 3.101665709
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000432539549
+validate_options
+load_instance
+load_instance
+Instance name: st70
+Dimension: 70
+Data points:
+0 64.000000 96.000000
+1 80.000000 39.000000
+2 69.000000 23.000000
+3 72.000000 42.000000
+4 48.000000 67.000000
+5 58.000000 43.000000
+6 81.000000 34.000000
+7 79.000000 17.000000
+8 30.000000 23.000000
+9 42.000000 67.000000
+10 7.000000 76.000000
+11 29.000000 51.000000
+12 78.000000 92.000000
+13 64.000000 8.000000
+14 95.000000 57.000000
+15 57.000000 91.000000
+16 40.000000 35.000000
+17 68.000000 40.000000
+18 92.000000 34.000000
+19 62.000000 1.000000
+20 28.000000 43.000000
+21 76.000000 73.000000
+22 67.000000 88.000000
+23 93.000000 54.000000
+24 6.000000 8.000000
+25 87.000000 18.000000
+26 30.000000 9.000000
+27 77.000000 13.000000
+28 78.000000 94.000000
+29 55.000000 3.000000
+30 82.000000 88.000000
+31 73.000000 28.000000
+32 20.000000 55.000000
+33 27.000000 43.000000
+34 95.000000 86.000000
+35 67.000000 99.000000
+36 48.000000 83.000000
+37 75.000000 81.000000
+38 8.000000 19.000000
+39 20.000000 18.000000
+40 54.000000 38.000000
+41 63.000000 36.000000
+42 44.000000 33.000000
+43 52.000000 18.000000
+44 12.000000 13.000000
+45 25.000000 5.000000
+46 58.000000 85.000000
+47 5.000000 67.000000
+48 90.000000 9.000000
+49 41.000000 76.000000
+50 25.000000 76.000000
+51 37.000000 64.000000
+52 56.000000 63.000000
+53 10.000000 55.000000
+54 98.000000 7.000000
+55 16.000000 74.000000
+56 89.000000 60.000000
+57 48.000000 82.000000
+58 81.000000 76.000000
+59 29.000000 60.000000
+60 17.000000 22.000000
+61 5.000000 45.000000
+62 79.000000 70.000000
+63 9.000000 100.000000
+64 17.000000 82.000000
+65 74.000000 67.000000
+66 10.000000 68.000000
+67 48.000000 19.000000
+68 83.000000 86.000000
+69 84.000000 94.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+cache_miss_cutoff, min size = 27857, max_size = 55713
+Initially setting cache_size to 55713
+solve_arora
+Begin at: 2020-10-03 22:21:04.887683
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/st70.tsp', '--arora_results_directory', './a100_st70_2020_10_03__22_21_04/', '--arora_logs_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31171.log', '--mbt_execution_trace_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31171.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31171.csv', '--mbt_exact_cutoff_min_cache_size', '55714', '--mbt_exact_cutoff_max_cache_size', '83570', '--memo_cache_size', '83571', '--memo_lru_queue_size', '83570', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31171.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'cache_miss_cutoff', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '3.101665709', '--mbt_cache_miss_cutoff_coefficient', '3.101665709', '--mbt_seconds_per_miss', '0.0000432539549']
+cache miss cutoff
+arora arora 83570
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_st70_2020_10_03__22_21_04/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31171.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31171.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31171.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 55714
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 83570
+processing argument 30: --memo_cache_size
+processing argument 31: 83571
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 83570
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_55714_max_83570_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31171.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: cache_miss_cutoff
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 3.101665709
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 3.101665709
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000432539549
+validate_options
+load_instance
+load_instance
+Instance name: st70
+Dimension: 70
+Data points:
+0 64.000000 96.000000
+1 80.000000 39.000000
+2 69.000000 23.000000
+3 72.000000 42.000000
+4 48.000000 67.000000
+5 58.000000 43.000000
+6 81.000000 34.000000
+7 79.000000 17.000000
+8 30.000000 23.000000
+9 42.000000 67.000000
+10 7.000000 76.000000
+11 29.000000 51.000000
+12 78.000000 92.000000
+13 64.000000 8.000000
+14 95.000000 57.000000
+15 57.000000 91.000000
+16 40.000000 35.000000
+17 68.000000 40.000000
+18 92.000000 34.000000
+19 62.000000 1.000000
+20 28.000000 43.000000
+21 76.000000 73.000000
+22 67.000000 88.000000
+23 93.000000 54.000000
+24 6.000000 8.000000
+25 87.000000 18.000000
+26 30.000000 9.000000
+27 77.000000 13.000000
+28 78.000000 94.000000
+29 55.000000 3.000000
+30 82.000000 88.000000
+31 73.000000 28.000000
+32 20.000000 55.000000
+33 27.000000 43.000000
+34 95.000000 86.000000
+35 67.000000 99.000000
+36 48.000000 83.000000
+37 75.000000 81.000000
+38 8.000000 19.000000
+39 20.000000 18.000000
+40 54.000000 38.000000
+41 63.000000 36.000000
+42 44.000000 33.000000
+43 52.000000 18.000000
+44 12.000000 13.000000
+45 25.000000 5.000000
+46 58.000000 85.000000
+47 5.000000 67.000000
+48 90.000000 9.000000
+49 41.000000 76.000000
+50 25.000000 76.000000
+51 37.000000 64.000000
+52 56.000000 63.000000
+53 10.000000 55.000000
+54 98.000000 7.000000
+55 16.000000 74.000000
+56 89.000000 60.000000
+57 48.000000 82.000000
+58 81.000000 76.000000
+59 29.000000 60.000000
+60 17.000000 22.000000
+61 5.000000 45.000000
+62 79.000000 70.000000
+63 9.000000 100.000000
+64 17.000000 82.000000
+65 74.000000 67.000000
+66 10.000000 68.000000
+67 48.000000 19.000000
+68 83.000000 86.000000
+69 84.000000 94.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+cache_miss_cutoff, min size = 55714, max_size = 83570
+Initially setting cache_size to 83570
+solve_arora
+Begin at: 2020-10-03 22:21:04.887689
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/st70.tsp', '--arora_results_directory', './a100_st70_2020_10_03__22_21_04/', '--arora_logs_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31169.log', '--mbt_execution_trace_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31169.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31169.csv', '--mbt_exact_cutoff_min_cache_size', '83571', '--mbt_exact_cutoff_max_cache_size', '111427', '--memo_cache_size', '111428', '--memo_lru_queue_size', '111427', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31169.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'cache_miss_cutoff', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '3.101665709', '--mbt_cache_miss_cutoff_coefficient', '3.101665709', '--mbt_seconds_per_miss', '0.0000432539549']
+cache miss cutoff
+arora arora 111427
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_st70_2020_10_03__22_21_04/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31169.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31169.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_misses_for_size_2020_10_3_22_21_4_pid_31169.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 83571
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 111427
+processing argument 30: --memo_cache_size
+processing argument 31: 111428
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 111427
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_st70_2020_10_03__22_21_04/arora_n_70_min_83571_max_111427_get_tour_st70_execution_trace_2020_10_3_22_21_4_pid_31169.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: cache_miss_cutoff
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 3.101665709
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 3.101665709
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000432539549
+validate_options
+load_instance
+load_instance
+Instance name: st70
+Dimension: 70
+Data points:
+0 64.000000 96.000000
+1 80.000000 39.000000
+2 69.000000 23.000000
+3 72.000000 42.000000
+4 48.000000 67.000000
+5 58.000000 43.000000
+6 81.000000 34.000000
+7 79.000000 17.000000
+8 30.000000 23.000000
+9 42.000000 67.000000
+10 7.000000 76.000000
+11 29.000000 51.000000
+12 78.000000 92.000000
+13 64.000000 8.000000
+14 95.000000 57.000000
+15 57.000000 91.000000
+16 40.000000 35.000000
+17 68.000000 40.000000
+18 92.000000 34.000000
+19 62.000000 1.000000
+20 28.000000 43.000000
+21 76.000000 73.000000
+22 67.000000 88.000000
+23 93.000000 54.000000
+24 6.000000 8.000000
+25 87.000000 18.000000
+26 30.000000 9.000000
+27 77.000000 13.000000
+28 78.000000 94.000000
+29 55.000000 3.000000
+30 82.000000 88.000000
+31 73.000000 28.000000
+32 20.000000 55.000000
+33 27.000000 43.000000
+34 95.000000 86.000000
+35 67.000000 99.000000
+36 48.000000 83.000000
+37 75.000000 81.000000
+38 8.000000 19.000000
+39 20.000000 18.000000
+40 54.000000 38.000000
+41 63.000000 36.000000
+42 44.000000 33.000000
+43 52.000000 18.000000
+44 12.000000 13.000000
+45 25.000000 5.000000
+46 58.000000 85.000000
+47 5.000000 67.000000
+48 90.000000 9.000000
+49 41.000000 76.000000
+50 25.000000 76.000000
+51 37.000000 64.000000
+52 56.000000 63.000000
+53 10.000000 55.000000
+54 98.000000 7.000000
+55 16.000000 74.000000
+56 89.000000 60.000000
+57 48.000000 82.000000
+58 81.000000 76.000000
+59 29.000000 60.000000
+60 17.000000 22.000000
+61 5.000000 45.000000
+62 79.000000 70.000000
+63 9.000000 100.000000
+64 17.000000 82.000000
+65 74.000000 67.000000
+66 10.000000 68.000000
+67 48.000000 19.000000
+68 83.000000 86.000000
+69 84.000000 94.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+cache_miss_cutoff, min size = 83571, max_size = 111427
+Initially setting cache_size to 111427
+solve_arora

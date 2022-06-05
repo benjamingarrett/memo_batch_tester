@@ -1,0 +1,13 @@
+Begin at: 2021-06-13 17:05:22.491742
+['../dist/Release/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', 'insertion_test_results_simple/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing_execution_trace_2021_6_13_17_5_22_pid_25833.log', '--mbt_problem_type', 'insertion_test', '--mbt_insertion_test_outfname', 'insertion_test_results_simple/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/probes_per_insertion4096.csv', '--mbt_insertion_test_type', 'simple', '--memo_caching_strategy', 'cuckoo_hashing', '--memo_cache_size', '4096', '--memo_cuckoo_k', '4', '--memo_key_length', '8', '--memo_value_length', '8']
+initialize_long_int_cache begin
+init_memo
+arguments to memo:
+ --mbt_execution_trace_fname insertion_test_results_simple/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing_execution_trace_2021_6_13_17_5_22_pid_25833.log --mbt_problem_type insertion_test --mbt_insertion_test_outfname insertion_test_results_simple/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/probes_per_insertion4096.csv --mbt_insertion_test_type simple --memo_caching_strategy cuckoo_hashing --memo_cache_size 4096 --memo_cuckoo_k 4 --memo_key_length 8 --memo_value_length 8 
+calculate_table_size: table_size is 4096, original is 4096
+initialize_cuckoo done
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+insertion test
+End at: 2021-06-13 17:05:22.558490Time elapsed: 0:00:00.066809

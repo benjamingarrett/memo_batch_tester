@@ -4,11 +4,13 @@ import os, subprocess
 flatten = lambda x: [e for t in list(x.items()) for e in t]
 
 
-def init_args(path='../dist/Debug/GNU-Linux/memo_batch_tester'):
+def init_args(conf='Debug'):
+  path='../dist/' + conf + '/GNU-Linux/memo_batch_tester'
   return {path: ''}
 
 
-def init_debug_args(path='../dist/Debug/GNU-Linux/memo_batch_tester'):
+def init_debug_args(conf='Debug'):
+  path='../dist/' + conf + '/GNU-Linux/memo_batch_tester'
   return {'gdb': '--args', path: ''}
 
 

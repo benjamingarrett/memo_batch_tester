@@ -51,7 +51,6 @@ OBJECTFILES= \
   ${OBJECTDIR}/_ext/f34e89h/sequence_alignment.o \
   ${OBJECTDIR}/_ext/f34e89i/generate.o \
   ${OBJECTDIR}/_ext/f34e89j/random.o \
-  ${ARORAOBJDIR}/estimate.o \
   ${ARORAOBJDIR}/initialize.o \
   ${ARORAOBJDIR}/initialize_options.o \
   ${ARORAOBJDIR}/initialize_schema_tables.o \

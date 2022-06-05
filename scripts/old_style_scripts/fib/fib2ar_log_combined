@@ -1,0 +1,1650 @@
+Begin at: 2020-10-13 00:54:06.155007
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8810.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8810.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '10000', '--fibonacci_n', '10000', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8810.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 10000
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(10000)=-2872092127636481573
+solve_once with cache_size 16 misses 27 duration 0.000259
+solve once for 10000 = -1
+End at: 2020-10-13 00:54:06.281250
+Time elapsed: 0:00:00.126294
+Begin at: 2020-10-13 00:54:06.139872
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8811.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8811.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '10000', '--fibonacci_n', '10000', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8811.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 10000
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(10000)=-2872092127636481573
+solve_once with cache_size 16 misses 27 duration 0.000207
+solve once for 10000 = -1
+End at: 2020-10-13 00:54:06.211532
+Time elapsed: 0:00:00.071699
+Begin at: 2020-10-13 00:54:06.067376
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8812.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_6_pid_8812.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '10000', '--fibonacci_n', '10000', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8812.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 10000
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(10000)=-2872092127636481573
+solve_once with cache_size 16 misses 28 duration 0.000307
+solve once for 10000 = -1
+End at: 2020-10-13 00:54:06.253590
+Time elapsed: 0:00:00.186258
+Begin at: 2020-10-13 00:54:06.148190
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8814.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8814.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '10000', '--fibonacci_n', '10000', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8814.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 10000
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(10000)=-2872092127636481573
+solve_once with cache_size 16 misses 27 duration 0.000314
+solve once for 10000 = -1
+End at: 2020-10-13 00:54:06.315667
+Time elapsed: 0:00:00.167508
+Begin at: 2020-10-13 00:54:05.824069
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_5_pid_8813.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_5_pid_8813.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '10000', '--fibonacci_n', '10000', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_5_pid_8813.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 10000
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(10000)=-2872092127636481573
+solve_once with cache_size 16 misses 28 duration 0.000269
+solve once for 10000 = -1
+End at: 2020-10-13 00:54:05.836588
+Time elapsed: 0:00:00.012544
+Begin at: 2020-10-13 00:54:06.094002
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8815.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8815.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '10000', '--fibonacci_n', '10000', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_10000_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8815.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 10000
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(10000)=-2872092127636481573
+solve_once with cache_size 16 misses 27 duration 0.000261
+solve once for 10000 = -1
+End at: 2020-10-13 00:54:06.279119
+Time elapsed: 0:00:00.185214
+Begin at: 2020-10-13 00:54:06.060236
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8756.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8756.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '1180', '--fibonacci_n', '1180', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8756.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 1180
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(1180)=1522499269257987699
+solve_once with cache_size 16 misses 21 duration 0.000284
+solve once for 1180 = -1
+End at: 2020-10-13 00:54:06.233916
+Time elapsed: 0:00:00.173729
+Begin at: 2020-10-13 00:54:06.098569
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8757.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8757.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '1180', '--fibonacci_n', '1180', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8757.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 1180
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(1180)=1522499269257987699
+solve_once with cache_size 16 misses 21 duration 0.000233
+solve once for 1180 = -1
+End at: 2020-10-13 00:54:06.305786
+Time elapsed: 0:00:00.207257
+Begin at: 2020-10-13 00:54:06.033444
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8758.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_6_pid_8758.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '1180', '--fibonacci_n', '1180', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8758.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 1180
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(1180)=1522499269257987699
+solve_once with cache_size 16 misses 21 duration 0.000213
+solve once for 1180 = -1
+End at: 2020-10-13 00:54:06.147146
+Time elapsed: 0:00:00.113736
+Begin at: 2020-10-13 00:54:06.124977
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8760.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8760.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '1180', '--fibonacci_n', '1180', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8760.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 1180
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(1180)=1522499269257987699
+solve_once with cache_size 16 misses 21 duration 0.000213
+solve once for 1180 = -1
+End at: 2020-10-13 00:54:06.227418
+Time elapsed: 0:00:00.102524
+Begin at: 2020-10-13 00:54:06.035393
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8759.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8759.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '1180', '--fibonacci_n', '1180', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8759.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 1180
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(1180)=1522499269257987699
+solve_once with cache_size 16 misses 21 duration 0.000231
+solve once for 1180 = -1
+End at: 2020-10-13 00:54:06.194374
+Time elapsed: 0:00:00.159010
+Begin at: 2020-10-13 00:54:05.994833
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_5_pid_8761.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_5_pid_8761.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '1180', '--fibonacci_n', '1180', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_1180_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_5_pid_8761.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 1180
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(1180)=1522499269257987699
+solve_once with cache_size 16 misses 21 duration 0.000192
+solve once for 1180 = -1
+End at: 2020-10-13 00:54:06.117650
+Time elapsed: 0:00:00.122857
+Begin at: 2020-10-13 00:54:05.791594
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_5_pid_8750.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_5_pid_8750.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '200', '--fibonacci_n', '200', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_5_pid_8750.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 200
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(200)=-1123705814761610347
+solve_once with cache_size 16 misses 15 duration 0.000118
+solve once for 200 = -1
+End at: 2020-10-13 00:54:05.835228
+Time elapsed: 0:00:00.043675
+Begin at: 2020-10-13 00:54:05.996829
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8751.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_5_pid_8751.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '200', '--fibonacci_n', '200', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8751.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 200
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(200)=-1123705814761610347
+solve_once with cache_size 16 misses 15 duration 0.000114
+solve once for 200 = -1
+End at: 2020-10-13 00:54:06.167918
+Time elapsed: 0:00:00.171115
+Begin at: 2020-10-13 00:54:05.976040
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8752.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_5_pid_8752.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '200', '--fibonacci_n', '200', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8752.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 200
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(200)=-1123705814761610347
+solve_once with cache_size 16 misses 15 duration 0.000146
+solve once for 200 = -1
+End at: 2020-10-13 00:54:06.098447
+Time elapsed: 0:00:00.122430
+Begin at: 2020-10-13 00:54:05.964436
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_5_pid_8754.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_5_pid_8754.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '200', '--fibonacci_n', '200', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_5_pid_8754.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 200
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(200)=-1123705814761610347
+solve_once with cache_size 16 misses 15 duration 0.000132
+solve once for 200 = -1
+End at: 2020-10-13 00:54:06.055122
+Time elapsed: 0:00:00.090717
+Begin at: 2020-10-13 00:54:06.028860
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8753.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8753.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '200', '--fibonacci_n', '200', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8753.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 200
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(200)=-1123705814761610347
+solve_once with cache_size 16 misses 15 duration 0.000137
+solve once for 200 = -1
+End at: 2020-10-13 00:54:06.115775
+Time elapsed: 0:00:00.086943
+Begin at: 2020-10-13 00:54:05.790689
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_5_pid_8755.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_5_pid_8755.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '200', '--fibonacci_n', '200', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_200_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_5_pid_8755.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 200
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(200)=-1123705814761610347
+solve_once with cache_size 16 misses 15 duration 0.000141
+solve once for 200 = -1
+End at: 2020-10-13 00:54:05.949286
+Time elapsed: 0:00:00.158625
+Begin at: 2020-10-13 00:54:06.084204
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8762.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8762.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '2160', '--fibonacci_n', '2160', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8762.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 2160
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(2160)=1783474413965331776
+solve_once with cache_size 16 misses 23 duration 0.000220
+solve once for 2160 = -1
+End at: 2020-10-13 00:54:06.223057
+Time elapsed: 0:00:00.138966
+Begin at: 2020-10-13 00:54:05.814288
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8763.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_5_pid_8763.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '2160', '--fibonacci_n', '2160', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8763.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 2160
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(2160)=1783474413965331776
+solve_once with cache_size 16 misses 23 duration 0.000192
+solve once for 2160 = -1
+End at: 2020-10-13 00:54:05.901359
+Time elapsed: 0:00:00.087102
+Begin at: 2020-10-13 00:54:05.984652
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8764.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_5_pid_8764.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '2160', '--fibonacci_n', '2160', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8764.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 2160
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(2160)=1783474413965331776
+solve_once with cache_size 16 misses 23 duration 0.000205
+solve once for 2160 = -1
+End at: 2020-10-13 00:54:06.123992
+Time elapsed: 0:00:00.139363
+Begin at: 2020-10-13 00:54:05.797418
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_5_pid_8766.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_5_pid_8766.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '2160', '--fibonacci_n', '2160', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_5_pid_8766.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 2160
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(2160)=1783474413965331776
+solve_once with cache_size 16 misses 23 duration 0.000179
+solve once for 2160 = -1
+End at: 2020-10-13 00:54:05.885971
+Time elapsed: 0:00:00.088577
+Begin at: 2020-10-13 00:54:06.053377
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8765.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8765.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '2160', '--fibonacci_n', '2160', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8765.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 2160
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(2160)=1783474413965331776
+solve_once with cache_size 16 misses 23 duration 0.000229
+solve once for 2160 = -1
+End at: 2020-10-13 00:54:06.266349
+Time elapsed: 0:00:00.213013
+Begin at: 2020-10-13 00:54:06.123705
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8767.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8767.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '2160', '--fibonacci_n', '2160', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_2160_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8767.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 2160
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(2160)=1783474413965331776
+solve_once with cache_size 16 misses 23 duration 0.000334
+solve once for 2160 = -1
+End at: 2020-10-13 00:54:06.211654
+Time elapsed: 0:00:00.087976
+Begin at: 2020-10-13 00:54:05.801616
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_5_pid_8768.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_5_pid_8768.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '3140', '--fibonacci_n', '3140', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_5_pid_8768.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 3140
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(3140)=-4432311558679672243
+solve_once with cache_size 16 misses 23 duration 0.000296
+solve once for 3140 = -1
+End at: 2020-10-13 00:54:05.935676
+Time elapsed: 0:00:00.134089
+Begin at: 2020-10-13 00:54:05.814929
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8769.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_5_pid_8769.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '3140', '--fibonacci_n', '3140', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8769.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 3140
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(3140)=-4432311558679672243
+solve_once with cache_size 16 misses 23 duration 0.000383
+solve once for 3140 = -1
+End at: 2020-10-13 00:54:05.934225
+Time elapsed: 0:00:00.119327
+Begin at: 2020-10-13 00:54:05.824218
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8770.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_5_pid_8770.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '3140', '--fibonacci_n', '3140', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8770.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 3140
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(3140)=-4432311558679672243
+solve_once with cache_size 16 misses 23 duration 0.000204
+solve once for 3140 = -1
+End at: 2020-10-13 00:54:06.045395
+Time elapsed: 0:00:00.221223
+Begin at: 2020-10-13 00:54:06.034007
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8772.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8772.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '3140', '--fibonacci_n', '3140', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8772.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 3140
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(3140)=-4432311558679672243
+solve_once with cache_size 16 misses 23 duration 0.000316
+solve once for 3140 = -1
+End at: 2020-10-13 00:54:06.172354
+Time elapsed: 0:00:00.138410
+Begin at: 2020-10-13 00:54:05.984082
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_5_pid_8771.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_5_pid_8771.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '3140', '--fibonacci_n', '3140', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_5_pid_8771.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 3140
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(3140)=-4432311558679672243
+solve_once with cache_size 16 misses 23 duration 0.000260
+solve once for 3140 = -1
+End at: 2020-10-13 00:54:06.030621
+Time elapsed: 0:00:00.046572
+Begin at: 2020-10-13 00:54:06.143045
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8773.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8773.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '3140', '--fibonacci_n', '3140', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_3140_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8773.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 3140
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(3140)=-4432311558679672243
+solve_once with cache_size 16 misses 23 duration 0.000353
+solve once for 3140 = -1
+End at: 2020-10-13 00:54:06.343188
+Time elapsed: 0:00:00.200190
+Begin at: 2020-10-13 00:54:06.033823
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8774.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8774.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '4120', '--fibonacci_n', '4120', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8774.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 4120
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(4120)=-2735796652779314389
+solve_once with cache_size 16 misses 25 duration 0.000226
+solve once for 4120 = -1
+End at: 2020-10-13 00:54:06.167685
+Time elapsed: 0:00:00.133895
+Begin at: 2020-10-13 00:54:05.801442
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8775.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_5_pid_8775.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '4120', '--fibonacci_n', '4120', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_5_pid_8775.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 4120
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(4120)=-2735796652779314389
+solve_once with cache_size 16 misses 25 duration 0.000193
+solve once for 4120 = -1
+End at: 2020-10-13 00:54:05.904988
+Time elapsed: 0:00:00.103571
+Begin at: 2020-10-13 00:54:05.985195
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8776.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_5_pid_8776.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '4120', '--fibonacci_n', '4120', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8776.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 4120
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(4120)=-2735796652779314389
+solve_once with cache_size 16 misses 25 duration 0.000213
+solve once for 4120 = -1
+End at: 2020-10-13 00:54:06.134192
+Time elapsed: 0:00:00.149043
+Begin at: 2020-10-13 00:54:06.032819
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8778.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8778.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '4120', '--fibonacci_n', '4120', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8778.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 4120
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(4120)=-2735796652779314389
+solve_once with cache_size 16 misses 25 duration 0.000284
+solve once for 4120 = -1
+End at: 2020-10-13 00:54:06.156361
+Time elapsed: 0:00:00.123567
+Begin at: 2020-10-13 00:54:06.030676
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8777.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8777.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '4120', '--fibonacci_n', '4120', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8777.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 4120
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(4120)=-2735796652779314389
+solve_once with cache_size 16 misses 25 duration 0.000226
+solve once for 4120 = -1
+End at: 2020-10-13 00:54:06.145696
+Time elapsed: 0:00:00.115098
+Begin at: 2020-10-13 00:54:06.030651
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8779.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8779.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '4120', '--fibonacci_n', '4120', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_4120_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8779.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 4120
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(4120)=-2735796652779314389
+solve_once with cache_size 16 misses 25 duration 0.000206
+solve once for 4120 = -1
+End at: 2020-10-13 00:54:06.114504
+Time elapsed: 0:00:00.083876
+Begin at: 2020-10-13 00:54:06.033982
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8780.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8780.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '5100', '--fibonacci_n', '5100', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8780.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 5100
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(5100)=6939269731888713488
+solve_once with cache_size 16 misses 25 duration 0.000207
+solve once for 5100 = -1
+End at: 2020-10-13 00:54:06.168612
+Time elapsed: 0:00:00.134658
+Begin at: 2020-10-13 00:54:06.036239
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8781.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8781.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '5100', '--fibonacci_n', '5100', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8781.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 5100
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(5100)=6939269731888713488
+solve_once with cache_size 16 misses 25 duration 0.000186
+solve once for 5100 = -1
+End at: 2020-10-13 00:54:06.127132
+Time elapsed: 0:00:00.090924
+Begin at: 2020-10-13 00:54:05.983323
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8782.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_5_pid_8782.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '5100', '--fibonacci_n', '5100', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8782.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 5100
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(5100)=6939269731888713488
+solve_once with cache_size 16 misses 25 duration 0.000232
+solve once for 5100 = -1
+End at: 2020-10-13 00:54:06.191901
+Time elapsed: 0:00:00.208610
+Begin at: 2020-10-13 00:54:06.057821
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8784.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8784.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '5100', '--fibonacci_n', '5100', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8784.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 5100
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(5100)=6939269731888713488
+solve_once with cache_size 16 misses 25 duration 0.000287
+solve once for 5100 = -1
+End at: 2020-10-13 00:54:06.156212
+Time elapsed: 0:00:00.098435
+Begin at: 2020-10-13 00:54:06.082626
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8783.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8783.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '5100', '--fibonacci_n', '5100', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8783.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 5100
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(5100)=6939269731888713488
+solve_once with cache_size 16 misses 25 duration 0.000262
+solve once for 5100 = -1
+End at: 2020-10-13 00:54:06.195486
+Time elapsed: 0:00:00.112894
+Begin at: 2020-10-13 00:54:06.054045
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8785.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8785.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '5100', '--fibonacci_n', '5100', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_5100_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8785.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 5100
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(5100)=6939269731888713488
+solve_once with cache_size 16 misses 25 duration 0.000349
+solve once for 5100 = -1
+End at: 2020-10-13 00:54:06.274185
+Time elapsed: 0:00:00.220218
+Begin at: 2020-10-13 00:54:06.107106
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8786.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8786.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '6080', '--fibonacci_n', '6080', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8786.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 6080
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(6080)=940093946426249029
+solve_once with cache_size 16 misses 25 duration 0.000375
+solve once for 6080 = -1
+End at: 2020-10-13 00:54:06.314854
+Time elapsed: 0:00:00.207800
+Begin at: 2020-10-13 00:54:06.134043
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8787.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8787.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '6080', '--fibonacci_n', '6080', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8787.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 6080
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(6080)=940093946426249029
+solve_once with cache_size 16 misses 25 duration 0.000364
+solve once for 6080 = -1
+End at: 2020-10-13 00:54:06.227659
+Time elapsed: 0:00:00.093662
+Begin at: 2020-10-13 00:54:06.016450
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8788.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_6_pid_8788.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '6080', '--fibonacci_n', '6080', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8788.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 6080
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(6080)=940093946426249029
+solve_once with cache_size 16 misses 25 duration 0.000229
+solve once for 6080 = -1
+End at: 2020-10-13 00:54:06.083371
+Time elapsed: 0:00:00.066947
+Begin at: 2020-10-13 00:54:06.026267
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8790.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8790.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '6080', '--fibonacci_n', '6080', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8790.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 6080
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(6080)=940093946426249029
+solve_once with cache_size 16 misses 25 duration 0.000325
+solve once for 6080 = -1
+End at: 2020-10-13 00:54:06.183511
+Time elapsed: 0:00:00.157282
+Begin at: 2020-10-13 00:54:06.127732
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8789.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8789.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '6080', '--fibonacci_n', '6080', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8789.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 6080
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(6080)=940093946426249029
+solve_once with cache_size 16 misses 25 duration 0.000237
+solve once for 6080 = -1
+End at: 2020-10-13 00:54:06.223601
+Time elapsed: 0:00:00.095924
+Begin at: 2020-10-13 00:54:05.996955
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_5_pid_8791.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_5_pid_8791.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '6080', '--fibonacci_n', '6080', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_6080_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_5_pid_8791.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 6080
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(6080)=940093946426249029
+solve_once with cache_size 16 misses 25 duration 0.000313
+solve once for 6080 = -1
+End at: 2020-10-13 00:54:06.243057
+Time elapsed: 0:00:00.246176
+Begin at: 2020-10-13 00:54:06.105021
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8792.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8792.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '7060', '--fibonacci_n', '7060', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8792.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 7060
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(7060)=8544237559919757219
+solve_once with cache_size 16 misses 25 duration 0.000668
+solve once for 7060 = -1
+End at: 2020-10-13 00:54:06.295368
+Time elapsed: 0:00:00.190445
+Begin at: 2020-10-13 00:54:06.098003
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8793.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8793.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '7060', '--fibonacci_n', '7060', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8793.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 7060
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(7060)=8544237559919757219
+solve_once with cache_size 16 misses 25 duration 0.000527
+solve once for 7060 = -1
+End at: 2020-10-13 00:54:06.217272
+Time elapsed: 0:00:00.119296
+Begin at: 2020-10-13 00:54:06.105649
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8794.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_6_pid_8794.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '7060', '--fibonacci_n', '7060', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8794.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 7060
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(7060)=8544237559919757219
+solve_once with cache_size 16 misses 25 duration 0.000265
+solve once for 7060 = -1
+End at: 2020-10-13 00:54:06.323470
+Time elapsed: 0:00:00.217948
+Begin at: 2020-10-13 00:54:06.066316
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8796.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8796.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '7060', '--fibonacci_n', '7060', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8796.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 7060
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(7060)=8544237559919757219
+solve_once with cache_size 16 misses 25 duration 0.000451
+solve once for 7060 = -1
+End at: 2020-10-13 00:54:06.202985
+Time elapsed: 0:00:00.136697
+Begin at: 2020-10-13 00:54:06.057822
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8795.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8795.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '7060', '--fibonacci_n', '7060', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8795.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 7060
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(7060)=8544237559919757219
+solve_once with cache_size 16 misses 25 duration 0.000259
+solve once for 7060 = -1
+End at: 2020-10-13 00:54:06.170890
+Time elapsed: 0:00:00.113117
+Begin at: 2020-10-13 00:54:06.088451
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8797.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8797.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '7060', '--fibonacci_n', '7060', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_7060_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8797.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 7060
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(7060)=8544237559919757219
+solve_once with cache_size 16 misses 25 duration 0.000351
+solve once for 7060 = -1
+End at: 2020-10-13 00:54:06.256130
+Time elapsed: 0:00:00.167760
+Begin at: 2020-10-13 00:54:06.042343
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8798.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8798.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '8040', '--fibonacci_n', '8040', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8798.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 8040
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(8040)=7000246172718925024
+solve_once with cache_size 16 misses 25 duration 0.000202
+solve once for 8040 = -1
+End at: 2020-10-13 00:54:06.142843
+Time elapsed: 0:00:00.100548
+Begin at: 2020-10-13 00:54:06.123753
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8799.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8799.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '8040', '--fibonacci_n', '8040', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8799.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 8040
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(8040)=7000246172718925024
+solve_once with cache_size 16 misses 25 duration 0.000242
+solve once for 8040 = -1
+End at: 2020-10-13 00:54:06.242381
+Time elapsed: 0:00:00.118691
+Begin at: 2020-10-13 00:54:05.825097
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8800.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_5_pid_8800.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '8040', '--fibonacci_n', '8040', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_5_pid_8800.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 8040
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(8040)=7000246172718925024
+solve_once with cache_size 16 misses 25 duration 0.000220
+solve once for 8040 = -1
+End at: 2020-10-13 00:54:05.919157
+Time elapsed: 0:00:00.094089
+Begin at: 2020-10-13 00:54:06.094325
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8802.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8802.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '8040', '--fibonacci_n', '8040', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8802.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 8040
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(8040)=7000246172718925024
+solve_once with cache_size 16 misses 25 duration 0.000234
+solve once for 8040 = -1
+End at: 2020-10-13 00:54:06.193645
+Time elapsed: 0:00:00.099362
+Begin at: 2020-10-13 00:54:06.091946
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8801.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8801.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '8040', '--fibonacci_n', '8040', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8801.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 8040
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(8040)=7000246172718925024
+solve_once with cache_size 16 misses 25 duration 0.000303
+solve once for 8040 = -1
+End at: 2020-10-13 00:54:06.235169
+Time elapsed: 0:00:00.143253
+Begin at: 2020-10-13 00:54:06.142107
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8803.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8803.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '8040', '--fibonacci_n', '8040', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_8040_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8803.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 8040
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(8040)=7000246172718925024
+solve_once with cache_size 16 misses 25 duration 0.000352
+solve once for 8040 = -1
+End at: 2020-10-13 00:54:06.342019
+Time elapsed: 0:00:00.199974
+Begin at: 2020-10-13 00:54:06.154516
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8804.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nri_clock_misses_for_size_2020_10_13_0_54_6_pid_8804.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_clock', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '9020', '--fibonacci_n', '9020', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nri_clock_execution_trace_2020_10_13_0_54_6_pid_8804.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 9020
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(9020)=-6696497473073874819
+solve_once with cache_size 16 misses 27 duration 0.000293
+solve once for 9020 = -1
+End at: 2020-10-13 00:54:06.315653
+Time elapsed: 0:00:00.161173
+Begin at: 2020-10-13 00:54:06.124771
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8805.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nri_d_drunken_misses_for_size_2020_10_13_0_54_6_pid_8805.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nri_d_drunken', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '9020', '--fibonacci_n', '9020', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nri_d_drunken_execution_trace_2020_10_13_0_54_6_pid_8805.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 9020
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(9020)=-6696497473073874819
+solve_once with cache_size 16 misses 27 duration 0.000295
+solve once for 9020 = -1
+End at: 2020-10-13 00:54:06.217090
+Time elapsed: 0:00:00.092357
+Begin at: 2020-10-13 00:54:06.131470
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8806.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_clock_absolute_misses_for_size_2020_10_13_0_54_6_pid_8806.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '9020', '--fibonacci_n', '9020', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_clock_absolute_execution_trace_2020_10_13_0_54_6_pid_8806.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 9020
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(9020)=-6696497473073874819
+solve_once with cache_size 16 misses 27 duration 0.000286
+solve once for 9020 = -1
+End at: 2020-10-13 00:54:06.292682
+Time elapsed: 0:00:00.161279
+Begin at: 2020-10-13 00:54:06.130477
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8808.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_clock_relative_misses_for_size_2020_10_13_0_54_6_pid_8808.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_clock_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '9020', '--fibonacci_n', '9020', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_clock_relative_execution_trace_2020_10_13_0_54_6_pid_8808.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 9020
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(9020)=-6696497473073874819
+solve_once with cache_size 16 misses 27 duration 0.000310
+solve once for 9020 = -1
+End at: 2020-10-13 00:54:06.304240
+Time elapsed: 0:00:00.173804
+Begin at: 2020-10-13 00:54:06.141129
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8807.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_d_drunken_absolute_misses_for_size_2020_10_13_0_54_6_pid_8807.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_absolute', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '9020', '--fibonacci_n', '9020', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_d_drunken_absolute_execution_trace_2020_10_13_0_54_6_pid_8807.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 9020
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(9020)=-6696497473073874819
+solve_once with cache_size 16 misses 27 duration 0.000256
+solve once for 9020 = -1
+End at: 2020-10-13 00:54:06.228804
+Time elapsed: 0:00:00.087708
+Begin at: 2020-10-13 00:54:06.125735
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8809.log', '--mbt_cache_misses_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_d_drunken_relative_misses_for_size_2020_10_13_0_54_6_pid_8809.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '16', '--memo_cache_size', '17', '--memo_lru_queue_size', '16', '--memo_caching_strategy', 'nru_d_drunken_relative', '--memo_key_length', '8', '--memo_value_length', '8', '--memo_event_log_fname', 'event_log', '--memo_cuckoo_k', '4', '--memo_k_timestamps', '5', '--memo_a_items_per_timestamp_factor', '0.224609', '--memo_d_recent_timestamps', '4', '--mbt_problem_type', 'fibonacci', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'solve_once', '--mbt_cutoff_ratio', '2.2', '--mbt_instance_fname', '9020', '--fibonacci_n', '9020', '--fibonacci_version', '2ar', '--fibonacci_execution_trace_fname', './fib_2ar_2020_10_13__00_54_05/fib_n_9020_min_1_max_16_v_2ar_nru_d_drunken_relative_execution_trace_2020_10_13_0_54_6_pid_8809.log']
+solve_once chosen
+fibonacci fibonacci 16
+initialize_long_int_cache begin
+init_memo
+initialize_nru begin
+initialize_cuckoo done
+initialize_nru_parameters done N=17 K=5 D=4 A=0.224609 AN=4 ALPHA=0.900000 PHI=0.369135 AGE=6
+initialize_nru end
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+initializing problem
+initialize_fibonacci, N = 9020
+initialize_fibonacci, version = 2ar
+done initializing problem
+commence trials
+starting solve_once with cache size 16
+solve_fibonacci
+Done. fibonacci(9020)=-6696497473073874819
+solve_once with cache_size 16 misses 27 duration 0.000336
+solve once for 9020 = -1
+End at: 2020-10-13 00:54:06.267459
+Time elapsed: 0:00:00.141762

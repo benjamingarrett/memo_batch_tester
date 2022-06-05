@@ -1,0 +1,354 @@
+Flat profile:
+
+Each sample counts as 0.01 seconds.
+  %   cumulative   self              self     total           
+ time   seconds   seconds    calls  ms/call  ms/call  name    
+ 48.48    904.57   904.57                             add_portal_points
+ 25.62   1382.66   478.09                             portalize
+ 24.69   1843.41   460.75                             add_global_segment
+  0.74   1857.26    13.85                             perturb
+  0.16   1860.29     3.03                             get_real_distance
+  0.09   1862.03     1.74                             path_point_equals
+  0.08   1863.58     1.55                             get_path_point_array
+  0.07   1864.89     1.31                             set_preemptive_halt_arora
+  0.02   1865.27     0.38        1   380.01   380.01  create_raw_tables
+  0.01   1865.41     0.14                             bubblesort_path_points_increasing
+  0.00   1865.50     0.09                             add_global_segments
+  0.00   1865.59     0.09                             bubblesort_path_points_decreasing
+  0.00   1865.68     0.09  1314009     0.00     0.00  get_linear_probe
+  0.00   1865.72     0.04  1783524     0.00     0.00  MurmurHash64A
+  0.00   1865.76     0.04                             add_left_child_points
+  0.00   1865.79     0.03                             add_regions
+  0.00   1865.82     0.03                             copy_path_point
+  0.00   1865.85     0.03                             divy_points
+  0.00   1865.88     0.03                             get_integer_distance
+  0.00   1865.90     0.02                             do_two_portal_leaf_path
+  0.00   1865.92     0.02                             get_int64_t_matrix
+  0.00   1865.94     0.02                             get_path_ORIGINAL
+  0.00   1865.96     0.02                             unify_data_and_portals
+  0.00   1865.98     0.02                             write_graphing_data
+  0.00   1865.99     0.01   469515     0.00     0.00  put_linear_probe
+  0.00   1866.00     0.01                             add_link
+  0.00   1866.01     0.01                             construct_shortest_path
+  0.00   1866.02     0.01                             get_best_data_point_position_MANUAL
+  0.00   1866.03     0.01                             get_child_indices_portrait_two
+  0.00   1866.04     0.01                             memo_get_best_ORIGINAL
+  0.00   1866.05     0.01                             set_partition
+  0.00   1866.06     0.01                             set_path_point
+  0.00   1866.06     0.00   844494     0.00     0.00  cache_read
+  0.00   1866.06     0.00   844494     0.00     0.00  read_hashing
+  0.00   1866.06     0.00   469515     0.00     0.00  cache_write
+  0.00   1866.06     0.00   469515     0.00     0.00  write_hashing
+  0.00   1866.06     0.00        2     0.00     0.00  get_operation_count
+  0.00   1866.06     0.00        1     0.00     0.00  calculate_table_size
+  0.00   1866.06     0.00        1     0.00     0.00  get_probe_count
+  0.00   1866.06     0.00        1     0.00   380.01  init_memo
+  0.00   1866.06     0.00        1     0.00   380.01  initialize_hashing
+  0.00   1866.06     0.00        1     0.00   380.01  initialize_long_int_cache
+  0.00   1866.06     0.00        1     0.00     0.00  solve_once
+  0.00   1866.06     0.00        1     0.00     0.00  test_check_initialize_testing_structs_disabled
+
+ %         the percentage of the total running time of the
+time       program used by this function.
+
+cumulative a running sum of the number of seconds accounted
+ seconds   for by this function and those listed above it.
+
+ self      the number of seconds accounted for by this
+seconds    function alone.  This is the major sort for this
+           listing.
+
+calls      the number of times this function was invoked, if
+           this function is profiled, else blank.
+
+ self      the average number of milliseconds spent in this
+ms/call    function per call, if this function is profiled,
+	   else blank.
+
+ total     the average number of milliseconds spent in this
+ms/call    function and its descendents per call, if this
+	   function is profiled, else blank.
+
+name       the name of the function.  This is the minor sort
+           for this listing. The index shows the location of
+	   the function in the gprof listing. If the index is
+	   in parenthesis it shows where it would appear in
+	   the gprof listing if it were to be printed.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+		     Call graph (explanation follows)
+
+
+granularity: each sample hit covers 2 byte(s) for 0.00% of 1866.06 seconds
+
+index % time    self  children    called     name
+                                                 <spontaneous>
+[1]     48.5  904.57    0.00                 add_portal_points [1]
+-----------------------------------------------
+                                                 <spontaneous>
+[2]     25.6  478.09    0.00                 portalize [2]
+-----------------------------------------------
+                                                 <spontaneous>
+[3]     24.7  460.75    0.00                 add_global_segment [3]
+-----------------------------------------------
+                                                 <spontaneous>
+[4]      0.7   13.85    0.00                 perturb [4]
+-----------------------------------------------
+                                                 <spontaneous>
+[5]      0.2    3.03    0.00                 get_real_distance [5]
+-----------------------------------------------
+                                                 <spontaneous>
+[6]      0.1    1.74    0.00                 path_point_equals [6]
+-----------------------------------------------
+                                                 <spontaneous>
+[7]      0.1    1.55    0.00                 get_path_point_array [7]
+-----------------------------------------------
+                                                 <spontaneous>
+[8]      0.1    1.31    0.00                 set_preemptive_halt_arora [8]
+-----------------------------------------------
+                0.38    0.00       1/1           initialize_hashing [11]
+[9]      0.0    0.38    0.00       1         create_raw_tables [9]
+-----------------------------------------------
+                0.00    0.38       1/1           initialize_long_int_cache [12]
+[10]     0.0    0.00    0.38       1         init_memo [10]
+                0.00    0.38       1/1           initialize_hashing [11]
+-----------------------------------------------
+                0.00    0.38       1/1           init_memo [10]
+[11]     0.0    0.00    0.38       1         initialize_hashing [11]
+                0.38    0.00       1/1           create_raw_tables [9]
+                0.00    0.00       1/1           calculate_table_size [44]
+                0.00    0.00       1/1           test_check_initialize_testing_structs_disabled [47]
+-----------------------------------------------
+                0.00    0.38       1/1           memo_batch_test [13]
+[12]     0.0    0.00    0.38       1         initialize_long_int_cache [12]
+                0.00    0.38       1/1           init_memo [10]
+-----------------------------------------------
+                                                 <spontaneous>
+[13]     0.0    0.00    0.38                 memo_batch_test [13]
+                0.00    0.38       1/1           initialize_long_int_cache [12]
+                0.00    0.00       1/1           solve_once [46]
+-----------------------------------------------
+                                                 <spontaneous>
+[14]     0.0    0.14    0.00                 bubblesort_path_points_increasing [14]
+-----------------------------------------------
+                0.03    0.01  469515/1314009     put_linear_probe [22]
+                0.06    0.02  844494/1314009     read_hashing [19]
+[15]     0.0    0.09    0.03 1314009         get_linear_probe [15]
+                0.03    0.00 1314009/1783524     MurmurHash64A [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[16]     0.0    0.09    0.00                 add_global_segments [16]
+-----------------------------------------------
+                                                 <spontaneous>
+[17]     0.0    0.09    0.00                 bubblesort_path_points_decreasing [17]
+-----------------------------------------------
+                0.00    0.08  844494/844494      get_table_cost [20]
+[18]     0.0    0.00    0.08  844494         cache_read [18]
+                0.00    0.08  844494/844494      read_hashing [19]
+-----------------------------------------------
+                0.00    0.08  844494/844494      cache_read [18]
+[19]     0.0    0.00    0.08  844494         read_hashing [19]
+                0.06    0.02  844494/1314009     get_linear_probe [15]
+-----------------------------------------------
+                                                 <spontaneous>
+[20]     0.0    0.00    0.08                 get_table_cost [20]
+                0.00    0.08  844494/844494      cache_read [18]
+-----------------------------------------------
+                0.00    0.06  469515/469515      set_table_cost [24]
+[21]     0.0    0.00    0.06  469515         cache_write [21]
+                0.00    0.06  469515/469515      write_hashing [23]
+-----------------------------------------------
+                0.01    0.05  469515/469515      write_hashing [23]
+[22]     0.0    0.01    0.05  469515         put_linear_probe [22]
+                0.03    0.01  469515/1314009     get_linear_probe [15]
+                0.01    0.00  469515/1783524     MurmurHash64A [25]
+-----------------------------------------------
+                0.00    0.06  469515/469515      cache_write [21]
+[23]     0.0    0.00    0.06  469515         write_hashing [23]
+                0.01    0.05  469515/469515      put_linear_probe [22]
+-----------------------------------------------
+                                                 <spontaneous>
+[24]     0.0    0.00    0.06                 set_table_cost [24]
+                0.00    0.06  469515/469515      cache_write [21]
+-----------------------------------------------
+                0.01    0.00  469515/1783524     put_linear_probe [22]
+                0.03    0.00 1314009/1783524     get_linear_probe [15]
+[25]     0.0    0.04    0.00 1783524         MurmurHash64A [25]
+-----------------------------------------------
+                                                 <spontaneous>
+[26]     0.0    0.04    0.00                 add_left_child_points [26]
+-----------------------------------------------
+                                                 <spontaneous>
+[27]     0.0    0.03    0.00                 add_regions [27]
+-----------------------------------------------
+                                                 <spontaneous>
+[28]     0.0    0.03    0.00                 copy_path_point [28]
+-----------------------------------------------
+                                                 <spontaneous>
+[29]     0.0    0.03    0.00                 divy_points [29]
+-----------------------------------------------
+                                                 <spontaneous>
+[30]     0.0    0.03    0.00                 get_integer_distance [30]
+-----------------------------------------------
+                                                 <spontaneous>
+[31]     0.0    0.02    0.00                 do_two_portal_leaf_path [31]
+-----------------------------------------------
+                                                 <spontaneous>
+[32]     0.0    0.02    0.00                 get_int64_t_matrix [32]
+-----------------------------------------------
+                                                 <spontaneous>
+[33]     0.0    0.02    0.00                 get_path_ORIGINAL [33]
+-----------------------------------------------
+                                                 <spontaneous>
+[34]     0.0    0.02    0.00                 unify_data_and_portals [34]
+-----------------------------------------------
+                                                 <spontaneous>
+[35]     0.0    0.02    0.00                 write_graphing_data [35]
+-----------------------------------------------
+                                                 <spontaneous>
+[36]     0.0    0.01    0.00                 add_link [36]
+-----------------------------------------------
+                                                 <spontaneous>
+[37]     0.0    0.01    0.00                 construct_shortest_path [37]
+-----------------------------------------------
+                                                 <spontaneous>
+[38]     0.0    0.01    0.00                 get_best_data_point_position_MANUAL [38]
+-----------------------------------------------
+                                                 <spontaneous>
+[39]     0.0    0.01    0.00                 get_child_indices_portrait_two [39]
+-----------------------------------------------
+                                                 <spontaneous>
+[40]     0.0    0.01    0.00                 memo_get_best_ORIGINAL [40]
+-----------------------------------------------
+                                                 <spontaneous>
+[41]     0.0    0.01    0.00                 set_partition [41]
+-----------------------------------------------
+                                                 <spontaneous>
+[42]     0.0    0.01    0.00                 set_path_point [42]
+-----------------------------------------------
+                0.00    0.00       2/2           calculate_results [81]
+[43]     0.0    0.00    0.00       2         get_operation_count [43]
+-----------------------------------------------
+                0.00    0.00       1/1           initialize_hashing [11]
+[44]     0.0    0.00    0.00       1         calculate_table_size [44]
+-----------------------------------------------
+                0.00    0.00       1/1           calculate_results [81]
+[45]     0.0    0.00    0.00       1         get_probe_count [45]
+-----------------------------------------------
+                0.00    0.00       1/1           memo_batch_test [13]
+[46]     0.0    0.00    0.00       1         solve_once [46]
+-----------------------------------------------
+                0.00    0.00       1/1           initialize_hashing [11]
+[47]     0.0    0.00    0.00       1         test_check_initialize_testing_structs_disabled [47]
+-----------------------------------------------
+
+ This table describes the call tree of the program, and was sorted by
+ the total amount of time spent in each function and its children.
+
+ Each entry in this table consists of several lines.  The line with the
+ index number at the left hand margin lists the current function.
+ The lines above it list the functions that called this function,
+ and the lines below it list the functions this one called.
+ This line lists:
+     index	A unique number given to each element of the table.
+		Index numbers are sorted numerically.
+		The index number is printed next to every function name so
+		it is easier to look up where the function is in the table.
+
+     % time	This is the percentage of the `total' time that was spent
+		in this function and its children.  Note that due to
+		different viewpoints, functions excluded by options, etc,
+		these numbers will NOT add up to 100%.
+
+     self	This is the total amount of time spent in this function.
+
+     children	This is the total amount of time propagated into this
+		function by its children.
+
+     called	This is the number of times the function was called.
+		If the function called itself recursively, the number
+		only includes non-recursive calls, and is followed by
+		a `+' and the number of recursive calls.
+
+     name	The name of the current function.  The index number is
+		printed after it.  If the function is a member of a
+		cycle, the cycle number is printed between the
+		function's name and the index number.
+
+
+ For the function's parents, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the function into this parent.
+
+     children	This is the amount of time that was propagated from
+		the function's children into this parent.
+
+     called	This is the number of times this parent called the
+		function `/' the total number of times the function
+		was called.  Recursive calls to the function are not
+		included in the number after the `/'.
+
+     name	This is the name of the parent.  The parent's index
+		number is printed after it.  If the parent is a
+		member of a cycle, the cycle number is printed between
+		the name and the index number.
+
+ If the parents of the function cannot be determined, the word
+ `<spontaneous>' is printed in the `name' field, and all the other
+ fields are blank.
+
+ For the function's children, the fields have the following meanings:
+
+     self	This is the amount of time that was propagated directly
+		from the child into the function.
+
+     children	This is the amount of time that was propagated from the
+		child's children to the function.
+
+     called	This is the number of times the function called
+		this child `/' the total number of times the child
+		was called.  Recursive calls by the child are not
+		listed in the number after the `/'.
+
+     name	This is the name of the child.  The child's index
+		number is printed after it.  If the child is a
+		member of a cycle, the cycle number is printed
+		between the name and the index number.
+
+ If there are any cycles (circles) in the call graph, there is an
+ entry for the cycle-as-a-whole.  This entry shows who called the
+ cycle (as parents) and the members of the cycle (as children.)
+ The `+' recursive calls entry shows the number of function calls that
+ were internal to the cycle, and the calls entry for each member shows,
+ for that member, how many times it was called from other members of
+ the cycle.
+
+Copyright (C) 2012-2018 Free Software Foundation, Inc.
+
+Copying and distribution of this file, with or without modification,
+are permitted in any medium without royalty provided the copyright
+notice and this notice are preserved.
+
+Index by function name
+
+  [25] MurmurHash64A          [29] divy_points            [40] memo_get_best_ORIGINAL
+   [3] add_global_segment     [31] do_two_portal_leaf_path [6] path_point_equals
+  [16] add_global_segments    [38] get_best_data_point_position_MANUAL [4] perturb
+  [26] add_left_child_points  [39] get_child_indices_portrait_two [2] portalize
+  [36] add_link               [32] get_int64_t_matrix     [22] put_linear_probe
+   [1] add_portal_points      [30] get_integer_distance   [19] read_hashing
+  [27] add_regions            [15] get_linear_probe       [41] set_partition
+  [17] bubblesort_path_points_decreasing [43] get_operation_count [42] set_path_point
+  [14] bubblesort_path_points_increasing [33] get_path_ORIGINAL [8] set_preemptive_halt_arora
+  [18] cache_read              [7] get_path_point_array   [46] solve_once
+  [21] cache_write            [45] get_probe_count        [47] test_check_initialize_testing_structs_disabled
+  [44] calculate_table_size    [5] get_real_distance      [34] unify_data_and_portals
+  [37] construct_shortest_path [10] init_memo             [35] write_graphing_data
+  [28] copy_path_point        [11] initialize_hashing     [23] write_hashing
+   [9] create_raw_tables      [12] initialize_long_int_cache

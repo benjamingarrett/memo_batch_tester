@@ -9,8 +9,8 @@
 #sequence_description=special_operation_sequence_without_feedback-003-10368-100000
 
 
-sequence_description=special_operation_sequence_without_feedback-004-10240-100000
-#sequence_description=operation_sequence_without_feedback-100000-2000-balanced
+#sequence_description=special_operation_sequence_without_feedback-004-10240-100000
+sequence_description=operation_sequence_without_feedback-100000-2000-balanced
 #sequence_description=operation_sequence_without_feedback-100000-2000-read-heavy
 #sequence_description=operation_sequence_without_feedback-100000-2000-repeat-reads
 
@@ -40,8 +40,9 @@ function do_test {
 }
 
 
-do_test nri_clock 512 8 7 $operation_sequence $sequence_description $parent
-
+do_test lru 4 3 2 $operation_sequence $sequence_description $parent
+do_test nri_clock 16 3 2 $operation_sequence $sequence_description $parent
+do_test_nri_d_drunken 16 3 2  $operation_sequence $sequence_description $parent
 
 
 

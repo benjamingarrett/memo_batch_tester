@@ -1,12 +1,9 @@
 from datetime import datetime
 import os,subprocess,sys
-from scripts_common import flatten, init_args, init_debug_args
+from scripts_common import *
 from memo_arguments import memo
 from mbt_arguments import mbt
-
-
-first_size = lambda x: 2*x
-max_cache_size = lambda x: 2*x
+from nru_parameters import nru
 
 
 class kmp:
@@ -66,161 +63,106 @@ class kmp:
   def set_num_random_iterations(d, v):
     d['--lig_num_random_iterations'] = str(v)
 
-
-def do_trials(a):
-  args = flatten(a)
-  fp = open(execution_trace_fname, 'a')
-  fp.write(str(args))
-  fp.close()
-  subprocess.call(args)
-  os.system("rm -f event_log")
-
-
-def do_ff_anb_trials(a):
-  print('do_ff_anb_trials')
-  num_trials = 1
-  sizes = [5,10,20,30,40,50,60,70,80,90]
-  kmp.set_algorithm_version(a,'failure_function_single')
-  for n in sizes:
-    mbt.set_instance_name(a,str(n)+'-anb-single.kmp')
-    kmp.set_instance_path(a,input_dir+'/'+input_type+'/'+str(n)+'-anb-single.kmp')
-
-    #NO!
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_ff_anb_'+str(num_trials))
-
-    print(a)
-    subprocess.call(flatten(a))
-    num_trials += 1
-
-
-def do_ps_anb_trials(a):
-  print('do_ps_anb_trials')
-  num_trials = 1
-  sizes = [1600,3200,6400,12800,25600,51200]
-  sizes = [102400]
-  sizes = [204800]
-  sizes = [409600]
-  sizes = [819200]
-  kmp.set_algorithm_version(a,'prefix_suffix_single')
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    mbt.set_instance_name(a,str(n)+'-anb-single.kmp')
-    kmp.set_instance_path(a,input_dir+'/'+input_type+'/'+str(n)+'-anb-single.kmp')
-
-    #NO!
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_ps_anb_'+str(num_trials))
-
-    print(a)
-    subprocess.call(flatten(a))
-    num_trials += 1
-
-
-def do_ps_rand_trials(a):
-  print('do_ps_rand_trials')
-  num_trials = 1
-  sizes = [90]
-  alphabets = [1,3,7,15]
-  kmp.set_algorithm_version(a,'prefix_suffix_single')
-  for n in sizes:
-    for k in alphabets:
-      j = 0
-      while j<=9999:
-        s = str(n)+'-random-0-'+str(k)+'-'+str(j)+'-single.kmp'
-        mbt.set_instance_name(a,s)
-        kmp.set_instance_path(a,input_dir+'/'+input_type+'/'+s)
-
-        #NO!
-        mbt.set_cache_misses_fname(a,output_path+'/misses_for_size_'+s+'_'+str(num_trials))
-
-        print(a)
-        subprocess.call(flatten(a))
-        num_trials += 1
+  @staticmethod
+  def set_execution_trace_fname(d, v):
+    d['--kmp_execution_trace_fname'] = str(v)
 
 
 """
 KMP: Knuth Morris Pratt
-argv[1]: min_cache_size
-argv[2]: max_cache_size
-argv[3]: problem_size (n)
-argv[4]: run_ps: 0=False, 1=True
-argv[5]: run_ff: 0=False, 1=True
-argv[6]: metric_type: 'solve_once' (default), 'no_preemptive_halt', 'explore_sweet_spots'
-argv[7]: output_path
-argv[8]: --lig_instance_type
-argv[9]: --lig_n
-argv[10]: --lig_b
+argv[1]: problem size (n)
+argv[2]: algorithm version: failure_function, suffix_prefix_function, search_knuth, failure_function_single, prefix_suffix_single
+argv[3]: caching strategy: lru, nri_clock, nri_d_drunken, etc.
+argv[4]: cache size
+argv[5]: k timestamps (NRI/NRU)
+argv[6]: d recent timestamps (NRI/NRU)
+argv[7]: a_items_per_timestamp
+argv[8]: metric_type: 'solve_once' (default), 'no_preemptive_halt', 'explore_sweet_spots'
+argv[9]: parent_folder
+argv[10]: output_path
+argv[11]: misses_for_cach_size_fname
+argv[12]: misses_for_prob_size_fname
+argv[13]: --lig_instance_type
 """
-print('args {}'.format(sys.argv))
+print('kmp>py args {}'.format(sys.argv))
 
 beginning = datetime.now()
 a = init_args()
 #a=init_debug_args()
-run_ps = bool(str(sys.argv[4]).casefold()=='1'.casefold())
-run_ff = bool(str(sys.argv[5]).casefold()=='1'.casefold())
-if run_ps and run_ff or not(run_ps or run_ff):
-  print('Must choose either run_ps or run_ff')
-  exit()
-if run_ps:
-  solution_type='run_ps'
-  kmp.set_algorithm_version(a,'prefix_suffix_single')
-elif run_ff:
-  solution_type='run_ff'
-  kmp.set_algorithm_version(a,'failure_function_single')
-else:
-  print('no_solution_type')
-  exit()
 
-prefix = 'kmp_n_'+str(sys.argv[3])+'_min_'+str(sys.argv[1])+'_max_'+str(sys.argv[2])+'_'+solution_type+'_'+str(sys.argv[8])
-suffix = str(beginning.year)+'_'+str(beginning.month)+'_'+str(beginning.day)+'_'+str(beginning.hour)+'_'+str(beginning.minute)+'_'+str(beginning.second)+'_pid_'+str(os.getpid())
-execution_trace_name = prefix+'_execution_trace_'+suffix+'.log'
-experiment_name = prefix+'_misses_for_size_'+suffix+'.csv'
-output_path = str(sys.argv[7])
-execution_trace_fname = output_path+execution_trace_name
-cache_misses_fname = output_path+experiment_name
+problem_size = int(sys.argv[1])
+algorithm_version = str(sys.argv[2])
+caching_strategy = str(sys.argv[3])
+cache_size = int(sys.argv[4])
+k_timestamps = int(sys.argv[5])
+d_recent_timestamps = int(sys.argv[6])
+a_items_per_timestamp = float(sys.argv[7])
+metric_type = str(sys.argv[8])
+parent_folder = str(sys.argv[9])
+output_path = str(sys.argv[10])
+misses_for_cach_size_fname = str(sys.argv[11])
+misses_for_prob_size_fname = str(sys.argv[12])
+lcs_instance_type = str(sys.argv[13])
+detailed_out_fname = str(sys.argv[14])
+phi_N = float(sys.argv[15])
 
-kmp.set_instance_type(a, sys.argv[8])
-kmp.set_instance_size(a, sys.argv[9])
+prefix = algorithm_version + '_n_' + str(problem_size) + '_cache_size_' + str(cache_size) + '_' + caching_strategy + '_k_' + str(k_timestamps) + '_d_' + str(d_recent_timestamps)
 
-mbt.set_cache_misses_fname(a, cache_misses_fname)
-mbt.set_execution_trace_fname(a, execution_trace_fname)
+suffix = str(beginning.year) + '_' + str(beginning.month) + '_' + str(beginning.day) + '_' + str(beginning.hour) + '_' + str(beginning.minute) + '_' + str(beginning.second) + '_pid_' + str(os.getpid())
+
+execution_trace_name = prefix + '_execution_trace_' + suffix + '.log'
+experiment_name = prefix + '_misses_for_size_' + suffix + '.csv'
+execution_trace_fname = output_path + execution_trace_name
+misses_for_prob_size_fname = os.path.join(parent_folder, misses_for_prob_size_fname)
+misses_for_cach_size_fname = os.path.join(parent_folder, misses_for_cach_size_fname)
+
 fp=open(execution_trace_fname, 'w')
 fp.write('Begin at: {}\n'.format(beginning))
 fp.close()
-mbt.set_cutoff_min_size(a, int(sys.argv[1]))
-mbt.set_cutoff_max_size(a, int(sys.argv[2]))
-memo.set_lru_cache_size(a, int(sys.argv[2]))
-memo.set_caching_strategy(a, 'lru')
-memo.set_key_length(a, 8)
-memo.set_value_length(a, 8)
-memo.set_event_log_fname(a, 'event_log')
+
+mbt.set_execution_trace_fname(a, execution_trace_fname)
+mbt.set_cache_misses_fname(a, misses_for_cach_size_fname)
+mbt.set_misses_for_problem_size_fname(a, misses_for_prob_size_fname)
+mbt.set_cutoff_min_size(a, cache_size)
+mbt.set_cutoff_max_size(a, cache_size)
 mbt.set_problem_type(a, 'kmp')
-mbt.set_output_fname(a, 'output_csize')
-mbt.set_append_results(a, True)
-mbt.set_metric_type(a, str(sys.argv[6]))   # 'solve_once', 'explore_sweet_spots', etc.
+mbt.set_metric_type(a, metric_type)
 mbt.set_cutoff_ratio(a, 2.2)
+mbt.set_instance_name(a, str(problem_size))
+mbt.set_detailed_cache_misses_out_fname(a, detailed_out_fname)
+mbt.set_phi_N(a, phi_N)
+
+kmp.set_algorithm_version(a, algorithm_version)
+kmp.set_instance_type(a, lcs_instance_type)
+kmp.set_instance_size(a, problem_size)
 kmp.set_use_pseudocache(a, False)
 kmp.set_log_function_calls(a, True)
 kmp.set_permutation_number(a, 0)
 
 kmp.set_random_max_alphabet(a, 1)   # TODO: hardcoding this for now!!
 kmp.set_num_random_iterations(a, 1)   # TODO: hardcoding this for now!!
-if len(sys.argv) > 10:
-  kmp.set_lig_b(a, sys.argv[10])
+if False:  # not needed right now
+  kmp.set_lig_b(a, 1.0)
+kmp.set_execution_trace_fname(a, execution_trace_fname);
 
-os.system("rm -f "+output_path+"/cache*")
-os.system("rm -f kmp_execution_trace.log")
+memo.set_caching_strategy(a, caching_strategy)
+if caching_strategy == 'lru':
+  memo.set_memo_cache_size(a, cache_size+1)
+  memo.set_lru_queue_size(a, cache_size)
+else:
+  memo.set_memo_cache_size(a, cache_size)
+  memo.set_lru_queue_size(a, cache_size)
+memo.set_cuckoo_k(a, 4)
+memo.set_key_length(a, 8)
+memo.set_value_length(a, 8)
+memo.set_k_timestamps(a, k_timestamps)
+memo.set_d_recent_timestamps(a, d_recent_timestamps)
+memo.set_a_items_per_timestamp(a, a_items_per_timestamp)
 
-fp = open(cache_misses_fname, 'w')
-fp.write('COMMENT,{}\n'.format(str(prefix)))
-fp.write('SORT_BY,{}\n'.format(str(sys.argv[3])))
-fp.close()
-
-#do_ff_anb_trials(a)
-#do_ps_anb_trials(a)
-#do_ps_rand_trials(a)
-do_trials(a)
+do_trials(a, execution_trace_fname)
 
 fp=open(execution_trace_fname,'a')
 fp.write('End at: {}\n'.format(datetime.now()))
 fp.write('Time elapsed: {}\n'.format(datetime.now()-beginning))
 fp.close()
+

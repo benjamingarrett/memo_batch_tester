@@ -1,0 +1,227 @@
+Begin at: 2020-09-26 00:27:07.341439
+['../dist/Debug/GNU-Linux/memo_batch_tester', '', '--arora_instance_fname', '../../misc_phd/input/tsp_instances/tsplib/berlin52.tsp', '--arora_results_directory', './a100_berlin52_2020_09_26__00_27_07/', '--arora_logs_fname', './a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_execution_trace_2020_9_26_0_27_7_pid_24612.log', '--mbt_execution_trace_fname', './a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_execution_trace_2020_9_26_0_27_7_pid_24612.log', '--arora_points_per_border', '2', '--arora_write_graphing_data', '1', '--arora_write_tspr', '1', '--arora_do_solve', '1', '--arora_do_find_tour', '1', '--arora_key_length', '9', '--arora_do_report_results', '0', '--mbt_cache_misses_fname', './a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_misses_for_size_2020_9_26_0_27_7_pid_24612.csv', '--mbt_exact_cutoff_min_cache_size', '1', '--mbt_exact_cutoff_max_cache_size', '10000000', '--memo_cache_size', '10000001', '--memo_lru_queue_size', '10000000', '--memo_caching_strategy', 'lru', '--memo_key_length', '9', '--memo_value_length', '8', '--memo_event_log_fname', './a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_execution_trace_2020_9_26_0_27_7_pid_24612.log', '--mbt_problem_type', 'arora', '--mbt_output_fname', 'output_csize', '--mbt_append_results', '1', '--mbt_metric_type', 'csize_binary_search', '--mbt_cutoff_ratio', '2.2', '--mbt_time_cutoff_coefficient', '0.00300565', '--mbt_cache_miss_cutoff_coefficient', '0.00300565', '--mbt_seconds_per_miss', '0.0000066613245']
+csize_binary_search chosen
+arora arora 10000000
+initializing problem
+processing argument 1: 
+processing argument 2: --arora_instance_fname
+processing argument 4: --arora_results_directory
+setting options.results_directory to ./a100_berlin52_2020_09_26__00_27_07/
+processing argument 6: --arora_logs_fname
+processing argument 7: ./a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_execution_trace_2020_9_26_0_27_7_pid_24612.log
+processing argument 8: --mbt_execution_trace_fname
+processing argument 9: ./a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_execution_trace_2020_9_26_0_27_7_pid_24612.log
+processing argument 10: --arora_points_per_border
+setting options.POINTS_PER_BORDER to 2
+processing argument 12: --arora_write_graphing_data
+write_graphing_data = 1
+setting options.WRITE_GRAPHING_DATA = TRUE
+processing argument 14: --arora_write_tspr
+write_tspr = 1
+setting options.WRITE_RESULTS = TRUE
+processing argument 16: --arora_do_solve
+setting options.do_SOLVE = TRUE
+processing argument 18: --arora_do_find_tour
+setting options.DO_FIND_TOUR = TRUE
+processing argument 20: --arora_key_length
+processing argument 22: --arora_do_report_results
+setting options.DO_REPORT = FALSE
+processing argument 24: --mbt_cache_misses_fname
+processing argument 25: ./a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_misses_for_size_2020_9_26_0_27_7_pid_24612.csv
+processing argument 26: --mbt_exact_cutoff_min_cache_size
+processing argument 27: 1
+processing argument 28: --mbt_exact_cutoff_max_cache_size
+processing argument 29: 10000000
+processing argument 30: --memo_cache_size
+processing argument 31: 10000001
+processing argument 32: --memo_lru_queue_size
+processing argument 33: 10000000
+processing argument 34: --memo_caching_strategy
+processing argument 35: lru
+processing argument 36: --memo_key_length
+processing argument 37: 9
+processing argument 38: --memo_value_length
+processing argument 39: 8
+processing argument 40: --memo_event_log_fname
+processing argument 41: ./a100_berlin52_2020_09_26__00_27_07/arora_n_52_min_1_max_10000000_get_tour_berlin52_execution_trace_2020_9_26_0_27_7_pid_24612.log
+processing argument 42: --mbt_problem_type
+processing argument 43: arora
+processing argument 44: --mbt_output_fname
+processing argument 45: output_csize
+processing argument 46: --mbt_append_results
+processing argument 47: 1
+processing argument 48: --mbt_metric_type
+processing argument 49: csize_binary_search
+processing argument 50: --mbt_cutoff_ratio
+processing argument 51: 2.2
+processing argument 52: --mbt_time_cutoff_coefficient
+processing argument 53: 0.00300565
+processing argument 54: --mbt_cache_miss_cutoff_coefficient
+processing argument 55: 0.00300565
+processing argument 56: --mbt_seconds_per_miss
+processing argument 57: 0.0000066613245
+validate_options
+load_instance
+load_instance
+Instance name: berlin52
+Dimension: 52
+Data points:
+0 565.000000 575.000000
+1 25.000000 185.000000
+2 345.000000 750.000000
+3 945.000000 685.000000
+4 845.000000 655.000000
+5 880.000000 660.000000
+6 25.000000 230.000000
+7 525.000000 1000.000000
+8 580.000000 1175.000000
+9 650.000000 1130.000000
+10 1605.000000 620.000000
+11 1220.000000 580.000000
+12 1465.000000 200.000000
+13 1530.000000 5.000000
+14 845.000000 680.000000
+15 725.000000 370.000000
+16 145.000000 665.000000
+17 415.000000 635.000000
+18 510.000000 875.000000
+19 560.000000 365.000000
+20 300.000000 465.000000
+21 520.000000 585.000000
+22 480.000000 415.000000
+23 835.000000 625.000000
+24 975.000000 580.000000
+25 1215.000000 245.000000
+26 1320.000000 315.000000
+27 1250.000000 400.000000
+28 660.000000 180.000000
+29 410.000000 250.000000
+30 420.000000 555.000000
+31 575.000000 665.000000
+32 1150.000000 1160.000000
+33 700.000000 580.000000
+34 685.000000 595.000000
+35 685.000000 610.000000
+36 770.000000 610.000000
+37 795.000000 645.000000
+38 720.000000 635.000000
+39 760.000000 650.000000
+40 475.000000 960.000000
+41 95.000000 260.000000
+42 875.000000 920.000000
+43 700.000000 500.000000
+44 555.000000 815.000000
+45 830.000000 485.000000
+46 1170.000000 65.000000
+47 830.000000 610.000000
+48 605.000000 625.000000
+49 595.000000 360.000000
+50 1340.000000 725.000000
+51 1740.000000 245.000000
+done!
+initialize_cache, using 9 byte keys
+initialize_arora: about to perturb
+perturbed
+partitioned
+portalized
+done initializing problem
+commence trials
+Starting characteristic_cache_size_binary_search
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 10000000  misses 34990020
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 5000000  misses 34990021  min 0  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 7500000  misses 34990021  min 5000000  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 8750000  misses 34990021  min 7500000  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9375000  misses 34990021  min 8750000  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9687500  misses 34990021  min 9375000  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9843750  misses 34990021  min 9687500  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9921875  misses 34990021  min 9843750  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9960937  misses 34990021  min 9921875  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9980468  misses 34990021  min 9960937  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9990234  misses 34990021  min 9980468  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9995117  misses 34990021  min 9990234  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9997558  misses 34990021  min 9995117  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9998779  misses 34990021  min 9997558  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999389  misses 34990021  min 9998779  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999694  misses 34990021  min 9999389  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999847  misses 34990021  min 9999694  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999923  misses 34990021  min 9999847  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999961  misses 34990020  min 9999923  max 10000000
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999942  misses 34990021  min 9999923  max 9999961
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999951  misses 34990021  min 9999942  max 9999961
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999956  misses 34990020  min 9999951  max 9999961
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999953  misses 34990021  min 9999951  max 9999956
+solve_arora
+got_best_distance
+got_best_tour
+binary search, size 9999954  misses 34990020  min 9999953  max 9999956
+characteristic cache size (binary search) for  = 9999954
+End at: 2020-09-26 06:05:15.571285Time elapsed: 5:38:08.229864

@@ -1,0 +1,13 @@
+Begin at: 2021-06-14 19:34:29.211043
+['../dist/Release/GNU-Linux/memo_batch_tester', '', '--mbt_execution_trace_fname', 'insertion_test_results_no_leadup/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing_execution_trace_2021_6_14_19_34_29_pid_29968.log', '--mbt_problem_type', 'insertion_test', '--mbt_insertion_test_outfname', 'insertion_test_results_no_leadup/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/probes_per_insertion4096.csv', '--mbt_insertion_test_type', 'no_leadup', '--memo_caching_strategy', 'cuckoo_hashing', '--memo_cache_size', '4096', '--memo_cuckoo_k', '4', '--memo_key_length', '8', '--memo_value_length', '8']
+initialize_long_int_cache begin
+init_memo
+arguments to memo:
+ --mbt_execution_trace_fname insertion_test_results_no_leadup/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing_execution_trace_2021_6_14_19_34_29_pid_29968.log --mbt_problem_type insertion_test --mbt_insertion_test_outfname insertion_test_results_no_leadup/insertion_test_cache_size_4096_caching_strategy_cuckoo_hashing/probes_per_insertion4096.csv --mbt_insertion_test_type no_leadup --memo_caching_strategy cuckoo_hashing --memo_cache_size 4096 --memo_cuckoo_k 4 --memo_key_length 8 --memo_value_length 8 
+calculate_table_size: table_size is 4096, original is 4096
+initialize_cuckoo done
+Finished initializing cache
+initialize_long_int_cache end
+done initializing cache
+insertion test
+End at: 2021-06-14 19:34:29.572528Time elapsed: 0:00:00.361503

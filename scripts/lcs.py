@@ -1,14 +1,10 @@
 from datetime import datetime
 import os,subprocess,sys
 from math import sqrt
-from scripts_common import flatten, init_args, init_debug_args
+from scripts_common import *
 from memo_arguments import memo
 from mbt_arguments import mbt
-
-
-first_size = lambda x: x**2
-min_cache_size = lambda x: 2*x
-max_cache_size = lambda x: 2*x*sqrt(x)
+from nru_parameters import nru
 
 
 class lcs:
@@ -49,11 +45,14 @@ class lcs:
 
 
   @staticmethod
+  def set_execution_trace_fname(d, v):
+    d['--lcs_execution_trace_fname'] = v
+
+
+  @staticmethod
   def handle_version(d, v):
     if v not in ['LCS1', 'LCS2', 'OLCS1', 'OLCS2', 'OLCS3', 'OLCS4', 'OLCS5', 'OLCS6']:
-      fp=open(execution_trace_fname, 'w')
-      fp.write('Invalid version {}\n'.format(v))
-      fp.close()
+      print('lcs.handle_version, invalid version {}\n'.format(v))
       exit()
     if str(v).casefold()=='LCS1'.casefold():
       lcs.set_original_version(d, 1)
@@ -101,246 +100,123 @@ class lcs:
     d['--lig_b'] = str(v)
 
 
-def do_trials(a):
-  args = flatten(a)
-  fp=open(execution_trace_fname, 'a')
-  fp.write(str(args))
-  fp.close()
-  subprocess.call(args)
-  os.system("rm -f event_log")
-
-
 """
 LCS: Longest Common Subsequence
-argv[1]: min_cache_size
-argv[2]: max_cache_size
-argv[3]: problem_size:
-argv[4]: get_cost: 0=False, 1=True
-argv[5]: do_traceback: 0=False, 1=True
-argv[6]: version: LCS1, LCS2, OLCS1, OLCS2, OLCS3, OLCS4, OLCS5, OLCS6
-argv[7]: metric_type: 'solve_once' (default), 'no_preemptive_halt', 'explore_sweet_spots'
+argv[1]: cache_size
+argv[2]: problem_size
+argv[3]: get_cost: 0=False, 1=True
+argv[4]: do_traceback: 0=False, 1=True
+argv[5]: version: LCS1, LCS2, OLCS1, OLCS2, OLCS3, OLCS4, OLCS5, OLCS6
+argv[6]: metric_type: 'solve_once', 'no_preemptive_halt', 'explore_sweet_spots'
+argv[7]: parent_folder
 argv[8]: output_path
-argv[9]: --lig_instance_type
-argv[10]: --lig_n
-argv[11]: --lig_c
-argv[12]: --lig_b
+argv[9]: misses_for_cach_size fname
+argv[10]: misses_for_prob_size_fname
+argv[11]: caching strategy (lru, nri, etc)
+argv[12]: k timestamps (NRI/NRU)
+argv[13]: d recent timestamps (NRI/NRU)
+argv[14]: a_items_per_timestamp
+argv[15]: --lig_instance_type
+argv[16]: --lig_n
+argv[17]: --lig_c
+argv[18]: --lig_b
+argv[19]: detailed cache misses out fname
+argv[20]: performance guarantee phi*N
 """
 print('args {}'.format(sys.argv))
 
 beginning = datetime.now()
-a = init_args()
+a = init_args('Debug')
 #a = init_debug_args()
-get_cost = bool(str(sys.argv[4]).casefold()=='1'.casefold())
-do_traceback = bool(str(sys.argv[5]).casefold()=='1'.casefold())
+
+cache_size = int(sys.argv[1])
+problem_size = int(sys.argv[2])
+get_cost = int(sys.argv[3])
+do_traceback = int(sys.argv[4])
+version = str(sys.argv[5])
+metric_type = str(sys.argv[6])
+parent_folder = str(sys.argv[7])
+output_path = str(sys.argv[8])
+misses_for_cache_size_fname = str(sys.argv[9])
+misses_for_prob_size_fname = str(sys.argv[10])
+caching_strategy = str(sys.argv[11])
+k_timestamps = int(sys.argv[12])
+d_recent_timestamps = int(sys.argv[13])
+a_items_per_timestamp = float(sys.argv[14])
+instance_type = str(sys.argv[15])
+lcs_size = int(sys.argv[16])
+lcs_c = float(sys.argv[17])
+lcs_b = float(sys.argv[18])
+detailed_out_fname = str(sys.argv[19])
+phi_N = float(sys.argv[20])
+
+if get_cost == 1:
+  get_cost_str = 'get_cost'
+else:
+  get_cost_str = ''
+if do_traceback == 1:
+  do_traceback_str = 'do_traceback'
+else:
+  do_traceback_str = ''
+
+prefix = version + '_' + get_cost_str + '_' + do_traceback_str + '_prob_size_' + str(problem_size) + '_cache_size_' + str(cache_size) + '_' + caching_strategy + '_k_' + str(k_timestamps) + '_d_' + str(d_recent_timestamps)
+
+suffix = str(beginning.year) + '_' + str(beginning.month) + '_' + str(beginning.day) + '_' + str(beginning.hour) + '_' + str(beginning.minute) + '_' + str(beginning.second) + '_pid_' + str(os.getpid())
+
+execution_trace_name = prefix + '_execution_trace_' + suffix + '.log'
+experiment_name = prefix + '_misses_for_size_' + suffix + '.csv'
+execution_trace_fname = output_path + execution_trace_name
+misses_for_prob_size_fname = os.path.join(parent_folder, misses_for_prob_size_fname)
+misses_for_cache_size_fname = os.path.join(parent_folder, misses_for_cache_size_fname)
+
+fp=open(execution_trace_fname, 'w')
+fp.write('Begin at: {}\n'.format(beginning))
+fp.close()
+
+
+mbt.set_execution_trace_fname(a, execution_trace_fname)
+mbt.set_cache_misses_fname(a, misses_for_cache_size_fname)
+mbt.set_misses_for_problem_size_fname(a, misses_for_prob_size_fname)
+mbt.set_cutoff_min_size(a, cache_size)
+mbt.set_cutoff_max_size(a, cache_size)
+mbt.set_problem_type(a, 'lcs')
+mbt.set_metric_type(a, metric_type)
+mbt.set_cutoff_ratio(a, 2.2)
+mbt.set_instance_name(a, str(problem_size))
+mbt.set_detailed_cache_misses_out_fname(a, detailed_out_fname)
+mbt.set_phi_N(a, phi_N)
+mbt.set_problem_size(a, int(lcs_size))
+
 lcs.set_compute_length(a, get_cost)
 lcs.set_perform_traceback(a, do_traceback)
-if get_cost and do_traceback:
-  print('Must choose either get_cost or do_traceback')
-  exit()
-if get_cost:
-  solution_type = 'get_cost'
-elif do_traceback:
-  solution_type = 'do_traceback'
-else:
-  print('Must choose either get_cost or do_traceback')
-  exit()
+lcs.set_lcs_type(a, instance_type)
+lcs.set_lcs_size(a, lcs_size)
+lcs.set_lcs_c(a, lcs_c)
+lcs.set_lcs_b(a, lcs_b)
+lcs.handle_version(a, version)
+lcs.set_execution_trace_fname(a, execution_trace_fname)
 
-prefix = 'lcs_n_'+str(sys.argv[3])+'_min_'+str(sys.argv[1])+'_max_'+str(sys.argv[2])+'_v_'+str(sys.argv[6])+'_'+str(sys.argv[3])+str(sys.argv[9])+'_c_'+str(sys.argv[11])+'_b_'+str(sys.argv[12])+'_method_'+str(sys.argv[7])+'_'+solution_type
-
-suffix = str(beginning.year)+'_'+str(beginning.month)+'_'+str(beginning.day)+'_'+str(beginning.hour)+'_'+str(beginning.minute)+'_'+str(beginning.second)+'_pid_'+str(os.getpid())
-execution_trace_name = prefix+'_execution_trace_'+suffix+'.log'
-experiment_name = prefix+'_misses_for_size_'+suffix+'.csv'
-output_path = str(sys.argv[8])
-execution_trace_fname = output_path+execution_trace_name
-cache_misses_fname = output_path+experiment_name
-
-lcs.set_lcs_type(a, sys.argv[9])
-lcs.set_lcs_size(a, sys.argv[10])
-lcs.set_lcs_c(a, sys.argv[11])
-lcs.set_lcs_b(a, sys.argv[12])
 
 #---lcs.set_instance_fname(a,input_path+sys.argv[3]+sys.argv[8]+'.lcs')
 #---mbt.set_instance_name(a,sys.argv[3]+sys.argv[8]+'.lcs')
 
-mbt.set_cache_misses_fname(a, cache_misses_fname)
-mbt.set_execution_trace_fname(a, execution_trace_fname)
-fp=open(execution_trace_fname, 'w')
-fp.write('Begin at: {}\n'.format(beginning))
-fp.close()
-mbt.set_cutoff_min_size(a, int(sys.argv[1]))
-mbt.set_cutoff_max_size(a, int(sys.argv[2]))
-memo.set_lru_cache_size(a, int(sys.argv[2]))
-memo.set_caching_strategy(a, 'lru')
+memo.set_caching_strategy(a, caching_strategy)
+if caching_strategy == 'lru':
+  memo.set_memo_cache_size(a, cache_size+1)
+  memo.set_lru_queue_size(a, cache_size)
+else:
+  memo.set_memo_cache_size(a, cache_size)
+  memo.set_lru_queue_size(a, -1)
+memo.set_cuckoo_k(a, 4)
 memo.set_key_length(a, 8)
 memo.set_value_length(a, 8)
-memo.set_event_log_fname(a, 'event_log')
-mbt.set_problem_type(a, 'lcs')
-mbt.set_output_fname(a, 'output_csize')  # why do we need this??
-mbt.set_append_results(a, True)
-mbt.set_metric_type(a, str(sys.argv[7]))   # 'solve_once', 'explore_sweet_spots', etc.
-mbt.set_cutoff_ratio(a, 2.2)
-lcs.handle_version(a, str(sys.argv[6]))
-fp=open(cache_misses_fname, 'w')
-fp.write('COMMENT,{}\n'.format(str(prefix)))
-fp.write('SORT_BY,{}\n'.format(str(sys.argv[3])))
-fp.close()
-do_trials(a)
-fp=open(execution_trace_fname, 'a')
+memo.set_k_timestamps(a, k_timestamps)
+memo.set_d_recent_timestamps(a, d_recent_timestamps)
+memo.set_a_items_per_timestamp(a, a_items_per_timestamp)
+
+do_trials(a, execution_trace_fname)
+fp = open(execution_trace_fname, 'a')
 fp.write('End at: {}\n'.format(datetime.now()))
 fp.write('Time elapsed: {}\n'.format(datetime.now()-beginning))
 fp.close()
 
-
-
-
-
-
-
-def do_random_trials(a):
-  num_instances = 50
-  num_trials = 1
-  sizes = [50]
-  for n in sizes:
-    for j in [1,3,7,15]:
-      for h in range(num_instances):
-        memo.set_lru_cache_size(a,first_size(n))
-        lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-random-0-'+str(j)+'-'+str(h)+'.lcs')
-        mbt.set_instance_name(a,str(n)+'-random-0-'+str(j)+'-'+str(h)+'.lcs')
-        mbt.set_cache_misses_fname(a,output_path+'/cache_misses_rand_'+str(num_trials))
-        print(a)
-        subprocess.call(flatten(a))
-        os.system("rm -f event_log")
-        num_trials += 1
-
-
-def do_000_111_trials(a):
-  #mbt.set_metric_type(a,'exact_cutoff')
-  mbt.set_metric_type(a,'explore_sweet_spots')
-  #mbt.set_metric_type(a,'explore_fixed_startpoints')
-  num_trials = 1
-  #sizes = [100,110,120,130,140,150,160,170,180,190,200,210,220,230,240,250,260,270,280,290,300]
-  #sizes = [512,256,128,64]
-  #sizes = [2,4,8]
-  #sizes = [16,32,64,128,256,512,1024]
-  #sizes = [2048]
-  #sizes = [240,400,800,900,1000,1200,1400,1600,1800,2000]
-  #sizes = [128]
-  for n in sizes:
-    #mbt.set_cutoff_min_size(a,min_cache_size(n))
-    #mbt.set_cutoff_max_size(a,max_cache_size(n))
-    #mbt.set_cutoff_min_size(a,898)
-    #memo.set_lru_cache_size(a,first_size(n))
-    #memo.set_lru_cache_size(a,684)
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-000-111.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-000-111.lcs')
-    #mbt.set_cache_misses_fname(a,output_path+'/cache_misses_000_111_'+str(num_trials))
-    #print(a)
-    args = flatten(a)
-    #print(args)
-    subprocess.call(args)
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_012_210_trials(a):
-  num_trials = 1
-  sizes = [50]
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-012-210.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-012-210.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_012_210_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_0101_1010_trials(a):
-  num_trials = 1
-  sizes = [50]
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-0101-1010.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-0101-1010.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_0101_1010_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_111_111_trials(a):  # NB: this gives zero cache misses no matter the instance size or cache size
-  num_trials = 1
-  sizes = [60]
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-111-111.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-111-111.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_111_111_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_000111_111000_trials(a):
-  num_trials = 1
-  sizes = [50]
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-000111-111000.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-000111-111000.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_000111_111000_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_001122_221100_trials(a):
-  num_trials = 1
-  #sizes = [10,20,30,40,50,60,70,80,90,100,110,120]
-  #sizes = [10,20,30,40,50,60,70]
-  sizes = [50]
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-001122-221100.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-001122-221100.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_001122_221100_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_001122_112200_trials(a):
-  num_trials = 1
-  #sizes = [10,20,30,40,50,60,70,80,90,100,110,120]
-  #sizes = [10,20,30,40,50,60,70]
-  sizes = [50]
-  for n in sizes:
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-001122-112200.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-001122-112200.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_001122_112200_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    num_trials += 1
-
-
-def do_unequal_length_trials(a):
-  num_iterations = 30
-  num_trials = 1
-  n = 10
-  for g in range(1,num_iterations+1):
-    memo.set_lru_cache_size(a,first_size(n))
-    lcs.set_instance_fname(a,input_dir+'/'+input_type+'/'+str(n)+'-test-000-111.lcs')
-    mbt.set_instance_name(a,str(n)+'-test-000-111.lcs')
-    mbt.set_cache_misses_fname(a,output_path+'/cache_misses_000_111_'+str(num_trials))
-    print(a)
-    subprocess.call(flatten(a))
-    os.system("rm -f event_log")
-    n += 1
-    num_trials += 1
